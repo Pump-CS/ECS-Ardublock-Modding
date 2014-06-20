@@ -14,5 +14,5 @@ This project is based on [Ardublock](https://github.com/taweili/ardublock).
 7. Step 6 should produce `target/ardublock-all.jar`, copy this to 
   * Mac OS X & Windows: `Documents/Arduino/tools/ArduBlockTool/tool`
   * Linux: `~/sketchbook/tools/ArduBlockTool/tool`
-  * If these paths don't work, then use the path found in File > Preferences in the Arduino application as the root and append `tools/ArduBlockTool/tool`
-8. Start the arduino application as you would normally and navigate to Tools -> ArduBlock.
+  * If these paths don't work, then use the path found in `File` > `Preferences` in the Arduino application as the root and append `tools/ArduBlockTool/tool`
+8. Start the arduino application as you would normally and navigate to `Tools` > `ArduBlock`.
