@@ -12,5 +12,5 @@ This project is based on [Ardublock](https://github.com/taweili/ardublock).
 5. In ardublock/openblocks, run `mvn install`.
 6. After modifying the code, run `mvn clean package`.
 7. Step 6 should produce `target/ardublock-all.jar`, copy this to `Arduino/tools/ArduBlockTool/tool`
-  * Note: This path will vary depending on which OS you're running. You can find this path by starting the Ardunio application and then going to file -> preferences. The root of the path you need to copy ardublock-all.jar to will be the path under "Sketchbook location". If your Sketchbook location is /home/name/sketchbook then you need to copy ardublook-all.jar to /home/name/sketchbook/tools/ArduBlockTool/tool (you may need to create some of these directories).
+  * Note: This path will vary depending on which OS you're running. You can find this path by starting the Ardunio application and then going to file -> preferences. The root of the path you need to copy `ardublock-all.jar` to will be the path under "Sketchbook location". If your Sketchbook location is `/home/name/sketchbook` then you need to copy `ardublook-all.jar` to `/home/name/sketchbook/tools/ArduBlockTool/tool` (you may need to create some of these directories).
 8. Start the arduino application as you would normally, go to Tools -> ArduBlock.
