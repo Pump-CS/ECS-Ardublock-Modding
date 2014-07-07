@@ -4665,6 +4665,16 @@
 			</Images>
 		</BlockGenus>
 
+		<!-- START OUR ADDITIONS -->
+
+		<BlockGenus name="my_test_block" kind="command" color="0 204 0" initlabel="bg.my_test_block">
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug" />
+			</BlockConnectors>
+		</BlockGenus>
+
+		<!-- -->
+
 	</BlockGenuses>
 
 	<BlockFamilies>
@@ -5133,6 +5143,11 @@
 		    -->
 			<!-- Shapes are automatically loaded as blocks in the Shapes drawer (see slcodeblocks.ShapeBlocksGenerator for details) -->
 			<!-- Sound blocks reside in the auto-generated String drawer. (see slcodeblocks.SoundBlocksGenerator for details) -->
+		<BlockDrawer button-color="0 204 0" name="bd.my_blocks">
+			<BlockGenusMember>my_test_block</BlockGenusMember>
+		</BlockDrawer>
+
+
 		</BlockDrawerSet>
 	</BlockDrawerSets>
 

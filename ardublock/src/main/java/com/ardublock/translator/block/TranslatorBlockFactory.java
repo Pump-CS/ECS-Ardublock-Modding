@@ -34,7 +34,7 @@ public class TranslatorBlockFactory
 	
 	public TranslatorBlock buildTranslatorBlock(Translator translator, Long blockId, String blockName, String codePrefix, String codeSuffix, String label)
 	{
-//		System.out.println("block name : " + blockName + " captured");
+		System.out.println("block name : " + blockName + " captured");
 		
 		String className = PropertiesReader.getValue(blockName, BLOCK_MAPPING);
 		//System.out.println("className: " + className);
