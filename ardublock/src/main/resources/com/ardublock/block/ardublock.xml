@@ -4818,7 +4818,6 @@
 
 	<BlockDrawerSets>
 		<BlockDrawerSet name="factory" type="stack" location="southwest" window-per-drawer="no" drawer-draggable="no">
-			<BlockDrawer name="bd.mutest" type="factory" button-color="0 0 0">			</BlockDrawer>
 			<BlockDrawer name="bd.control" type="factory" is-open="yes" button-color="255 255 0">
 				<BlockGenusMember>program</BlockGenusMember>
 				<BlockGenusMember>loop</BlockGenusMember>
