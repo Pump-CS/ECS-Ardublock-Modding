@@ -4667,6 +4667,20 @@
 
 		<!-- START OUR ADDITIONS -->
 
+		<BlockGenus name="chip_tunes_block" kind="command" color="0 204 0" initlabel="bg.chip_tunes_block">
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
+					<DefaultArg genus-name="number" label="8" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.note">
+					<DefaultArg genus-name="number" label="A" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.milliseconds">
+					<DefaultArg genus-name="number" label="1000" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+
 		<BlockGenus name="my_test_block" kind="command" color="0 204 0" initlabel="bg.my_test_block">
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="plug" />
@@ -5144,6 +5158,7 @@
 			<!-- Shapes are automatically loaded as blocks in the Shapes drawer (see slcodeblocks.ShapeBlocksGenerator for details) -->
 			<!-- Sound blocks reside in the auto-generated String drawer. (see slcodeblocks.SoundBlocksGenerator for details) -->
 		<BlockDrawer button-color="0 204 0" name="bd.my_blocks">
+			<BlockGenusMember>chip_tunes_block</BlockGenusMember>
 			<BlockGenusMember>my_test_block</BlockGenusMember>
 		</BlockDrawer>
 

@@ -50,7 +50,17 @@ abstract public class TranslatorBlock
 		this.codeSuffix = codeSuffix;
 		this.label = label;
 	}
-	
+
+	public String getLabel()
+	{
+		return label;
+	}
+
+	public void setLabel(String label)
+	{
+		this.label = label;
+	}
+
 	protected Translator getTranslator()
 	{
 		return translator;
