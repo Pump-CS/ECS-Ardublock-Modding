@@ -11,7 +11,7 @@ This project is based on [Ardublock](https://github.com/taweili/ardublock).
 3. Follow the Maven [installation instructions](http://maven.apache.org/download.cgi)
 4. In the project directory, run `mvn validate` and then `./install_openblocks`.
 5. In ardublock/openblocks, run `mvn install`.
-6. After modifying the code, run `mvn clean package`.
+6. After modifying the code, run `mvn clean package` in the `ardublock` directory.
 7. Step 6 should produce `target/ardublock-all.jar`, copy this to 
   * Mac OS X & Windows: `Documents/Arduino/tools/ArduBlockTool/tool`
   * Linux: `~/sketchbook/tools/ArduBlockTool/tool`
