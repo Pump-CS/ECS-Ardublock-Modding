@@ -4672,8 +4672,8 @@
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
 					<DefaultArg genus-name="number" label="8" />
 				</BlockConnector>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.note">
-					<DefaultArg genus-name="number" label="A" />
+				<BlockConnector connector-type="string" connector-kind="socket" label="bc.note">
+					<DefaultArg genus-name="message" label="A" />
 				</BlockConnector>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.milliseconds">
 					<DefaultArg genus-name="number" label="1000" />
