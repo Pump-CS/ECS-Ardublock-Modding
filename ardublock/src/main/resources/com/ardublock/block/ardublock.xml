@@ -4667,6 +4667,24 @@
 
 		<!-- START OUR ADDITIONS -->
 
+		<BlockGenus name="ECS_LED_on" kind="command" color="0 204 0" initlabel="bg.ECS_LED_on">
+			<description></description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
+					<DefaultArg genus-name="number" label="1" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="ECS_LED_off" kind="command" color="0 204 0" initlabel="bg.ECS_LED_off">
+			<description></description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
+					<DefaultArg genus-name="number" label="1" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+
 		<BlockGenus name="play_note_block" kind="command" color="0 204 0" initlabel="bg.play_note_block">
 			<description></description>
 			<BlockConnectors>
@@ -5184,6 +5202,8 @@
 			<BlockGenusMember>play_note_time_block</BlockGenusMember>
 			<BlockGenusMember>play_frequency_block</BlockGenusMember>
 			<BlockGenusMember>play_frequency_time_block</BlockGenusMember>
+			<BlockGenusMember>ECS_LED_on</BlockGenusMember>
+			<BlockGenusMember>ECS_LED_off</BlockGenusMember>
 		</BlockDrawer>
 
 
