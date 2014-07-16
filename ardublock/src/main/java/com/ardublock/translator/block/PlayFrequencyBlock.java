@@ -14,7 +14,7 @@ public class PlayFrequencyBlock extends TranslatorBlock
 	@Override
 	public String toCode() throws SocketNullException , SubroutineNotDeclaredException
 	{
-//		TranslatorBlock pinBlock = this.getRequiredTranslatorBlockAtSocket(0);
+		//TranslatorBlock pinBlock = this.getRequiredTranslatorBlockAtSocket(0);
 		TranslatorBlock freqBlock = this.getRequiredTranslatorBlockAtSocket(0);
 		TranslatorBlock timeBlock = this.getRequiredTranslatorBlockAtSocket(1);
 		int CONST_PIN = 8;
