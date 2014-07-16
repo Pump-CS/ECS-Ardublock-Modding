@@ -4669,11 +4669,6 @@
 
 		<BlockGenus name="chip_tunes_block" kind="command" color="0 204 0" initlabel="bg.chip_tunes_block">
 			<BlockConnectors>
-				<!--
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="8" />
-				</BlockConnector>
-				-->
 				<BlockConnector connector-type="string" connector-kind="socket" label="bc.note">
 					<DefaultArg genus-name="message" label="A" />
 				</BlockConnector>
@@ -4690,11 +4685,6 @@
 				</text>
 			</description>
 			<BlockConnectors>
-				<!--
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="8" />
-				</BlockConnector>
-				-->
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.frequency">
 					<DefaultArg genus-name="number" label="440" />
 				</BlockConnector>
