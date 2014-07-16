@@ -6,12 +6,12 @@ import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
 
 import java.util.Hashtable;
 
-public class ChipTunesBlock extends TranslatorBlock
+public class ECSPlayNoteBlock extends TranslatorBlock
 {
 
 	private Hashtable<String, Integer> notes = new Hashtable<String, Integer>();
 
-	public ChipTunesBlock(Long blockId, Translator translator, String codePrefix,	String codeSuffix, String label)
+	public ECSPlayNoteBlock(Long blockId, Translator translator, String codePrefix,	String codeSuffix, String label)
 	{
 		super(blockId, translator, codePrefix, codeSuffix, label);
 
@@ -129,7 +129,6 @@ public class ChipTunesBlock extends TranslatorBlock
 	@Override
 	public String toCode() throws SocketNullException , SubroutineNotDeclaredException
 	{
-	//	TranslatorBlock pinBlock = this.getRequiredTranslatorBlockAtSocket(0);
 		TranslatorBlock freqBlock = this.getRequiredTranslatorBlockAtSocket(0);
 		TranslatorBlock timeBlock = this.getRequiredTranslatorBlockAtSocket(1);
 
@@ -139,11 +138,10 @@ public class ChipTunesBlock extends TranslatorBlock
 		Integer freq = notes.get(note);
 		if (freq == null) {
 			System.out.println("Unrecognized note: " + note);
-			// something
+			// TODO: Report to user
 		}
 
-		String ret = "tone(" + CONST_PIN /*pinBlock.toCode()*/ + ", " + freq + ", " + timeBlock.toCode() + ");\n";
-		ret += "\tdelay(" + timeBlock.toCode() + ");\n";
+		String ret = "tone(" + CONST_PIN + ", " + freq + ");\n";
 		return ret;
 	}
 }

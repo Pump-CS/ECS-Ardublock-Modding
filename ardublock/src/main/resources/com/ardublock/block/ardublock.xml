@@ -4667,7 +4667,17 @@
 
 		<!-- START OUR ADDITIONS -->
 
-		<BlockGenus name="chip_tunes_block" kind="command" color="0 204 0" initlabel="bg.chip_tunes_block">
+		<BlockGenus name="play_note_block" kind="command" color="0 204 0" initlabel="bg.play_note_block">
+			<description></description>
+			<BlockConnectors>
+				<BlockConnector connector-type="string" connector-kind="socket" label="bc.note">
+					<DefaultArg genus-name="message" label="A" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="play_note_time_block" kind="command" color="0 204 0" initlabel="bg.play_note_time_block">
+			<description></description>
 			<BlockConnectors>
 				<BlockConnector connector-type="string" connector-kind="socket" label="bc.note">
 					<DefaultArg genus-name="message" label="A" />
@@ -4679,11 +4689,16 @@
 		</BlockGenus>
 
 		<BlockGenus name="play_frequency_block" kind="command" color="0 204 0" initlabel="bg.play_frequency_block">
-			<description>
-				<text>Generates a square wave of the specified frequency (and 50%
-					duty cycle) on a pin.
-				</text>
-			</description>
+			<description></description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.frequency">
+					<DefaultArg genus-name="number" label="440" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="play_frequency_time_block" kind="command" color="0 204 0" initlabel="bg.play_frequency_time_block">
+			<description></description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.frequency">
 					<DefaultArg genus-name="number" label="440" />
@@ -5165,8 +5180,10 @@
 			<!-- Shapes are automatically loaded as blocks in the Shapes drawer (see slcodeblocks.ShapeBlocksGenerator for details) -->
 			<!-- Sound blocks reside in the auto-generated String drawer. (see slcodeblocks.SoundBlocksGenerator for details) -->
 		<BlockDrawer button-color="0 204 0" name="bd.my_blocks">
-			<BlockGenusMember>chip_tunes_block</BlockGenusMember>
+			<BlockGenusMember>play_note_block</BlockGenusMember>
+			<BlockGenusMember>play_note_time_block</BlockGenusMember>
 			<BlockGenusMember>play_frequency_block</BlockGenusMember>
+			<BlockGenusMember>play_frequency_time_block</BlockGenusMember>
 		</BlockDrawer>
 
 

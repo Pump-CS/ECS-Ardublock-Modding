@@ -29,8 +29,10 @@ public class TranslatorBlockFactory
 		shortClassName.put("tone", "com.ardublock.translator.block.ToneBlock");
 		shortClassName.put("toneTime", "com.ardublock.translator.block.ToneTimeBlock");
 		shortClassName.put("noTone", "com.ardublock.translator.block.NoToneBlock");
-		shortClassName.put("chipTunes", "com.ardublock.translator.block.ChipTunesBlock");
+		shortClassName.put("playNote", "com.ardublock.translator.block.ECSPlayNoteBlock");
+		shortClassName.put("playNoteTime", "com.ardublock.translator.block.ECSPlayNoteTimeBlock");
 		shortClassName.put("playFrequency", "com.ardublock.translator.block.PlayFrequencyBlock");
+		shortClassName.put("playFrequencyTime", "com.ardublock.translator.block.PlayFrequencyTimeBlock");
 	}
 	
 	
