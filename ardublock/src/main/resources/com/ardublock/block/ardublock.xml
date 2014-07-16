@@ -4592,7 +4592,7 @@
 		</BlockGenus>
 		
 		<!-- InsectBot blocks -->
-		
+		<!--
 		<BlockGenus name="insectbot_get_distance" kind="data" color="64 109 0" initlabel="bg.insectbot_get_distance">
 			<description>
 				<text>workshop template</text>
@@ -4664,6 +4664,7 @@
 				</Image>
 			</Images>
 		</BlockGenus>
+		-->
 
 		<!-- START OUR ADDITIONS -->
 
@@ -5150,7 +5151,6 @@
 				<BlockGenusMember>ws_danger</BlockGenusMember>
 				<BlockGenusMember>ws_binoculars</BlockGenusMember>
 			</BlockDrawer>
-			 -->
 			<BlockDrawer button-color="64 109 0" name="bd.insectbot">
 			    <BlockGenusMember>insectbot_get_distance</BlockGenusMember>
 			    <BlockGenusMember>insectbot_is_indanger</BlockGenusMember>
@@ -5159,7 +5159,7 @@
 			    <BlockGenusMember>insectbot_turn_left</BlockGenusMember>
 			    <BlockGenusMember>insectbot_blink_led</BlockGenusMember>
 			</BlockDrawer>
-			
+			 -->
 			<!--
 			<BlockDrawer button-color="135 206 235" name="bd.linksprite_LinkerKit">
 				<BlockGenusMember>ls_10mmLEDModule</BlockGenusMember>
