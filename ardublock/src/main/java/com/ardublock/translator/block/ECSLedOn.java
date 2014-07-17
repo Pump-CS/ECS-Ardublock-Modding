@@ -19,7 +19,10 @@ public class ECSLedOn extends TranslatorBlock
 	{
 		TranslatorBlock pinNumber = this.getRequiredTranslatorBlockAtSocket(0);
 		
+		// Add a line to the setup section that sets this pin as output
 		translator.addSetupCommand("pinMode( " + pinNumber.toCode() + " , OUTPUT);");
+
+		
 		return "digitalWrite( " + pinNumber.toCode() + " , HIGH);\n";
 	}
 }
