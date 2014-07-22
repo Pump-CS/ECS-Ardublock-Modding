@@ -282,7 +282,7 @@
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="8" />
+					<DefaultArg genus-name="number" label="23" />
 				</BlockConnector>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.frequency">
 					<DefaultArg genus-name="number" label="440" />
@@ -291,7 +291,7 @@
 			</BlockConnectors>
 		</BlockGenus>
 
-		<BlockGenus name="tone_time" kind="command" color="77 191 169" initlabel="tone">
+		<BlockGenus name="tone_time" kind="command" color="77 191 169" initlabel="tone_time">
 			<description>
 				<text>Generates a square wave of the specified frequency (and 50%
 					duty cycle) on a pin.
@@ -299,10 +299,44 @@
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="8" />
+					<DefaultArg genus-name="number" label="23" />
 				</BlockConnector>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.frequency">
 					<DefaultArg genus-name="number" label="440" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.milliseconds">
+					<DefaultArg genus-name="number" label="1000" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+		
+		
+		<BlockGenus name="tone_note" kind="command" color="77 191 169" initlabel="tone_note">
+			<description>
+				<text>
+				</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
+					<DefaultArg genus-name="number" label="23" />
+				</BlockConnector>
+				<BlockConnector connector-type="string" connector-kind="socket" label="bc.note">
+					<DefaultArg genus-name="message" label="A" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="tone_note_time" kind="command" color="77 191 169" initlabel="tone_note_time">
+			<description>
+				<text>
+				</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
+					<DefaultArg genus-name="number" label="23" />
+				</BlockConnector>
+				<BlockConnector connector-type="string" connector-kind="socket" label="bc.note">
+					<DefaultArg genus-name="message" label="A" />
 				</BlockConnector>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.milliseconds">
 					<DefaultArg genus-name="number" label="1000" />
@@ -4730,6 +4764,18 @@
 			</BlockConnectors>
 		</BlockGenus>
 
+		<BlockGenus name="read_distance_block" kind="command" color="0 204 0" initlabel="bg.read_distance_block">
+			<description></description>
+			<BlockConnectors>
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="ecs_no_tone" kind="command" color="0 204 0" initlabel="ecs_no_tone">
+			<description></description>
+			<BlockConnectors>
+			</BlockConnectors>
+		</BlockGenus>
+
 		<!-- -->
 
 	</BlockGenuses>
@@ -4896,6 +4942,8 @@
 				<BlockGenusMember>pin-write-digital</BlockGenusMember>
 				<BlockGenusMember>pin-write-analog</BlockGenusMember>
 				<BlockGenusMember>pin-read-digital-pullup</BlockGenusMember>
+				<BlockGenusMember>tone_note</BlockGenusMember>
+				<BlockGenusMember>tone_note_time</BlockGenusMember>
 				<BlockGenusMember>tone</BlockGenusMember>
 				<BlockGenusMember>tone_time</BlockGenusMember>
 				<BlockGenusMember>no_tone</BlockGenusMember>
@@ -4980,9 +5028,11 @@
 				<BlockGenusMember>glue_sn</BlockGenusMember>
 				<BlockGenusMember>glue_sb</BlockGenusMember>
 				<BlockGenusMember>glue_poly</BlockGenusMember>
+		<!--
 				<BlockGenusMember>wire_write</BlockGenusMember>
 				<BlockGenusMember>wire_read</BlockGenusMember>
 				<BlockGenusMember>wire_isread</BlockGenusMember>
+		-->
 			</BlockDrawer>
 			<BlockDrawer button-color="0 50 45" name="bd.storage" type="factory">
 				<BlockGenusMember>eeprom_read_int</BlockGenusMember>
@@ -5221,8 +5271,10 @@
 				<BlockGenusMember>play_note_time_block</BlockGenusMember>
 				<BlockGenusMember>play_frequency_block</BlockGenusMember>
 				<BlockGenusMember>play_frequency_time_block</BlockGenusMember>
+				<BlockGenusMember>ecs_no_tone</BlockGenusMember>
 				<BlockGenusMember>ECS_LED_on</BlockGenusMember>
 				<BlockGenusMember>ECS_LED_off</BlockGenusMember>
+				<BlockGenusMember>read_distance_block</BlockGenusMember>
 			</BlockDrawer>
 		</BlockDrawerSet>
 	</BlockDrawerSets>

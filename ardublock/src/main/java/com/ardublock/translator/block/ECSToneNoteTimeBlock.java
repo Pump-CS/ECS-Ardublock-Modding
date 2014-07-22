@@ -6,12 +6,11 @@ import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
 
 import java.util.Hashtable;
 
-public class ECSPlayNoteBlock extends TranslatorBlock
+public class ECSToneNoteTimeBlock extends TranslatorBlock
 {
-
 	private Hashtable<String, Integer> notes = new Hashtable<String, Integer>();
 
-	public ECSPlayNoteBlock(Long blockId, Translator translator, String codePrefix,	String codeSuffix, String label)
+	public ECSToneNoteTimeBlock(Long blockId, Translator translator, String codePrefix,	String codeSuffix, String label)
 	{
 		super(blockId, translator, codePrefix, codeSuffix, label);
 
@@ -129,10 +128,10 @@ public class ECSPlayNoteBlock extends TranslatorBlock
 	@Override
 	public String toCode() throws SocketNullException , SubroutineNotDeclaredException
 	{
-		TranslatorBlock freqBlock = this.getRequiredTranslatorBlockAtSocket(0);
-		TranslatorBlock timeBlock = this.getRequiredTranslatorBlockAtSocket(1);
+		TranslatorBlock pinBlock = this.getRequiredTranslatorBlockAtSocket(0);
+		TranslatorBlock freqBlock = this.getRequiredTranslatorBlockAtSocket(1);
+		TranslatorBlock timeBlock = this.getRequiredTranslatorBlockAtSocket(2);
 
-		int CONST_PIN = 23;
 		String note = freqBlock.toCode();
 		note = note.substring(1, note.length() - 1);
 		Integer freq = notes.get(note);
@@ -141,7 +140,9 @@ public class ECSPlayNoteBlock extends TranslatorBlock
 			// TODO: Report to user
 		}
 
-		String ret = "tone(" + CONST_PIN + ", " + freq + ");\n";
+		String ret = "tone(" + pinBlock.toCode() + ", " + freq + ", " + timeBlock.toCode() + ");\n";
+		ret += "\tdelay(" + timeBlock.toCode() + ");\n";
+		ret += "\tnoTone(" + pinBlock.toCode() + ");\n";
 		return ret;
 	}
 }

@@ -17,10 +17,11 @@ public class ECSPlayFrequencyTimeBlock extends TranslatorBlock
 		TranslatorBlock freqBlock = this.getRequiredTranslatorBlockAtSocket(0);
 		TranslatorBlock timeBlock = this.getRequiredTranslatorBlockAtSocket(1);
 
-		int CONST_PIN = 8;
+		int CONST_PIN = 23;
 
 		String ret = "tone(" + CONST_PIN + ", " + freqBlock.toCode() + ", " + timeBlock.toCode() + ");\n";
 		ret += "\tdelay(" + timeBlock.toCode() + ");\n";
+		ret += "\tnoTone(" + CONST_PIN + ");\n";
 		return ret;
 	}
 }
