@@ -1,0 +1,3 @@
+mvn clean package
+cp -v target/ardublock-all.jar ~/Documents/Arduino/tools/ArduBlockTool/tool/
+/Applications/Arduino.app/Contents/MacOS/JavaApplicationStub
