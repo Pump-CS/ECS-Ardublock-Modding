@@ -4014,8 +4014,9 @@
 				<BlockConnector connector-type="poly" connector-kind="plug" position-type="mirror" />
 			</BlockConnectors>
 		</BlockGenus>
-		
+	
 		<!--**************************************Adafruit*********************************** -->
+	
 		<BlockGenus name="ada_dc_motor_fwd" kind="command" color="216 5 10" initlabel="bg.ada_dc_motor_fwd">
 			<description>
 				<text>Adafruit DC motor</text>
@@ -4070,6 +4071,7 @@
 				</Image> 
 			</Images> -->
 		</BlockGenus>
+		
 		<!--***Makeblock***-->
 		<BlockGenus name="me_ultrasonic_sensor" kind="data" color="0 177 236" initlabel="bg.me_ultrasonic_sensor">
 			<description>
@@ -4804,11 +4806,11 @@
 			<FamilyMember>servo_default</FamilyMember>
 			<FamilyMember>servo_sg90</FamilyMember>
 			<FamilyMember>servo_mg996r</FamilyMember>
-		</BlockFamily>
+		</BlockFamily>	
 		<BlockFamily>
 			<FamilyMember>df_joystick_module_x</FamilyMember>
 			<FamilyMember>df_joystick_module_y</FamilyMember>
-		</BlockFamily>
+		</BlockFamily>	
 		<BlockFamily>
 			<FamilyMember>df_mma7260_x</FamilyMember>
 			<FamilyMember>df_mma7260_y</FamilyMember>
@@ -4957,6 +4959,7 @@
 				<BlockGenusMember>variable_number_double</BlockGenusMember>
 				<BlockGenusMember>number_double</BlockGenusMember>
 			</BlockDrawer>
+		<!--
 			<BlockDrawer button-color="205 133 63" name="bd.utilities" type="factory">
 				<BlockGenusMember>servo_default</BlockGenusMember>
 				<BlockGenusMember>ultrasonic</BlockGenusMember>
@@ -4966,6 +4969,7 @@
 				<BlockGenusMember>number-single-I2C-address</BlockGenusMember>
 				<BlockGenusMember>number-single-fixed-parallel</BlockGenusMember>
 			</BlockDrawer>
+		-->
 			<BlockDrawer button-color="255 255 255" name="bd.communication" type="factory">
 				<BlockGenusMember>serial_read</BlockGenusMember>
 				<BlockGenusMember>serial_read_poly</BlockGenusMember>
@@ -4992,16 +4996,20 @@
 				<!-- <BlockGenusMember>sd_write_number</BlockGenusMember> -->
 				<!-- <BlockGenusMember>sd_write_number_int</BlockGenusMember> -->
 			</BlockDrawer>
+		
+		<!--
 			<BlockDrawer button-color="169 148 212" name="bd.network" type="factory">
 				<BlockGenusMember>bleshield</BlockGenusMember>
 				<BlockGenusMember>bleshield_available</BlockGenusMember>
 				<BlockGenusMember>bleshield_read_poly</BlockGenusMember>	
 			</BlockDrawer>
+		-->
 			<BlockDrawer button-color="120 120 120" name="bd.especial" type="factory">
 				<BlockGenusMember>code_head</BlockGenusMember>
 				<BlockGenusMember>code_setup</BlockGenusMember>
 				<BlockGenusMember>code_loop</BlockGenusMember>
 			</BlockDrawer>
+		<!--
 			<BlockDrawer button-color="13 152 164" name="bd.tinkerkit" type="factory">
 				<BlockGenusMember>Tinker_LED</BlockGenusMember>
 				<BlockGenusMember>Tinker_LED_pwm</BlockGenusMember>
@@ -5018,6 +5026,8 @@
 				<BlockGenusMember>Tinker_Mosfet</BlockGenusMember>
 				<BlockGenusMember>Tinker_Mosfet_pwm</BlockGenusMember>
 			</BlockDrawer>
+		-->
+		<!--
 			<BlockDrawer button-color="255 102 0" name="bd.dfrobot" type="factory">
 			    <BlockGenusMember>df_led</BlockGenusMember>
 				<BlockGenusMember>df_led_pwm</BlockGenusMember>
@@ -5065,6 +5075,8 @@
 				<BlockGenusMember>panda_o1</BlockGenusMember>
 				<BlockGenusMember>df_lcd_keypad</BlockGenusMember>
 			</BlockDrawer>
+		-->
+		<!--
 			<BlockDrawer button-color="0 255 0" name="bd.seeedstudio">
 				<BlockGenusMember>seeed_o2_sensor</BlockGenusMember>
 				<BlockGenusMember>seeed_uv_sensor</BlockGenusMember>
@@ -5110,11 +5122,15 @@
 				<BlockGenusMember>seeed_joystick</BlockGenusMember>
 				<BlockGenusMember>seeed_joystick_button</BlockGenusMember>
 			</BlockDrawer>
+		-->
+		<!--
 			<BlockDrawer button-color="216 5 10" name="bd.adafruit" type="factory">
 				<BlockGenusMember>ada_dc_motor_fwd</BlockGenusMember>
 				<BlockGenusMember>ada_dc_motor_bwd</BlockGenusMember>
 				<BlockGenusMember>ada_dc_motor_release</BlockGenusMember>
 			</BlockDrawer>
+		-->
+		<!--
 			<BlockDrawer button-color="0 177 236" name="bd.makeblock" type="factory">
 				<BlockGenusMember>me_ultrasonic_sensor</BlockGenusMember>
 				<BlockGenusMember>me_linefinder</BlockGenusMember>
@@ -5132,7 +5148,8 @@
 				<BlockGenusMember>me_motor_1</BlockGenusMember>
 				<BlockGenusMember>me_shutter_1</BlockGenusMember>
 			</BlockDrawer>
-			<!-- 
+		-->
+		<!--
 			<BlockDrawer button-color="225 116 116" name="bd.workshop" type="factory">
 			    <BlockGenusMember>ws_setting</BlockGenusMember>
 			    <BlockGenusMember>ws_go_forward</BlockGenusMember>
@@ -5151,6 +5168,8 @@
 				<BlockGenusMember>ws_danger</BlockGenusMember>
 				<BlockGenusMember>ws_binoculars</BlockGenusMember>
 			</BlockDrawer>
+		-->
+		<!--
 			<BlockDrawer button-color="64 109 0" name="bd.insectbot">
 			    <BlockGenusMember>insectbot_get_distance</BlockGenusMember>
 			    <BlockGenusMember>insectbot_is_indanger</BlockGenusMember>
@@ -5159,8 +5178,8 @@
 			    <BlockGenusMember>insectbot_turn_left</BlockGenusMember>
 			    <BlockGenusMember>insectbot_blink_led</BlockGenusMember>
 			</BlockDrawer>
-			 -->
-			<!--
+		-->
+		<!--
 			<BlockDrawer button-color="135 206 235" name="bd.linksprite_LinkerKit">
 				<BlockGenusMember>ls_10mmLEDModule</BlockGenusMember>
 				<BlockGenusMember>ls_5mmLEDModule</BlockGenusMember>
@@ -5186,27 +5205,25 @@
 				<BlockGenusMember>ls_TiltModule</BlockGenusMember>
 				<BlockGenusMember>ls_TouchSensorModule</BlockGenusMember>
 			</BlockDrawer>
-			-->
-			<!--
+		-->
+		<!--
 			<BlockDrawer button-color="0 255 0" name="XinChejian" type="factory">
 				<BlockGenusMember>xcj_motor_forward</BlockGenusMember>
 				<BlockGenusMember>xcj_motor_backward</BlockGenusMember> 
 				<BlockGenusMember>xcj_ms_digital_read</BlockGenusMember>
 				<BlockGenusMember>xcj_ms_digital_write</BlockGenusMember>
 			</BlockDrawer>
-		    -->
+		-->
 			<!-- Shapes are automatically loaded as blocks in the Shapes drawer (see slcodeblocks.ShapeBlocksGenerator for details) -->
 			<!-- Sound blocks reside in the auto-generated String drawer. (see slcodeblocks.SoundBlocksGenerator for details) -->
-		<BlockDrawer button-color="0 204 0" name="bd.my_blocks">
-			<BlockGenusMember>play_note_block</BlockGenusMember>
-			<BlockGenusMember>play_note_time_block</BlockGenusMember>
-			<BlockGenusMember>play_frequency_block</BlockGenusMember>
-			<BlockGenusMember>play_frequency_time_block</BlockGenusMember>
-			<BlockGenusMember>ECS_LED_on</BlockGenusMember>
-			<BlockGenusMember>ECS_LED_off</BlockGenusMember>
-		</BlockDrawer>
-
-
+			<BlockDrawer button-color="0 204 0" name="bd.my_blocks">
+				<BlockGenusMember>play_note_block</BlockGenusMember>
+				<BlockGenusMember>play_note_time_block</BlockGenusMember>
+				<BlockGenusMember>play_frequency_block</BlockGenusMember>
+				<BlockGenusMember>play_frequency_time_block</BlockGenusMember>
+				<BlockGenusMember>ECS_LED_on</BlockGenusMember>
+				<BlockGenusMember>ECS_LED_off</BlockGenusMember>
+			</BlockDrawer>
 		</BlockDrawerSet>
 	</BlockDrawerSets>
 
