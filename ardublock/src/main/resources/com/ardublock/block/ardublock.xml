@@ -4766,7 +4766,8 @@
 
 		<BlockGenus name="read_distance_block" kind="data" color="0 204 0" initlabel="bg.read_distance_block">
 			<description></description>
-			<BlockConnectors>
+		    	<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug" />
 			</BlockConnectors>
 		</BlockGenus>
 
