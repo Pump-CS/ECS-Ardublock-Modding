@@ -4764,7 +4764,7 @@
 			</BlockConnectors>
 		</BlockGenus>
 
-		<BlockGenus name="read_distance_block" kind="command" color="0 204 0" initlabel="bg.read_distance_block">
+		<BlockGenus name="read_distance_block" kind="data" color="0 204 0" initlabel="bg.read_distance_block">
 			<description></description>
 			<BlockConnectors>
 			</BlockConnectors>
