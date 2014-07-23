@@ -4929,12 +4929,12 @@
 				<BlockGenusMember>if</BlockGenusMember>
 				<BlockGenusMember>ifelse</BlockGenusMember>
 				<BlockGenusMember>while</BlockGenusMember>
+				<BlockGenusMember>delay</BlockGenusMember>
+				<BlockGenusMember>delay_microseconds</BlockGenusMember>
 				<BlockGenusMember>do_while</BlockGenusMember>
 				<BlockGenusMember>repeat_times</BlockGenusMember>
 				<BlockGenusMember>repeat</BlockGenusMember>
 				<BlockGenusMember>repeat_control</BlockGenusMember>
-				<BlockGenusMember>delay</BlockGenusMember>
-				<BlockGenusMember>delay_microseconds</BlockGenusMember>
 				<BlockGenusMember>subroutine</BlockGenusMember>
 				<BlockGenusMember>subroutine-ref</BlockGenusMember>
 			</BlockDrawer>
@@ -4944,9 +4944,9 @@
 				<BlockGenusMember>play_frequency_block</BlockGenusMember>
 				<BlockGenusMember>play_frequency_time_block</BlockGenusMember>
 				<BlockGenusMember>ecs_no_tone</BlockGenusMember>
+				<BlockGenusMember>read_distance_block</BlockGenusMember>
 				<BlockGenusMember>ECS_LED_on</BlockGenusMember>
 				<BlockGenusMember>ECS_LED_off</BlockGenusMember>
-				<BlockGenusMember>read_distance_block</BlockGenusMember>
 			</BlockDrawer>
 			<BlockDrawer button-color="210 55 75" name="bd.number" type="factory">
 				<BlockGenusMember>setter_variable_number</BlockGenusMember>
@@ -5010,16 +5010,18 @@
 				<BlockGenusMember>not</BlockGenusMember>
 			</BlockDrawer>
 			<BlockDrawer button-color="29 152 155" name="bd.pins" type="factory">
-				<BlockGenusMember>pin-read-digital</BlockGenusMember>
-				<BlockGenusMember>pin-read-analog</BlockGenusMember>
-				<BlockGenusMember>pin-write-digital</BlockGenusMember>
-				<BlockGenusMember>pin-write-analog</BlockGenusMember>
-				<BlockGenusMember>pin-read-digital-pullup</BlockGenusMember>
 				<BlockGenusMember>tone_note</BlockGenusMember>
 				<BlockGenusMember>tone_note_time</BlockGenusMember>
 				<BlockGenusMember>tone</BlockGenusMember>
 				<BlockGenusMember>tone_time</BlockGenusMember>
 				<BlockGenusMember>no_tone</BlockGenusMember>
+				<BlockGenusMember>pin-read-digital</BlockGenusMember>
+				<BlockGenusMember>pin-write-digital</BlockGenusMember>
+				<BlockGenusMember>pin-read-analog</BlockGenusMember>
+				<BlockGenusMember>pin-write-analog</BlockGenusMember>
+		<!--
+				<BlockGenusMember>pin-read-digital-pullup</BlockGenusMember>
+		-->
 			</BlockDrawer>
 			<BlockDrawer button-color="65 100 200" name="bd.communication" type="factory">
 				<BlockGenusMember>serial_read</BlockGenusMember>
