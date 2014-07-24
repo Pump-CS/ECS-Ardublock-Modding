@@ -4705,7 +4705,7 @@
 
 		<!-- START OUR ADDITIONS -->
 
-		<BlockGenus name="ECS_LED_on" kind="command" color="0 190 0" initlabel="bg.ECS_LED_on">
+		<BlockGenus name="ECS_LED_on" kind="command" color="77 191 169" initlabel="bg.ECS_LED_on">
 			<description></description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
@@ -4714,12 +4714,93 @@
 			</BlockConnectors>
 		</BlockGenus>
 
-		<BlockGenus name="ECS_LED_off" kind="command" color="0 190 0" initlabel="bg.ECS_LED_off">
+		<BlockGenus name="ECS_LED_off" kind="command" color="77 191 169" initlabel="bg.ECS_LED_off">
 			<description></description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
 					<DefaultArg genus-name="number" label="1" />
 				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="ECS_LED_on_1" kind="command" color="0 190 0" initlabel="bg.ECS_LED_on_1">
+			<description></description>
+			<Images>
+				<Image>
+					<FileLocation>com/ardublock/block/ecs_img/led_red.png</FileLocation>
+				</Image>
+			</Images>
+			<BlockConnectors>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="ECS_LED_off_1" kind="command" color="0 190 0" initlabel="bg.ECS_LED_off_1">
+			<description></description>
+			<Images>
+				<Image>
+					<FileLocation>com/ardublock/block/ecs_img/led_red.png</FileLocation>
+				</Image>
+			</Images>
+			<BlockConnectors>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="ECS_LED_on_2" kind="command" color="0 190 0" initlabel="bg.ECS_LED_on_2">
+			<description></description>
+			<Images>
+				<Image>
+					<FileLocation>com/ardublock/block/ecs_img/led_yellow.png</FileLocation>
+				</Image>
+			</Images>
+			<BlockConnectors>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="ECS_LED_off_2" kind="command" color="0 190 0" initlabel="bg.ECS_LED_off_2">
+			<description></description>
+			<Images>
+				<Image>
+					<FileLocation>com/ardublock/block/ecs_img/led_yellow.png</FileLocation>
+				</Image>
+			</Images>
+			<BlockConnectors>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="ECS_LED_on_3" kind="command" color="0 190 0" initlabel="bg.ECS_LED_on_3">
+			<description></description>
+			<Images>
+				<Image>
+					<FileLocation>com/ardublock/block/ecs_img/led_white.png</FileLocation>
+				</Image>
+			</Images>
+			<BlockConnectors>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="ECS_LED_off_3" kind="command" color="0 190 0" initlabel="bg.ECS_LED_off_3">
+			<description></description>
+			<Images>
+				<Image>
+					<FileLocation>com/ardublock/block/ecs_img/led_white.png</FileLocation>
+				</Image>
+			</Images>
+			<BlockConnectors>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="ECS_LED_on_4" kind="command" color="0 190 0" initlabel="bg.ECS_LED_on_4">
+			<description></description>
+			<Images>
+				<Image>
+					<FileLocation>com/ardublock/block/ecs_img/led_green.png</FileLocation>
+				</Image>
+			</Images>
+			<BlockConnectors>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="ECS_LED_off_4" kind="command" color="0 190 0" initlabel="bg.ECS_LED_off_4">
+			<description></description>
+			<Images>
+				<Image>
+					<FileLocation>com/ardublock/block/ecs_img/led_green.png</FileLocation>
+				</Image>
+			</Images>
+			<BlockConnectors>
 			</BlockConnectors>
 		</BlockGenus>
 
@@ -4945,8 +5026,14 @@
 				<BlockGenusMember>play_frequency_time_block</BlockGenusMember>
 				<BlockGenusMember>ecs_no_tone</BlockGenusMember>
 				<BlockGenusMember>read_distance_block</BlockGenusMember>
-				<BlockGenusMember>ECS_LED_on</BlockGenusMember>
-				<BlockGenusMember>ECS_LED_off</BlockGenusMember>
+				<BlockGenusMember>ECS_LED_on_1</BlockGenusMember>
+				<BlockGenusMember>ECS_LED_off_1</BlockGenusMember>
+				<BlockGenusMember>ECS_LED_on_2</BlockGenusMember>
+				<BlockGenusMember>ECS_LED_off_2</BlockGenusMember>
+				<BlockGenusMember>ECS_LED_on_3</BlockGenusMember>
+				<BlockGenusMember>ECS_LED_off_3</BlockGenusMember>
+				<BlockGenusMember>ECS_LED_on_4</BlockGenusMember>
+				<BlockGenusMember>ECS_LED_off_4</BlockGenusMember>
 			</BlockDrawer>
 			<BlockDrawer button-color="210 55 75" name="bd.number" type="factory">
 				<BlockGenusMember>setter_variable_number</BlockGenusMember>
@@ -5015,6 +5102,8 @@
 				<BlockGenusMember>tone</BlockGenusMember>
 				<BlockGenusMember>tone_time</BlockGenusMember>
 				<BlockGenusMember>no_tone</BlockGenusMember>
+				<BlockGenusMember>ECS_LED_on</BlockGenusMember>
+				<BlockGenusMember>ECS_LED_off</BlockGenusMember>
 				<BlockGenusMember>pin-read-digital</BlockGenusMember>
 				<BlockGenusMember>pin-write-digital</BlockGenusMember>
 				<BlockGenusMember>pin-read-analog</BlockGenusMember>
