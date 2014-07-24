@@ -273,88 +273,6 @@
 				</BlockConnector>
 			</BlockConnectors>
 		</BlockGenus>
-		
-		<BlockGenus name="tone" kind="command" color="77 191 169" initlabel="tone">
-			<description>
-				<text>Generates a square wave of the specified frequency (and 50%
-					duty cycle) on a pin.
-				</text>
-			</description>
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="23" />
-				</BlockConnector>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.frequency">
-					<DefaultArg genus-name="number" label="440" />
-				</BlockConnector>
-
-			</BlockConnectors>
-		</BlockGenus>
-
-		<BlockGenus name="tone_time" kind="command" color="77 191 169" initlabel="tone_time">
-			<description>
-				<text>Generates a square wave of the specified frequency (and 50%
-					duty cycle) on a pin.
-				</text>
-			</description>
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="23" />
-				</BlockConnector>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.frequency">
-					<DefaultArg genus-name="number" label="440" />
-				</BlockConnector>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.milliseconds">
-					<DefaultArg genus-name="number" label="1000" />
-				</BlockConnector>
-			</BlockConnectors>
-		</BlockGenus>
-		
-		
-		<BlockGenus name="tone_note" kind="command" color="77 191 169" initlabel="tone_note">
-			<description>
-				<text>
-				</text>
-			</description>
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="23" />
-				</BlockConnector>
-				<BlockConnector connector-type="string" connector-kind="socket" label="bc.note">
-					<DefaultArg genus-name="message" label="A" />
-				</BlockConnector>
-			</BlockConnectors>
-		</BlockGenus>
-
-		<BlockGenus name="tone_note_time" kind="command" color="77 191 169" initlabel="tone_note_time">
-			<description>
-				<text>
-				</text>
-			</description>
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="23" />
-				</BlockConnector>
-				<BlockConnector connector-type="string" connector-kind="socket" label="bc.note">
-					<DefaultArg genus-name="message" label="A" />
-				</BlockConnector>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.milliseconds">
-					<DefaultArg genus-name="number" label="1000" />
-				</BlockConnector>
-			</BlockConnectors>
-		</BlockGenus>
-
-		<BlockGenus name="no_tone" kind="command" color="77 191 169" initlabel="noTone">
-			<description>
-				<text>Stops the generation of a square wave triggered by tone().
-				</text>
-			</description>
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="8" />
-				</BlockConnector>
-			</BlockConnectors>
-		</BlockGenus>
 
 		<!--****************** Mathematical Operators *************** -->
 
@@ -4704,9 +4622,85 @@
 		-->
 
 		<!-- START OUR ADDITIONS -->
+		
+		<BlockGenus name="tone" kind="command" color="77 191 169" initlabel="tone">
+			<description>
+				<text></text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
+					<DefaultArg genus-name="number" label="23" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.frequency">
+					<DefaultArg genus-name="number" label="440" />
+				</BlockConnector>
+
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="tone_time" kind="command" color="77 191 169" initlabel="tone_time">
+			<description>
+				<text></text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
+					<DefaultArg genus-name="number" label="23" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.frequency">
+					<DefaultArg genus-name="number" label="440" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.milliseconds">
+					<DefaultArg genus-name="number" label="1000" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+		
+		<BlockGenus name="tone_note" kind="command" color="77 191 169" initlabel="tone_note">
+			<description>
+				<text></text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
+					<DefaultArg genus-name="number" label="23" />
+				</BlockConnector>
+				<BlockConnector connector-type="string" connector-kind="socket" label="bc.note">
+					<DefaultArg genus-name="message" label="A" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="tone_note_time" kind="command" color="77 191 169" initlabel="tone_note_time">
+			<description>
+				<text></text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
+					<DefaultArg genus-name="number" label="23" />
+				</BlockConnector>
+				<BlockConnector connector-type="string" connector-kind="socket" label="bc.note">
+					<DefaultArg genus-name="message" label="A" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.milliseconds">
+					<DefaultArg genus-name="number" label="1000" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="no_tone" kind="command" color="77 191 169" initlabel="noTone">
+			<description>
+				<text></text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
+					<DefaultArg genus-name="number" label="8" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
 
 		<BlockGenus name="ECS_LED_on" kind="command" color="77 191 169" initlabel="bg.ECS_LED_on">
-			<description></description>
+			<description>
+				<text></text>
+			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
 					<DefaultArg genus-name="number" label="1" />
@@ -4715,7 +4709,9 @@
 		</BlockGenus>
 
 		<BlockGenus name="ECS_LED_off" kind="command" color="77 191 169" initlabel="bg.ECS_LED_off">
-			<description></description>
+			<description>
+				<text></text>
+			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
 					<DefaultArg genus-name="number" label="1" />
@@ -4724,7 +4720,9 @@
 		</BlockGenus>
 
 		<BlockGenus name="ECS_LED_on_1" kind="command" color="0 190 0" initlabel="bg.ECS_LED_on_1">
-			<description></description>
+			<description>
+				<text></text>
+			</description>
 			<Images>
 				<Image>
 					<FileLocation>com/ardublock/block/ecs_img/led_red.png</FileLocation>
@@ -4734,7 +4732,9 @@
 			</BlockConnectors>
 		</BlockGenus>
 		<BlockGenus name="ECS_LED_off_1" kind="command" color="0 190 0" initlabel="bg.ECS_LED_off_1">
-			<description></description>
+			<description>
+				<text></text>
+			</description>
 			<Images>
 				<Image>
 					<FileLocation>com/ardublock/block/ecs_img/led_red.png</FileLocation>
@@ -4744,7 +4744,9 @@
 			</BlockConnectors>
 		</BlockGenus>
 		<BlockGenus name="ECS_LED_on_2" kind="command" color="0 190 0" initlabel="bg.ECS_LED_on_2">
-			<description></description>
+			<description>
+				<text></text>
+			</description>
 			<Images>
 				<Image>
 					<FileLocation>com/ardublock/block/ecs_img/led_yellow.png</FileLocation>
@@ -4754,7 +4756,9 @@
 			</BlockConnectors>
 		</BlockGenus>
 		<BlockGenus name="ECS_LED_off_2" kind="command" color="0 190 0" initlabel="bg.ECS_LED_off_2">
-			<description></description>
+			<description>
+				<text></text>
+			</description>
 			<Images>
 				<Image>
 					<FileLocation>com/ardublock/block/ecs_img/led_yellow.png</FileLocation>
@@ -4764,7 +4768,9 @@
 			</BlockConnectors>
 		</BlockGenus>
 		<BlockGenus name="ECS_LED_on_3" kind="command" color="0 190 0" initlabel="bg.ECS_LED_on_3">
-			<description></description>
+			<description>
+				<text></text>
+			</description>
 			<Images>
 				<Image>
 					<FileLocation>com/ardublock/block/ecs_img/led_white.png</FileLocation>
@@ -4774,7 +4780,9 @@
 			</BlockConnectors>
 		</BlockGenus>
 		<BlockGenus name="ECS_LED_off_3" kind="command" color="0 190 0" initlabel="bg.ECS_LED_off_3">
-			<description></description>
+			<description>
+				<text></text>
+			</description>
 			<Images>
 				<Image>
 					<FileLocation>com/ardublock/block/ecs_img/led_white.png</FileLocation>
@@ -4784,7 +4792,9 @@
 			</BlockConnectors>
 		</BlockGenus>
 		<BlockGenus name="ECS_LED_on_4" kind="command" color="0 190 0" initlabel="bg.ECS_LED_on_4">
-			<description></description>
+			<description>
+				<text></text>
+			</description>
 			<Images>
 				<Image>
 					<FileLocation>com/ardublock/block/ecs_img/led_green.png</FileLocation>
@@ -4794,7 +4804,9 @@
 			</BlockConnectors>
 		</BlockGenus>
 		<BlockGenus name="ECS_LED_off_4" kind="command" color="0 190 0" initlabel="bg.ECS_LED_off_4">
-			<description></description>
+			<description>
+				<text></text>
+			</description>
 			<Images>
 				<Image>
 					<FileLocation>com/ardublock/block/ecs_img/led_green.png</FileLocation>
@@ -4805,7 +4817,9 @@
 		</BlockGenus>
 
 		<BlockGenus name="play_note_block" kind="command" color="0 190 0" initlabel="bg.play_note_block">
-			<description></description>
+			<description>
+				<text></text>
+			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="string" connector-kind="socket" label="bc.note">
 					<DefaultArg genus-name="message" label="A" />
@@ -4814,7 +4828,9 @@
 		</BlockGenus>
 
 		<BlockGenus name="play_note_time_block" kind="command" color="0 190 0" initlabel="bg.play_note_time_block">
-			<description></description>
+			<description>
+				<text></text>
+			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="string" connector-kind="socket" label="bc.note">
 					<DefaultArg genus-name="message" label="A" />
@@ -4826,7 +4842,9 @@
 		</BlockGenus>
 
 		<BlockGenus name="play_frequency_block" kind="command" color="0 190 0" initlabel="bg.play_frequency_block">
-			<description></description>
+			<description>
+				<text></text>
+			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.frequency">
 					<DefaultArg genus-name="number" label="440" />
@@ -4835,7 +4853,9 @@
 		</BlockGenus>
 
 		<BlockGenus name="play_frequency_time_block" kind="command" color="0 190 0" initlabel="bg.play_frequency_time_block">
-			<description></description>
+			<description>
+				<text></text>
+			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.frequency">
 					<DefaultArg genus-name="number" label="440" />
@@ -4847,14 +4867,18 @@
 		</BlockGenus>
 
 		<BlockGenus name="read_distance_block" kind="data" color="0 190 0" initlabel="bg.read_distance_block">
-			<description></description>
+			<description>
+				<text></text>
+			</description>
 		    	<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="plug" />
 			</BlockConnectors>
 		</BlockGenus>
 
 		<BlockGenus name="ecs_no_tone" kind="command" color="0 190 0" initlabel="ecs_no_tone">
-			<description></description>
+			<description>
+				<text></text>
+			</description>
 			<BlockConnectors>
 			</BlockConnectors>
 		</BlockGenus>
