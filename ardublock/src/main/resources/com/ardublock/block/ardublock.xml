@@ -4875,13 +4875,25 @@
 			</BlockConnectors>
 		</BlockGenus>
 
-		<BlockGenus name="button_pressed_block" kind="data" color="0 190 0" initlabel="bg.read_distance_block">
+		<BlockGenus name="button_pressed_block" kind="data" color="0 190 0" initlabel="bg.button_pressed_block">
 			<description>
 				<text></text>
 			</description>
 		    	<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="Button#">
 					<DefaultArg genus-name="number" label="1" />
+				</BlockConnector>
+				<BlockConnector connector-type="boolean" connector-kind="plug" />
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="button_pressed_pin_block" kind="data" color="77 191 169" initlabel="bg.button_pressed_pin_block">
+			<description>
+				<text></text>
+			</description>
+		    	<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="pin#">
+					<DefaultArg genus-name="number" label="18" />
 				</BlockConnector>
 				<BlockConnector connector-type="boolean" connector-kind="plug" />
 			</BlockConnectors>
@@ -5141,6 +5153,7 @@
 				<BlockGenusMember>no_tone</BlockGenusMember>
 				<BlockGenusMember>ECS_LED_on</BlockGenusMember>
 				<BlockGenusMember>ECS_LED_off</BlockGenusMember>
+				<BlockGenusMember>button_pressed_pin_block</BlockGenusMember>
 				<BlockGenusMember>pin-read-digital</BlockGenusMember>
 				<BlockGenusMember>pin-write-digital</BlockGenusMember>
 				<BlockGenusMember>pin-read-analog</BlockGenusMember>
