@@ -4875,6 +4875,18 @@
 			</BlockConnectors>
 		</BlockGenus>
 
+		<BlockGenus name="button_pressed_block" kind="data" color="0 190 0" initlabel="bg.read_distance_block">
+			<description>
+				<text></text>
+			</description>
+		    	<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="Button#">
+					<DefaultArg genus-name="number" label="1" />
+				</BlockConnector>
+				<BlockConnector connector-type="boolean" connector-kind="plug" />
+			</BlockConnectors>
+		</BlockGenus>
+
 		<BlockGenus name="ecs_no_tone" kind="command" color="0 190 0" initlabel="ecs_no_tone">
 			<description>
 				<text></text>
@@ -5050,6 +5062,7 @@
 				<BlockGenusMember>play_frequency_time_block</BlockGenusMember>
 				<BlockGenusMember>ecs_no_tone</BlockGenusMember>
 				<BlockGenusMember>read_distance_block</BlockGenusMember>
+				<BlockGenusMember>button_pressed_block</BlockGenusMember>
 				<BlockGenusMember>ECS_LED_on_1</BlockGenusMember>
 				<BlockGenusMember>ECS_LED_off_1</BlockGenusMember>
 				<BlockGenusMember>ECS_LED_on_2</BlockGenusMember>
