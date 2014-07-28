@@ -130,15 +130,17 @@ public class ECSPlayNoteBlock extends TranslatorBlock
 	public String toCode() throws SocketNullException , SubroutineNotDeclaredException
 	{
 		TranslatorBlock freqBlock = this.getRequiredTranslatorBlockAtSocket(0);
-		TranslatorBlock timeBlock = this.getRequiredTranslatorBlockAtSocket(1);
 
 		int CONST_PIN = 23;
 		String note = freqBlock.toCode();
 		note = note.substring(1, note.length() - 1);
 		Integer freq = notes.get(note);
+
 		if (freq == null) {
-			System.out.println("Unrecognized note: " + note);
-			// TODO: Report to user
+			System.out.println("ERROR: Unrecognized note used for Play Note Time - " + note + "\n"
+				+ "Please ask your teacher for a list of available note names.\n");
+			return "// ERROR: Unrecognized note used for Play Note Time - " + note + "\n"
+				+ "//\tPlease ask your teacher for a list of available note names.\n";
 		}
 
 		String ret = "tone(" + CONST_PIN + ", " + freq + ");\n";

@@ -15,7 +15,6 @@ public class ECSPlayFrequencyBlock extends TranslatorBlock
 	public String toCode() throws SocketNullException , SubroutineNotDeclaredException
 	{
 		TranslatorBlock freqBlock = this.getRequiredTranslatorBlockAtSocket(0);
-		TranslatorBlock timeBlock = this.getRequiredTranslatorBlockAtSocket(1);
 
 		int CONST_PIN = 23;
 

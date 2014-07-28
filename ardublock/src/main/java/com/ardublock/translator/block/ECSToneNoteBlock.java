@@ -134,9 +134,22 @@ public class ECSToneNoteBlock extends TranslatorBlock
 		String note = freqBlock.toCode();
 		note = note.substring(1, note.length() - 1);
 		Integer freq = notes.get(note);
+
 		if (freq == null) {
-			System.out.println("Unrecognized note: " + note);
-			// TODO: Report to user
+			System.out.println("ERROR: Unrecognized note used for Play Note - " + note + "\n"
+				+ "Please ask your teacher for a list of available note names.\n");
+			return "// ERROR: Unrecognized note used for Play Note - " + note + "\n"
+				+ "//\tPlease ask your teacher for a list of available note names.\n";
+		}
+		if (!(pinBlock.toCode().equals("23")) && !(pinBlock.toCode().equals("18"))
+			&& !(pinBlock.toCode().equals("19")) && !(pinBlock.toCode().equals("20"))
+			&& !(pinBlock.toCode().equals("21")) && !(pinBlock.toCode().equals("22"))) {;
+			System.out.println("ERROR: Invalid pin used for Play Note - " + pinBlock.toCode() + "\n"
+				+ "\tFor built-in speaker, please use ECS blocks.\n"
+				+ "\tFor second speaker, available pins are 18-22.\n");
+			return "// ERROR: Invalid pin used for Play Note - " + pinBlock.toCode() + "\n"
+				+ "//\tFor built-in speaker, please use ECS blocks.\n"
+				+ "//\tFor second speaker, available pins are 18-22.\n";
 		}
 
 		String ret = "tone(" + pinBlock.toCode() + ", " + freq + ");\n";

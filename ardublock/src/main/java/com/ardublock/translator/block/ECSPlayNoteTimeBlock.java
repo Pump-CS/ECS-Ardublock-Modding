@@ -136,9 +136,12 @@ public class ECSPlayNoteTimeBlock extends TranslatorBlock
 		String note = freqBlock.toCode();
 		note = note.substring(1, note.length() - 1);
 		Integer freq = notes.get(note);
+
 		if (freq == null) {
-			System.out.println("Unrecognized note: " + note);
-			// TODO: Report to user
+			System.out.println("ERROR: Unrecognized note used for Play Note Time - " + note + "\n"
+				+ "Please ask your teacher for a list of available note names.\n");
+			return "// ERROR: Unrecognized note used for Play Note Time - " + note + "\n"
+				+ "//\tPlease ask your teacher for a list of available note names.\n";
 		}
 
 		String ret = "tone(" + CONST_PIN + ", " + freq + ", " + timeBlock.toCode() + ");\n";
