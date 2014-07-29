@@ -16,9 +16,7 @@ public class ECSPlayFrequencyBlock extends TranslatorBlock
 	{
 		TranslatorBlock freqBlock = this.getRequiredTranslatorBlockAtSocket(0);
 
-		int CONST_PIN = 23;
-
-		String ret = "tone(" + CONST_PIN + ", " + freqBlock.toCode() + ");\n";
+		String ret = "tone(" + SPEAKER_PIN + ", " + freqBlock.toCode() + ");\n";
 		return ret;
 	}
 }

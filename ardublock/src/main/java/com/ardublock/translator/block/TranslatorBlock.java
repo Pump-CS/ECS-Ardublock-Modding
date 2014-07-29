@@ -20,6 +20,27 @@ abstract public class TranslatorBlock
 	
 	protected String codePrefix;
 	protected String codeSuffix;
+
+	public static final String SERIAL_PIN_1 =   "0";
+	public static final String SERIAL_PIN_2 =   "1";
+	public static final String SPEAKER_PIN =    "2";
+	public static final String DISTANCE_PIN_1 = "3";
+	public static final String DISTANCE_PIN_2 = "4";
+	public static final String LED_PIN_1 =      "5";
+	public static final String LED_PIN_2 =      "6";
+	public static final String LED_PIN_3 =      "7";
+	public static final String LED_PIN_4 =      "8";
+	public static final String BUTTON_PIN_1 =   "9";
+	public static final String BUTTON_PIN_2 =  "10";
+	public static final String BUTTON_PIN_3 =  "11";
+	public static final String BUTTON_PIN_4 =  "12";
+	public static final String RESERVED_LED =  "13";
+	public static final String FREE_PIN_1 =    "18";
+	public static final String FREE_PIN_2 =    "19";
+	public static final String FREE_PIN_3 =    "20";
+	public static final String FREE_PIN_4 =    "21";
+	public static final String FREE_PIN_5 =    "22";
+	public static final String FREE_PIN_6 =    "23";
 	
 	protected TranslatorBlock(Long blockId, Translator translator)
 	{

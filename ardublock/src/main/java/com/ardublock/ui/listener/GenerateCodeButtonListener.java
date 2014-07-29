@@ -14,6 +14,8 @@ import com.ardublock.translator.AutoFormat;
 import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.exception.BlockException;
 import com.ardublock.translator.block.exception.SocketNullException;
+import com.ardublock.translator.block.exception.InvalidNoteException;
+import com.ardublock.translator.block.exception.InvalidPinException;
 import com.ardublock.translator.block.exception.SubroutineNameDuplicatedException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
 
@@ -116,7 +118,13 @@ public class GenerateCodeButtonListener implements ActionListener
 					break;
 				}
 			}
-			JOptionPane.showMessageDialog(parentFrame, uiMessageBundle.getString("ardublock.translator.exception.socketNull"), "Error", JOptionPane.ERROR_MESSAGE);
+			if (e1 instanceof InvalidNoteException) {
+				JOptionPane.showMessageDialog(parentFrame, uiMessageBundle.getString("ardublock.translator.exception.invalidNote"), "Error", JOptionPane.ERROR_MESSAGE);
+			} else if (e1 instanceof InvalidPinException) {
+				JOptionPane.showMessageDialog(parentFrame, uiMessageBundle.getString("ardublock.translator.exception.invalidPin"), "Error", JOptionPane.ERROR_MESSAGE);
+			} else {
+				JOptionPane.showMessageDialog(parentFrame, uiMessageBundle.getString("ardublock.translator.exception.socketNull"), "Error", JOptionPane.ERROR_MESSAGE);
+			}
 		}
 		catch (BlockException e2)
 		{

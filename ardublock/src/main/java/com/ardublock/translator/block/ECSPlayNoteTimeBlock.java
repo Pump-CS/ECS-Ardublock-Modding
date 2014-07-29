@@ -2,6 +2,7 @@ package com.ardublock.translator.block;
 
 import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.exception.SocketNullException;
+import com.ardublock.translator.block.exception.InvalidNoteException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
 
 import java.util.Hashtable;
@@ -132,21 +133,17 @@ public class ECSPlayNoteTimeBlock extends TranslatorBlock
 		TranslatorBlock freqBlock = this.getRequiredTranslatorBlockAtSocket(0);
 		TranslatorBlock timeBlock = this.getRequiredTranslatorBlockAtSocket(1);
 
-		int CONST_PIN = 23;
 		String note = freqBlock.toCode();
 		note = note.substring(1, note.length() - 1);
 		Integer freq = notes.get(note);
 
 		if (freq == null) {
-			System.out.println("ERROR: Unrecognized note used for Play Note Time - " + note + "\n"
-				+ "Please ask your teacher for a list of available note names.\n");
-			return "// ERROR: Unrecognized note used for Play Note Time - " + note + "\n"
-				+ "//\tPlease ask your teacher for a list of available note names.\n";
+			throw new InvalidNoteException(blockId);
 		}
 
-		String ret = "tone(" + CONST_PIN + ", " + freq + ", " + timeBlock.toCode() + ");\n";
+		String ret = "tone(" + SPEAKER_PIN + ", " + freq + ", " + timeBlock.toCode() + ");\n";
 		ret += "\tdelay(" + timeBlock.toCode() + ");\n";
-		ret += "\tnoTone(" + CONST_PIN + ");\n";
+		ret += "\tnoTone(" + SPEAKER_PIN + ");\n";
 		return ret;
 	}
 }
