@@ -22,7 +22,7 @@ public class ECSButtonPressedPinBlock extends TranslatorBlock
 		translator.addInputPin(number.trim());
 
 		if (!(number.trim().equals(BUTTON_PIN_1)) && !(number.trim().equals(BUTTON_PIN_2))
-			!(number.trim().equals(BUTTON_PIN_3)) && !(number.trim().equals(BUTTON_PIN_4))
+			&& !(number.trim().equals(BUTTON_PIN_3)) && !(number.trim().equals(BUTTON_PIN_4))
 			&& !(number.trim().equals(FREE_PIN_1)) && !(number.trim().equals(FREE_PIN_2))
 			&& !(number.trim().equals(FREE_PIN_3)) && !(number.trim().equals(FREE_PIN_4))
 			&& !(number.trim().equals(FREE_PIN_5)) && !(number.trim().equals(FREE_PIN_6))) {
