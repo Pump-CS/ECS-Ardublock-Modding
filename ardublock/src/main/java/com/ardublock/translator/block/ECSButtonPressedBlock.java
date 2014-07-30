@@ -22,7 +22,7 @@ public class ECSButtonPressedBlock extends TranslatorBlock
 		int pinAdjust = Integer.parseInt(BUTTON_PIN_1) - 1;
 		pinAdjust += Integer.parseInt(number.trim());
 
-		if ((pinAdjust < 1) || (pinAdjust > 4)) {
+		if ((pinAdjust < Integer.parseInt(BUTTON_PIN_1)) || (pinAdjust > Integer.parseInt(BUTTON_PIN_4))) {
 			throw new InvalidPinException(blockId);
 		}
 
