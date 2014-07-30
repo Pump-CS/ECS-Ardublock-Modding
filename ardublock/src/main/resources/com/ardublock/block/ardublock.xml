@@ -4719,6 +4719,28 @@
 			</BlockConnectors>
 		</BlockGenus>
 
+		<BlockGenus name="keyboard_setup" kind="command" color="0 190 0" initlabel="bg.keyboard_setup">
+			<description>
+				<text></text>
+			</description>
+		</BlockGenus>
+
+		<BlockGenus name="update_keyboard" kind="command" color="0 190 0" initlabel="bg.update_keyboard">
+			<description>
+				<text></text>
+			</description>
+		</BlockGenus>
+
+		<BlockGenus name="is_key_pressed" kind="data" color="0 190 0" initlabel="bg.is_key_pressed">
+			<description>
+				<text></text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="key" />
+				<BlockConnector connector-type="boolean" connector-kind="plug" />
+			</BlockConnectors>
+		</BlockGenus>
+
 		<BlockGenus name="ECS_LED_on_1" kind="command" color="0 190 0" initlabel="bg.ECS_LED_on_1">
 			<description>
 				<text></text>
@@ -5083,6 +5105,9 @@
 				<BlockGenusMember>ECS_LED_off_3</BlockGenusMember>
 				<BlockGenusMember>ECS_LED_on_4</BlockGenusMember>
 				<BlockGenusMember>ECS_LED_off_4</BlockGenusMember>
+				<BlockGenusMember>keyboard_setup</BlockGenusMember>
+				<BlockGenusMember>update_keyboard</BlockGenusMember>
+				<BlockGenusMember>is_key_pressed</BlockGenusMember>
 			</BlockDrawer>
 			<BlockDrawer button-color="210 55 75" name="bd.number" type="factory">
 				<BlockGenusMember>setter_variable_number</BlockGenusMember>

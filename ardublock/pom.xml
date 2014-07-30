@@ -75,11 +75,20 @@
 	</build>
 	<repositories>
 		<repository>
+		  <id>project</id>
+		  <url>file://${project.basedir}/repo</url>
+		</repository>
+		<repository>
 			<id>central</id>
 			<url>http://repo1.maven.org/maven2</url>
 		</repository>
 	</repositories>
 	<dependencies>
+		<dependency>
+		  <groupId>local</groupId>
+		  <artifactId>RXTXcomm</artifactId>
+		  <version>1.0</version>
+		</dependency>
 		<dependency>
 			<groupId>edu.mit</groupId>
 			<artifactId>openblocks</artifactId>

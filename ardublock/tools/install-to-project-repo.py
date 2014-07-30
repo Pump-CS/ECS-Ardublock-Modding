@@ -65,7 +65,7 @@ def install(path, parsing):
     " -DartifactId=" + parsing["name"] + \
     " -Dversion=" + parsing["version"] + ("-SNAPSHOT" if parsing["snapshot"] else "") + \
     " -Dpackaging=jar" + \
-    " -DlocalRepositoryPath=repo" + \
+    " -DlocalRepositoryPath=../repo" + \
     " -DcreateChecksum=true" + \
     (" -Dclassifier=sources" if parsing["source"] else "")
   )
@@ -80,7 +80,7 @@ parser.add_option("-d", "--delete",
 
 
 parsings = (
-  [(path, parse_by_eclipse_standard(path)) for path in jars("lib")]
+  [(path, parse_by_eclipse_standard(path)) for path in jars("../lib")]
 )
 
 unparsable_files = [r[0] for r in parsings if r[1] == None]
@@ -99,5 +99,5 @@ for (path, parsing) in parsings:
 
 print maven_dependencies(parsings)
 print "These dependenceis have also been saved in the file : repo/dependencies.txt"
-f = open('repo/dependencies.txt', 'w')
+f = open('../repo/dependencies.txt', 'w')
 f.write(maven_dependencies(parsings))
