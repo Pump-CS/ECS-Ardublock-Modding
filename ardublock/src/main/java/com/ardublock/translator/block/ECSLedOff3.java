@@ -17,11 +17,9 @@ public class ECSLedOff3 extends TranslatorBlock
 	@Override
 	public String toCode() throws SocketNullException , SubroutineNotDeclaredException
 	{
-		int CONST_PIN = 12;
-
 		// Add a line to the setup section that sets this pin as output
-		translator.addSetupCommand("pinMode( " + CONST_PIN + " , OUTPUT);");
+		translator.addSetupCommand("pinMode( " + LED_PIN_3 + " , OUTPUT);");
 		
-		return "digitalWrite( " + CONST_PIN + " , LOW);\n";
+		return "digitalWrite( " + LED_PIN_3 + " , LOW);\n";
 	}
 }

@@ -18,7 +18,7 @@ public class ECSButtonPressedBlock extends TranslatorBlock
 	
 		String number;
 		number = translatorBlock.toCode();
-		int pinAdjust = 1;
+		int pinAdjust = BUTTON_PIN_1 - 1;
 		pinAdjust += Integer.parseInt(number.trim());
 		number = "" + pinAdjust;
 		translator.addInputPin(number);
