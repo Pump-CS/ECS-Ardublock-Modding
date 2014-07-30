@@ -4629,7 +4629,7 @@
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="23" />
+					<DefaultArg genus-name="number" label="2" />
 				</BlockConnector>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.frequency">
 					<DefaultArg genus-name="number" label="440" />
@@ -4644,7 +4644,7 @@
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="23" />
+					<DefaultArg genus-name="number" label="2" />
 				</BlockConnector>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.frequency">
 					<DefaultArg genus-name="number" label="440" />
@@ -4661,7 +4661,7 @@
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="23" />
+					<DefaultArg genus-name="number" label="2" />
 				</BlockConnector>
 				<BlockConnector connector-type="string" connector-kind="socket" label="bc.note">
 					<DefaultArg genus-name="message" label="A" />
@@ -4675,7 +4675,7 @@
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="23" />
+					<DefaultArg genus-name="number" label="2" />
 				</BlockConnector>
 				<BlockConnector connector-type="string" connector-kind="socket" label="bc.note">
 					<DefaultArg genus-name="message" label="A" />
@@ -4692,7 +4692,7 @@
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="8" />
+					<DefaultArg genus-name="number" label="2" />
 				</BlockConnector>
 			</BlockConnectors>
 		</BlockGenus>
@@ -4703,7 +4703,7 @@
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="1" />
+					<DefaultArg genus-name="number" label="10" />
 				</BlockConnector>
 			</BlockConnectors>
 		</BlockGenus>
@@ -4714,7 +4714,7 @@
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="1" />
+					<DefaultArg genus-name="number" label="10" />
 				</BlockConnector>
 			</BlockConnectors>
 		</BlockGenus>
@@ -5088,22 +5088,27 @@
 				<BlockGenusMember>setter_variable_number</BlockGenusMember>
 				<BlockGenusMember>variable_number</BlockGenusMember>
 				<BlockGenusMember>number</BlockGenusMember>
+				<BlockGenusMember>message</BlockGenusMember>
 				<BlockGenusMember>setter_variable_digital</BlockGenusMember>
 				<BlockGenusMember>variable_digital</BlockGenusMember>
 				<BlockGenusMember>digital-high</BlockGenusMember>
 				<BlockGenusMember>digital-low</BlockGenusMember>
 				<BlockGenusMember>true</BlockGenusMember>
 				<BlockGenusMember>false</BlockGenusMember>
+		<!--
 				<BlockGenusMember>setter_variable_number_unsigned_long</BlockGenusMember>
 				<BlockGenusMember>variable_number_unsigned_long</BlockGenusMember>
 				<BlockGenusMember>number_long</BlockGenusMember>
 				<BlockGenusMember>millis</BlockGenusMember>
+		-->
 				<BlockGenusMember>create_variable_vector</BlockGenusMember>
 				<BlockGenusMember>variable_vector</BlockGenusMember>
 				<BlockGenusMember>setter_variable_vector</BlockGenusMember>
+		<!--
 				<BlockGenusMember>setter_variable_char</BlockGenusMember>
 				<BlockGenusMember>variable_poly</BlockGenusMember>
 				<BlockGenusMember>char</BlockGenusMember>
+		-->
 				<BlockGenusMember>setter_variable_number_double</BlockGenusMember>
 				<BlockGenusMember>variable_number_double</BlockGenusMember>
 				<BlockGenusMember>number_double</BlockGenusMember>
@@ -5164,15 +5169,17 @@
 			</BlockDrawer>
 			<BlockDrawer button-color="65 100 200" name="bd.communication" type="factory">
 				<BlockGenusMember>serial_read</BlockGenusMember>
+		<!--
 				<BlockGenusMember>serial_read_poly</BlockGenusMember>
+		-->
 				<BlockGenusMember>serial_available</BlockGenusMember>
 				<BlockGenusMember>serial_print</BlockGenusMember>
 				<BlockGenusMember>serial_println</BlockGenusMember>
 				<BlockGenusMember>message</BlockGenusMember>
 				<BlockGenusMember>glue_sn</BlockGenusMember>
 				<BlockGenusMember>glue_sb</BlockGenusMember>
-				<BlockGenusMember>glue_poly</BlockGenusMember>
 		<!--
+				<BlockGenusMember>glue_poly</BlockGenusMember>
 				<BlockGenusMember>wire_write</BlockGenusMember>
 				<BlockGenusMember>wire_read</BlockGenusMember>
 				<BlockGenusMember>wire_isread</BlockGenusMember>
