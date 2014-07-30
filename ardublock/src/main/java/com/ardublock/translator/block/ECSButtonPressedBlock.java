@@ -2,6 +2,7 @@ package com.ardublock.translator.block;
 
 import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.exception.SocketNullException;
+import com.ardublock.translator.block.exception.InvalidPinException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
 
 public class ECSButtonPressedBlock extends TranslatorBlock
@@ -20,6 +21,11 @@ public class ECSButtonPressedBlock extends TranslatorBlock
 		number = translatorBlock.toCode();
 		int pinAdjust = Integer.parseInt(BUTTON_PIN_1) - 1;
 		pinAdjust += Integer.parseInt(number.trim());
+
+		if ((pinAdjust < 1) || (pinAdjust > 4)) {
+			throw new InvalidPinException(blockId);
+		}
+
 		number = "" + pinAdjust;
 		translator.addInputPin(number);
 		
