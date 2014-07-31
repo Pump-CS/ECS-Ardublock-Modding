@@ -1,4 +1,4 @@
-package com.ardublock.translator.block;
+package com.ardublock.translator.block.ecs;
 
 import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.DigitalOutputBlock;

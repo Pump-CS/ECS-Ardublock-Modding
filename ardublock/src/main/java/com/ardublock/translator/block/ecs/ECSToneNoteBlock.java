@@ -1,18 +1,19 @@
-package com.ardublock.translator.block;
+package com.ardublock.translator.block.ecs;
 
 import com.ardublock.translator.Translator;
+import com.ardublock.translator.block.TranslatorBlock;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.InvalidNoteException;
+import com.ardublock.translator.block.exception.InvalidPinException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
 
 import java.util.Hashtable;
 
-public class ECSPlayNoteBlock extends TranslatorBlock
+public class ECSToneNoteBlock extends TranslatorBlock
 {
-
 	private Hashtable<String, Integer> notes = new Hashtable<String, Integer>();
 
-	public ECSPlayNoteBlock(Long blockId, Translator translator, String codePrefix,	String codeSuffix, String label)
+	public ECSToneNoteBlock(Long blockId, Translator translator, String codePrefix,	String codeSuffix, String label)
 	{
 		super(blockId, translator, codePrefix, codeSuffix, label);
 
@@ -130,18 +131,24 @@ public class ECSPlayNoteBlock extends TranslatorBlock
 	@Override
 	public String toCode() throws SocketNullException , SubroutineNotDeclaredException
 	{
-		TranslatorBlock freqBlock = this.getRequiredTranslatorBlockAtSocket(0);
+		TranslatorBlock pinBlock = this.getRequiredTranslatorBlockAtSocket(0);
+		TranslatorBlock freqBlock = this.getRequiredTranslatorBlockAtSocket(1);
 
 		String note = freqBlock.toCode();
-		System.out.println("." + note + ".");
 		note = note.substring(1, note.length() - 1);
 		Integer freq = notes.get(note);
 
 		if (freq == null) {
 			throw new InvalidNoteException(blockId);
+		}	
+		if (!(pinBlock.toCode().equals(SPEAKER_PIN)) && !(pinBlock.toCode().equals(FREE_PIN_1))
+			&& !(pinBlock.toCode().equals(FREE_PIN_2)) && !(pinBlock.toCode().equals(FREE_PIN_3))
+			&& !(pinBlock.toCode().equals(FREE_PIN_4)) && !(pinBlock.toCode().equals(FREE_PIN_5))
+			&& !(pinBlock.toCode().equals(FREE_PIN_6))) {
+			throw new InvalidPinException(blockId);
 		}
 
-		String ret = "tone(" + SPEAKER_PIN + ", " + freq + ");\n";
+		String ret = "tone(" + pinBlock.toCode() + ", " + freq + ");\n";
 		return ret;
 	}
 }

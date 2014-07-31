@@ -1,6 +1,7 @@
-package com.ardublock.translator.block;
+package com.ardublock.translator.block.ecs;
 
 import com.ardublock.translator.Translator;
+import com.ardublock.translator.block.TranslatorBlock;
 import com.ardublock.translator.block.exception.*;
 
 public class ECSUpdateKeyboard extends TranslatorBlock
@@ -20,7 +21,6 @@ public class ECSUpdateKeyboard extends TranslatorBlock
 		ret += "Serial.readBytes(buffer, ECSnumAvailable);";
 		ret += "for (ECSiteration = 0; ECSiteration < ( ECSnumAvailable ); ++ECSiteration)\n";
 		ret += "{\n\t";
-		//ret += "ECSval = Serial.parseInt();\n";
 		ret += "ECSval = buffer[ECSiteration];";
 		ret += "keysDown[ECSval] = !keysDown[ECSval];\n";
 		ret += "Serial.print(ECSval);";
