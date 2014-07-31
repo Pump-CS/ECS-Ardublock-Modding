@@ -37,7 +37,7 @@ public class ECSKeyboardSetup extends TranslatorBlock
 		(new ECSSerialPoll()).start();
 
 		// Create array of booleans for keys
-		translator.addDefinitionCommand("boolean " + KEYS_ARRAY + "[26];");
+		translator.addDefinitionCommand("boolean " + KEYS_ARRAY + "[36];");
 		return "";
 	}
 }
@@ -46,7 +46,7 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 {
 
 	// State table for the keys
-	boolean[] keysDown = new boolean[26];
+	boolean[] keysDown = new boolean[36];
 
 	private SerialPort serial;
 	InputStream input;
@@ -156,13 +156,29 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 		}
 	}
 
+	private int getIndex(char c) 
+	{
+		if (Character.isDigit(c))
+		{
+			return (int)(c - '0');
+		}
+
+		if (Character.isLetter(c) && Character.isLowerCase(c))
+		{
+			return (int)((c - 'a') + 10);
+		}
+
+		return -1;
+	}
+
 	@Override
 	public void keyTyped(KeyEvent e) {/* Not used */}
 
 	@Override
 	public void keyReleased(KeyEvent e) 
 	{
-		int keyCode = e.getKeyChar() - 'a';
+		int keyCode = getIndex(e.getKeyChar());
+		if (keyCode == -1) return;
 		sendUpdate(keyCode);
 		keysDown[keyCode] = false;
 	}
@@ -170,8 +186,8 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 	@Override
 	public void keyPressed(KeyEvent e) 
 	{
-		int keyCode = e.getKeyChar() - 'a';
-	
+		int keyCode = getIndex(e.getKeyChar());
+		if (keyCode == -1) return;
 		// Only send update if this is key was just pressed down.
 		// This ignores all calls to keyPressed until keyReleased is called.
 		if (!keysDown[keyCode]) 

@@ -4736,7 +4736,9 @@
 				<text></text>
 			</description>
 			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="socket" label="key" />
+				<BlockConnector connector-type="string" connector-kind="socket" label="key">
+					<DefaultArg genus-name="message" label="a" />
+				</BlockConnector>
 				<BlockConnector connector-type="boolean" connector-kind="plug" />
 			</BlockConnectors>
 		</BlockGenus>
