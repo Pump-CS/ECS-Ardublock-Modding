@@ -13,6 +13,12 @@ import java.io.*;
 import java.util.*;
 import gnu.io.*;
 
+/* TODO
+	- Make this WAY more robust. The port should be closed in every conceivable case of the program being closed.
+	- digits 0-9 should map to indices 0-9 and a-z should map from indices 10-35.
+	- Make the window that pops up for them to type into much better looking and less janky.
+*/
+
 public class ECSKeyboardSetup extends TranslatorBlock
 {
 	public static final String KEYS_ARRAY = "keysDown";

@@ -1,0 +1,25 @@
+
+
+
+
+Add:
+<repository>
+  <id>project</id>
+  <url>file://${project.basedir}/repo</url>
+</repository>
+
+to pom.xml under the repositories tag and
+
+
+Add:
+<dependency>
+  <groupId>local</groupId>
+  <artifactId>RXTXcomm</artifactId>
+  <version>1.0</version>
+</dependency>
+
+
+
+to pom.xml under the dependencies tag
+
+

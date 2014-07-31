@@ -98,6 +98,6 @@ for (path, parsing) in parsings:
     os.remove(path)
 
 print maven_dependencies(parsings)
-print "These dependenceis have also been saved in the file : repo/dependencies.txt"
+print "These dependenceis have also been saved in the file : ../repo/dependencies.txt"
 f = open('../repo/dependencies.txt', 'w')
 f.write(maven_dependencies(parsings))
