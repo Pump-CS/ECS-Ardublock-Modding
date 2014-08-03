@@ -23,8 +23,6 @@ public class ECSUpdateKeyboard extends TranslatorBlock
 		ret += "{\n\t";
 		ret += "ECSval = buffer[ECSiteration];";
 		ret += "keysDown[ECSval] = !keysDown[ECSval];\n";
-		ret += "Serial.print(ECSval);";
-		ret += "Serial.println();";
 		ret += "}\n";
 		return ret;
 	}
