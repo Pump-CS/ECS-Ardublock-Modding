@@ -9,7 +9,7 @@ This project is based on [Ardublock](https://github.com/taweili/ardublock).
 1. Download [Maven](http://maven.apache.org/download.cgi)
 2. Download [JavaJDK](http://www.oracle.com/technetwork/java/index.html)
 3. Follow the Maven [installation instructions](http://maven.apache.org/download.cgi)
-4. In the project directory, run `mvn validate` and then `./install_openblocks`.
+4. In the ardublock directory, run `mvn validate` and then `./install_openblocks`.
 5. In ardublock/openblocks, run `mvn install`.
 6. After modifying the code, run `mvn clean package` in the `ardublock` directory.
 7. Step 6 should produce `target/ardublock-all.jar`, copy this to 
