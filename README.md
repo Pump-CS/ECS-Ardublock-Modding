@@ -9,12 +9,10 @@ This project is based on [Ardublock](https://github.com/taweili/ardublock).
 1. Download version 3.2.1 of [Maven](http://apache.osuosl.org/maven/maven-3/3.2.1/binaries/apache-maven-3.2.1-bin.tar.gz)
 2. Download [JavaJDK](http://www.oracle.com/technetwork/java/index.html)
 3. Follow the Maven [installation instructions](http://maven.apache.org/download.cgi)
-4. In the ardublock directory, run `mvn validate`.
-5. In ardublock/openblocks, run `mvn install`.
-6. Run `mvn install:install-file -Dfile=lib/RXTXcomm.jar -DgroupId=local -DartifactId=RXTXcomm -Dversion=1.0 -Dpackaging=jar -DlocalRepositoryPath=repo -DcreateChecksum=true` in ardublock directory
-7. After modifying the code, run `mvn clean package` in the `ardublock` directory.
-8. Step 6 should produce `target/ardublock-all.jar`, copy this to
+4. In the ardublock/tools directory, run `./setup.sh`.
+5. After modifying the code, run `mvn clean package` in the `ardublock` directory.
+6. Step 6 should produce `target/ardublock-all.jar`, copy this to
   * Mac OS X & Windows: `Documents/Arduino/tools/ArduBlockTool/tool`
   * Linux: `~/sketchbook/tools/ArduBlockTool/tool`
   * If these paths don't work, then use the path found in `File` > `Preferences` in the Arduino application as the root and append `tools/ArduBlockTool/tool`
-9. Start the arduino application as you would normally and navigate to `Tools` > `ArduBlock`.
+7. Start the arduino application as you would normally and navigate to `Tools` > `ArduBlock`.
