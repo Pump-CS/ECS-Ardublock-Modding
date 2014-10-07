@@ -17,8 +17,6 @@ public class ECSToneNoteBlock extends TranslatorBlock
 	{
 		super(blockId, translator, codePrefix, codeSuffix, label);
 
-		notes.put("B0",   31);
-
 		notes.put("C1",   33);
 		notes.put("C1#",  35);
 		notes.put("D1",   37);
