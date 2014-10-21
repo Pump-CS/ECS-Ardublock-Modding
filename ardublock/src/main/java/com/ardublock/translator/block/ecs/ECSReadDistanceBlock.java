@@ -21,11 +21,11 @@ public class ECSReadDistanceBlock extends TranslatorBlock
 							 "\n  int T1OUT = 0x10;" +
 							 "\n" +
 							 "\n  for (int ii = 0; ii < 4; ii++) {" +
-							 "\n    digitalWrite(TRANSMIT_PIN_1, HIGH);" +
-							 "\n    digitalWrite(TRANSMIT_PIN_2, LOW);" +
+							 "\n    digitalWrite(" + TRANSMIT_PIN_1 + ", HIGH);" +
+							 "\n    digitalWrite(" + TRANSMIT_PIN_2 + ", LOW);" +
 							 "\n    delayMicroseconds(delay);" +
-							 "\n    digitalWrite(TRANSMIT_PIN_1, LOW);" +
-							 "\n    digitalWrite(TRANSMIT_PIN_2, HIGH);" +
+							 "\n    digitalWrite(" + TRANSMIT_PIN_1 + ", LOW);" +
+							 "\n    digitalWrite(" + TRANSMIT_PIN_2 + ", HIGH);" +
 							 "\n    delayMicroseconds(delay);" +
 							 "\n  }" +
 							 "\n" +
