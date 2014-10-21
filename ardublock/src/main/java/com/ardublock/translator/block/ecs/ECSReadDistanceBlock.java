@@ -12,7 +12,7 @@ public class ECSReadDistanceBlock extends TranslatorBlock
 		super(blockId, translator, codePrefix, codeSuffix, label);
 	}
 
-	private final static String ultraSonicFunction = "int getDistance(int trigPin, int echoPin)" +
+	private final static String ultraSonicFunction = "int getDistance()" +
 							 "\n{" +
 							 "\n  unsigned long start = micros();" +
 							 "\n  int cycles = 4;" +
@@ -21,11 +21,11 @@ public class ECSReadDistanceBlock extends TranslatorBlock
 							 "\n  int T1OUT = 0x10;" +
 							 "\n" +
 							 "\n  for (int ii = 0; ii < 4; ii++) {" +
-							 "\n    digitalWrite(echoPin, HIGH);" +
-							 "\n    digitalWrite(trigPin, LOW);" +
+							 "\n    digitalWrite(TRANSMIT_PIN_1, HIGH);" +
+							 "\n    digitalWrite(TRANSMIT_PIN_2, LOW);" +
 							 "\n    delayMicroseconds(delay);" +
-							 "\n    digitalWrite(echoPin, LOW);" +
-							 "\n    digitalWrite(trigPin, HIGH);" +
+							 "\n    digitalWrite(TRANSMIT_PIN_1, LOW);" +
+							 "\n    digitalWrite(TRANSMIT_PIN_2, HIGH);" +
 							 "\n    delayMicroseconds(delay);" +
 							 "\n  }" +
 							 "\n" +
@@ -54,7 +54,7 @@ public class ECSReadDistanceBlock extends TranslatorBlock
 					   "\npinMode(" + TRANSMIT_PIN_2 + ", OUTPUT);" +
 					   "\npinMode(" + RECEIVE_PIN + ", OUTPUT);\n");
 		translator.addDefinitionCommand(ultraSonicFunction);
-		String ret = " getDistance( " + TRANSMIT_PIN_2 + " , " + RECEIVE_PIN + " )";
+		String ret = " getDistance()";
 
 		return codePrefix + ret + codeSuffix;
 	}
