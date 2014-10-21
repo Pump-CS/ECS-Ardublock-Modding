@@ -24,8 +24,8 @@ abstract public class TranslatorBlock
 	public static final String SERIAL_PIN_1 =   "0";
 	public static final String SERIAL_PIN_2 =   "1";
 	public static final String SPEAKER_PIN =    "2";
-	public static final String TRANSMIT_PIN_1 = "3";
-	public static final String RECEIVE_PIN =    "4";
+	public static final String RECEIVE_PIN =    "3";
+	public static final String TRANSMIT_PIN_1 = "4";
 	public static final String TRANSMIT_PIN_2 = "5";
 	public static final String BUTTON_PIN_1 =   "6";
 	public static final String BUTTON_PIN_2 =   "7";
