@@ -3,7 +3,6 @@
 <!-- This describes every BlockGenus, BlockDrawer, BlockFamilies in Starlogo-TNG. Note: For BlockGenus, if genus A relies on another genus B, that genus B must be specified in the xml 
 	file before genus A is specified./ We impose this requirement so that sanity checks can be made regarding the validity of a default argument when the BlockGenuses are first loaded. -->
 <BlockLangDef>
-
 	<BlockConnectorShapes>
 		<BlockConnectorShape shape-type="number" shape-number="1" />
 		<BlockConnectorShape shape-type="number-list" shape-number="2" />
@@ -2000,69 +1999,6 @@
 				<BlockConnector connector-type="number" connector-kind="socket" label="S#">
 					<DefaultArg genus-name="number" label="1" />
 				</BlockConnector>
-			</BlockConnectors>
-		</BlockGenus>
-
-		<!-- ******** Panda Shield ******** -->
-		<BlockGenus name="panda_i1" kind="data" color="214 169 54" initlabel="bg.panda_i1" editable-label="no">
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="plug" position-type="mirror" />
-			</BlockConnectors>
-		</BlockGenus>
-		<BlockGenus name="panda_i2" kind="data" color="214 169 54" initlabel="bg.panda_i2" editable-label="no">
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="plug" position-type="mirror" />
-			</BlockConnectors>
-		</BlockGenus>
-		<BlockGenus name="panda_i3" kind="data" color="214 169 54" initlabel="bg.panda_i3" editable-label="no">
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="plug" position-type="mirror" />
-			</BlockConnectors>
-		</BlockGenus>
-		<BlockGenus name="panda_i4" kind="data" color="214 169 54" initlabel="bg.panda_i4" editable-label="no">
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="plug" position-type="mirror" />
-			</BlockConnectors>
-		</BlockGenus>
-		<BlockGenus name="panda_i5" kind="data" color="214 169 54" initlabel="bg.panda_i5" editable-label="no">
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="plug" position-type="mirror" />
-			</BlockConnectors>
-		</BlockGenus>
-		<BlockGenus name="panda_i6" kind="data" color="214 169 54" initlabel="bg.panda_i6" editable-label="no">
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="plug" position-type="mirror" />
-			</BlockConnectors>
-		</BlockGenus>
-		
-		<BlockGenus name="panda_o1" kind="data" color="214 169 54" initlabel="bg.panda_o1" editable-label="no">
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="plug" position-type="mirror" />
-			</BlockConnectors>
-		</BlockGenus>
-		<BlockGenus name="panda_o2" kind="data" color="214 169 54" initlabel="bg.panda_o2" editable-label="no">
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="plug" position-type="mirror" />
-			</BlockConnectors>
-		</BlockGenus>
-		<BlockGenus name="panda_o3" kind="data" color="214 169 54" initlabel="bg.panda_o3" editable-label="no">
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="plug" position-type="mirror" />
-			</BlockConnectors>
-		</BlockGenus>
-		<BlockGenus name="panda_o4" kind="data" color="214 169 54" initlabel="bg.panda_o4" editable-label="no">
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="plug" position-type="mirror" />
-			</BlockConnectors>
-		</BlockGenus>
-		<BlockGenus name="panda_o5" kind="data" color="214 169 54" initlabel="bg.panda_o5" editable-label="no">
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="plug" position-type="mirror" />
-			</BlockConnectors>
-		</BlockGenus>
-		<BlockGenus name="panda_o6" kind="data" color="214 169 54" initlabel="bg.panda_o6" editable-label="no">
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="plug" position-type="mirror" />
 			</BlockConnectors>
 		</BlockGenus>
 		
@@ -4957,20 +4893,6 @@
 			<FamilyMember>Tinker_O3</FamilyMember>
 			<FamilyMember>Tinker_O4</FamilyMember>
 			<FamilyMember>Tinker_O5</FamilyMember>
-		</BlockFamily>
-		<BlockFamily>
-			<FamilyMember>panda_i1</FamilyMember>
-			<FamilyMember>panda_i2</FamilyMember>
-			<FamilyMember>panda_i3</FamilyMember>
-			<FamilyMember>panda_i4</FamilyMember>
-			<FamilyMember>panda_i5</FamilyMember>
-		</BlockFamily>
-		<BlockFamily>
-			<FamilyMember>panda_o1</FamilyMember>
-			<FamilyMember>panda_o2</FamilyMember>
-			<FamilyMember>panda_o3</FamilyMember>
-			<FamilyMember>panda_o4</FamilyMember>
-			<FamilyMember>panda_o5</FamilyMember>
 		</BlockFamily>
 		<BlockFamily>
 			<FamilyMember>ada_dc_motor_fwd</FamilyMember>
