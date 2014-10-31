@@ -3554,63 +3554,6 @@
 				<BlockConnector connector-type="poly" connector-kind="plug" position-type="mirror" />
 			</BlockConnectors>
 		</BlockGenus>
-	
-		<!--**************************************Adafruit*********************************** -->
-	
-		<BlockGenus name="ada_dc_motor_fwd" kind="command" color="216 5 10" initlabel="bg.ada_dc_motor_fwd">
-			<description>
-				<text>Adafruit DC motor</text>
-			</description>
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.motor_channel">
-					<DefaultArg genus-name="number" label="1" />
-				</BlockConnector>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.motor_speed">
-					<DefaultArg genus-name="number" label="255" />
-				</BlockConnector>
-			</BlockConnectors>
-			<!--<Images>
-				 <Image>
-					<FileLocation>com/ardublock/block/bulk/moteur-dc-fwd.jpg</FileLocation>
-				</Image> 
-			</Images> -->
-		</BlockGenus>
-		<BlockGenus name="ada_dc_motor_bwd" kind="command" color="216 5 10" initlabel="bg.ada_dc_motor_bwd">
-			<description>
-				<text>Adafruit DC motor</text>
-			</description>
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.motor_channel">
-					<DefaultArg genus-name="number" label="1" />
-				</BlockConnector>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.motor_speed">
-					<DefaultArg genus-name="number" label="255" />
-				</BlockConnector>
-			</BlockConnectors>
-			<!-- <Images>
-				<Image>
-					<FileLocation>com/ardublock/block/bulk/moteur-dc-bwd.jpg</FileLocation>
-				</Image> 
-			</Images> -->
-		</BlockGenus>
-		<BlockGenus name="ada_dc_motor_release" kind="command" color="216 5 10" initlabel="bg.ada_dc_motor_release">
-			<description>
-				<text>Adafruit DC motor</text>
-			</description>
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.motor_channel">
-					<DefaultArg genus-name="number" label="1" />
-				</BlockConnector>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.motor_speed">
-					<DefaultArg genus-name="number" label="255" />
-				</BlockConnector>
-			</BlockConnectors>
-			<!-- <Images>
-				 <Image>
-					<FileLocation>com/ardublock/block/bulk/moteur-dc-release.jpg</FileLocation>
-				</Image> 
-			</Images> -->
-		</BlockGenus>
 		
 		<!--***Makeblock***-->
 		<BlockGenus name="me_ultrasonic_sensor" kind="data" color="0 177 236" initlabel="bg.me_ultrasonic_sensor">
@@ -4528,11 +4471,6 @@
 			<FamilyMember>df_mma7260_x</FamilyMember>
 			<FamilyMember>df_mma7260_y</FamilyMember>
 			<FamilyMember>df_mma7260_z</FamilyMember>
-		</BlockFamily>
-		<BlockFamily>
-			<FamilyMember>ada_dc_motor_fwd</FamilyMember>
-			<FamilyMember>ada_dc_motor_bwd</FamilyMember>
-			<FamilyMember>ada_dc_motor_release</FamilyMember>
 		</BlockFamily>
 		<BlockFamily>
 			<FamilyMember>me_port_1</FamilyMember>
