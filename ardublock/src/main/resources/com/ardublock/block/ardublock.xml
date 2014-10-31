@@ -1586,37 +1586,6 @@
 				<BlockConnector connector-type="boolean" connector-kind="plug" position-type="mirror" />
 			</BlockConnectors>
 		</BlockGenus>
-
-		<!-- *** Networking *** -->
-		<BlockGenus name="bleshield" kind="command" color="169 148 212" initlabel="bg.bleshield">
-			<description>
-				<text>BLE Shield for Bluetooth Connectivity</text>
-			</description>
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="2" />
-				</BlockConnector>
-					<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="3" />
-				</BlockConnector>
-			</BlockConnectors>
-			<Images>
-				<Image>
-					<FileLocation>com/ardublock/block/network/bleshield.jpg</FileLocation>
-				</Image>
-			</Images>
-		</BlockGenus>
-		
-		<BlockGenus name="bleshield_available" kind="data" color="169 148 212" initlabel="bg.bleshield_available">
-			<BlockConnectors>
-				<BlockConnector connector-type="boolean" connector-kind="plug" position-type="mirror" />
-			</BlockConnectors>
-		</BlockGenus>
-		<BlockGenus name="bleshield_read_poly" kind="data" color="169 148 212" initlabel="bg.bleshield_read_poly">
-			<BlockConnectors>
-				<BlockConnector connector-type="poly" connector-kind="plug" position-type="mirror" />
-			</BlockConnectors>
-		</BlockGenus>
 		
 		<!--***Makeblock***-->
 		<BlockGenus name="me_ultrasonic_sensor" kind="data" color="0 177 236" initlabel="bg.me_ultrasonic_sensor">
