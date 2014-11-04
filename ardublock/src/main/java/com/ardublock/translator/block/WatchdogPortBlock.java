@@ -1,4 +1,4 @@
-package com.ardublock.translator.block.custom;
+package com.ardublock.translator.block;
 
 import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.TranslatorBlock;
