@@ -2,6 +2,7 @@ package com.ardublock.translator.block.ecs;
 
 import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.TranslatorBlock;
+import com.ardublock.translator.block.MessageBlock;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.InvalidNoteException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;

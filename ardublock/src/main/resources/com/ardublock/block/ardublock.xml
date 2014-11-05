@@ -1426,6 +1426,17 @@
 		
 
 		<!-- ECS -->
+
+		<BlockGenus name="ECS_note" kind="data" color="100 150 200" initlabel="ECS_note" editable-label="yes">
+			<description>
+				<text></text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="string" connector-kind="plug" />
+			</BlockConnectors>
+		</BlockGenus>
+
+
 		<BlockGenus name="tone" kind="command" color="77 191 169" initlabel="tone">
 			<description>
 				<text></text>
@@ -1649,7 +1660,7 @@
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="string" connector-kind="socket" label="bc.note">
-					<DefaultArg genus-name="message" label="A" />
+					<DefaultArg genus-name="ECS_note" label="A" />
 				</BlockConnector>
 			</BlockConnectors>
 		</BlockGenus>
@@ -1660,7 +1671,7 @@
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="string" connector-kind="socket" label="bc.note">
-					<DefaultArg genus-name="message" label="A" />
+					<DefaultArg genus-name="ECS_note" label="A" />
 				</BlockConnector>
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.milliseconds">
 					<DefaultArg genus-name="number" label="1000" />
@@ -1817,6 +1828,7 @@
 				<BlockGenusMember>subroutine-ref</BlockGenusMember>
 			</BlockDrawer>
 			<BlockDrawer button-color="0 150 75" name="bd.my_blocks">
+				<BlockGenusMember>ECS_note</BlockGenusMember>
 				<BlockGenusMember>play_note_block</BlockGenusMember>
 				<BlockGenusMember>play_note_time_block</BlockGenusMember>
 				<BlockGenusMember>play_frequency_block</BlockGenusMember>
@@ -1898,6 +1910,15 @@
 				<BlockGenusMember>or</BlockGenusMember>
 				<BlockGenusMember>not</BlockGenusMember>
 			</BlockDrawer>
+			<BlockDrawer button-color="65 100 200" name="bd.communication" type="factory">
+				<BlockGenusMember>serial_read</BlockGenusMember>
+				<BlockGenusMember>serial_available</BlockGenusMember>
+				<BlockGenusMember>serial_print</BlockGenusMember>
+				<BlockGenusMember>serial_println</BlockGenusMember>
+				<BlockGenusMember>message</BlockGenusMember>
+				<BlockGenusMember>glue_sn</BlockGenusMember>
+				<BlockGenusMember>glue_sb</BlockGenusMember>
+			</BlockDrawer>
 			<BlockDrawer button-color="29 152 155" name="bd.pins" type="factory">
 				<BlockGenusMember>tone_note</BlockGenusMember>
 				<BlockGenusMember>tone_note_time</BlockGenusMember>
@@ -1911,15 +1932,6 @@
 				<BlockGenusMember>pin-write-digital</BlockGenusMember>
 				<BlockGenusMember>pin-read-analog</BlockGenusMember>
 				<BlockGenusMember>pin-write-analog</BlockGenusMember>
-			</BlockDrawer>
-			<BlockDrawer button-color="65 100 200" name="bd.communication" type="factory">
-				<BlockGenusMember>serial_read</BlockGenusMember>
-				<BlockGenusMember>serial_available</BlockGenusMember>
-				<BlockGenusMember>serial_print</BlockGenusMember>
-				<BlockGenusMember>serial_println</BlockGenusMember>
-				<BlockGenusMember>message</BlockGenusMember>
-				<BlockGenusMember>glue_sn</BlockGenusMember>
-				<BlockGenusMember>glue_sb</BlockGenusMember>
 			</BlockDrawer>
 			<BlockDrawer button-color="120 120 120" name="bd.especial" type="factory">
 				<BlockGenusMember>code_head</BlockGenusMember>
