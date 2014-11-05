@@ -5,9 +5,9 @@ import com.ardublock.translator.block.TranslatorBlock;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
 
-public class ECSNoteBlock extends TranslatorBlock
+public class ECSNoteKeyBlock extends TranslatorBlock
 {
-	public ECSNoteBlock(Long blockId, Translator translator, String codePrefix,	String codeSuffix, String label)
+	public ECSNoteKeyBlock(Long blockId, Translator translator, String codePrefix,	String codeSuffix, String label)
 	{
 		super(blockId, translator, codePrefix, codeSuffix, label);
 	}

@@ -1436,6 +1436,15 @@
 			</BlockConnectors>
 		</BlockGenus>
 
+		<BlockGenus name="ECS_key" kind="data" color="100 150 200" initlabel="ECS_key" editable-label="yes">
+			<description>
+				<text></text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="string" connector-kind="plug" />
+			</BlockConnectors>
+		</BlockGenus>
+
 
 		<BlockGenus name="tone" kind="command" color="77 191 169" initlabel="tone">
 			<description>
@@ -1551,7 +1560,7 @@
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="string" connector-kind="socket" label="key">
-					<DefaultArg genus-name="message" label="a" />
+					<DefaultArg genus-name="ECS_key" label="a" />
 				</BlockConnector>
 				<BlockConnector connector-type="boolean" connector-kind="plug" />
 			</BlockConnectors>
@@ -1828,7 +1837,6 @@
 				<BlockGenusMember>subroutine-ref</BlockGenusMember>
 			</BlockDrawer>
 			<BlockDrawer button-color="0 150 75" name="bd.my_blocks">
-				<BlockGenusMember>ECS_note</BlockGenusMember>
 				<BlockGenusMember>play_note_block</BlockGenusMember>
 				<BlockGenusMember>play_note_time_block</BlockGenusMember>
 				<BlockGenusMember>play_frequency_block</BlockGenusMember>
@@ -1853,6 +1861,8 @@
 				<BlockGenusMember>variable_number</BlockGenusMember>
 				<BlockGenusMember>number</BlockGenusMember>
 				<BlockGenusMember>message</BlockGenusMember>
+				<BlockGenusMember>ECS_note</BlockGenusMember>
+				<BlockGenusMember>ECS_key</BlockGenusMember>
 				<BlockGenusMember>setter_variable_digital</BlockGenusMember>
 				<BlockGenusMember>variable_digital</BlockGenusMember>
 				<BlockGenusMember>digital-high</BlockGenusMember>
