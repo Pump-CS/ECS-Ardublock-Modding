@@ -22,6 +22,7 @@ import gnu.io.*;
 
 public class ECSKeyboardSetup extends TranslatorBlock
 {
+	/* Name of key-state array in Arduino code output */
 	public static final String KEYS_ARRAY = "keysDown";
 
 	public ECSArdublockSerialGUI serialGui = null;
@@ -37,11 +38,14 @@ public class ECSKeyboardSetup extends TranslatorBlock
 		// Start a thread that will wait until uploading to the Arduino is finished before opening the serial port
 		(new ECSSerialPoll()).start();
 
-		// Create array of booleans for keys
+		// Create array of booleans for keys with room for 36 keys (10 for digits and 26 for lowercase alpha).
 		translator.addDefinitionCommand("boolean " + KEYS_ARRAY + "[36];");
+
+		// We don't have any actual Arduino code to output for this block.
 		return "";
 	}
 }
+
 
 class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEventListener
 {
@@ -61,6 +65,7 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 	ECSArdublockSerialGUI(String title) 
 	{
 		super(title);
+
 
 		// Make sure the port is closed when the window is closing
 		addWindowListener(new WindowAdapter() {

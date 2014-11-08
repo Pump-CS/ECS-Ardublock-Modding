@@ -6,6 +6,11 @@ import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.InvalidKeyException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
 
+/* This block calculates the appropriate index into the global
+	boolean keysDown array and inserts code to access that element. 
+
+	This block is used to check if a particular key is currently being pressed. */
+
 public class ECSKeyPressed extends TranslatorBlock
 {
 	public ECSKeyPressed(Long blockId, Translator translator, String codePrefix, String codeSuffix, String label)
@@ -16,17 +21,15 @@ public class ECSKeyPressed extends TranslatorBlock
 	@Override
 	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
 	{
-		/* TODO: throw exception that Matt wrote for invalid keys */
 		TranslatorBlock key = this.getRequiredTranslatorBlockAtSocket(0);
 
-		String message = key.toCode();
-		System.out.println(message);
-		message = message.replace("\"", "");
-		System.out.println(message);
 
+		String message = key.toCode();
+		message = message.replace("\"", ""); // Strip annoying quotes that are placed around the message
+
+		// It does not make sense to check if the 'abc' key is being pressed. */
 		if (message.length() != 1)
 		{
-			System.out.println("length");
 			throw new InvalidKeyException(blockId);
 		}
 
@@ -41,6 +44,7 @@ public class ECSKeyPressed extends TranslatorBlock
 			return ECSKeyboardSetup.KEYS_ARRAY + "[" + (int)((c - 'a') + 10) + "]";
 		}
 
+		// The given character was not a digit or a lowercase letter
 		throw new InvalidKeyException(blockId);
 	}
 }
