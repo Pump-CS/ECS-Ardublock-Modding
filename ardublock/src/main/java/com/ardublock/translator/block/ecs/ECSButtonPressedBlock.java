@@ -18,12 +18,17 @@ public class ECSButtonPressedBlock extends TranslatorBlock
 	{
 		TranslatorBlock translatorBlock = this.getRequiredTranslatorBlockAtSocket(0);
 	
-		String number;
-		number = translatorBlock.toCode();
-		int pinAdjust = Integer.parseInt(BUTTON_PIN_1) - 1;
-		pinAdjust += Integer.parseInt(number.trim());
-
-		if ((pinAdjust < Integer.parseInt(BUTTON_PIN_1)) || (pinAdjust > Integer.parseInt(BUTTON_PIN_4))) {
+		int pinAdjust = 0;
+		String number = translatorBlock.toCode();
+		if (Integer.parseInt(number.trim()) == 1) {
+			pinAdjust = Integer.parseInt(BUTTON_PIN_1);
+		} else if (Integer.parseInt(number.trim()) == 2) {
+			pinAdjust = Integer.parseInt(BUTTON_PIN_2);
+		} else if (Integer.parseInt(number.trim()) == 3) {
+			pinAdjust = Integer.parseInt(BUTTON_PIN_3);
+		} else if (Integer.parseInt(number.trim()) == 4) {
+			pinAdjust = Integer.parseInt(BUTTON_PIN_4);
+		} else {
 			throw new InvalidButtonException(blockId);
 		}
 

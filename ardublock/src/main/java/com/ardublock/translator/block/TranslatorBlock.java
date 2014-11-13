@@ -23,18 +23,19 @@ abstract public class TranslatorBlock
 
 	public static final String SERIAL_PIN_1 =   "0";
 	public static final String SERIAL_PIN_2 =   "1";
-	public static final String SPEAKER_PIN =    "2";
-	public static final String RECEIVE_PIN =    "3";
-	public static final String TRANSMIT_PIN_1 = "4";
-	public static final String TRANSMIT_PIN_2 = "5";
+	public static final String RECEIVE_PIN =    "2";
+	public static final String TRANSMIT_PIN_1 = "3";
+	public static final String TRANSMIT_PIN_2 = "4";
+	public static final String LED_PIN_1 =      "5";
 	public static final String BUTTON_PIN_1 =   "6";
-	public static final String BUTTON_PIN_2 =   "7";
-	public static final String BUTTON_PIN_3 =   "8";
-	public static final String BUTTON_PIN_4 =   "9";
-	public static final String LED_PIN_1 =     "10";
-	public static final String LED_PIN_2 =     "11";
-	public static final String LED_PIN_3 =     "12";
-	public static final String LED_PIN_4 =     "13";
+	public static final String LED_PIN_2 =      "7";
+	public static final String BUTTON_PIN_2 =   "8";
+	public static final String LED_PIN_3 =      "9";
+	public static final String BUTTON_PIN_3 =  "10";
+	public static final String LED_PIN_4 =     "11";
+	public static final String BUTTON_PIN_4 =  "12";
+	public static final String SPEAKER_PIN =   "13";
+
 	public static final String FREE_PIN_1 =    "18";
 	public static final String FREE_PIN_2 =    "19";
 	public static final String FREE_PIN_3 =    "20";
