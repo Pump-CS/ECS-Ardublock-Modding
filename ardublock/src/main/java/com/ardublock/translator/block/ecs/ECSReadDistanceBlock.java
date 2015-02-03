@@ -52,7 +52,7 @@ public class ECSReadDistanceBlock extends TranslatorBlock
 	{	
 		translator.addSetupCommand("Serial.begin(9600);" +
 					   "\npinMode(" + TRANSMIT_PIN_2 + ", OUTPUT);" +
-					   "\npinMode(" + RECEIVE_PIN + ", OUTPUT);\n");
+					   "\npinMode(" + TRANSMIT_PIN_1 + ", OUTPUT);\n");
 		translator.addDefinitionCommand(ultraSonicFunction);
 		String ret = " getDistance()";
 
