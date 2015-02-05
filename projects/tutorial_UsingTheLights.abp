@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<cb:CODEBLOCKS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://education.mit.edu/openblocks/ns http://education.mit.edu/openblocks/codeblocks.xsd" xmlns:cb="http://education.mit.edu/openblocks/ns">
+<Pages collapsible-pages="yes" drawer-with-page="yes">
+<Page page-color="160 160 160" page-drawer="Main" page-infullview="yes" page-name="Main" page-width="1366">
+<PageBlocks>
+<Block genus-name="delay" id="131">
+<Location>
+<X>101</X>
+<Y>272</Y>
+</Location>
+<BeforeBlockId>130</BeforeBlockId>
+<Sockets num-sockets="1">
+<BlockConnector con-block-id="132" connector-kind="socket" connector-type="number" init-type="number" label="milliseconds" position-type="single"/>
+</Sockets>
+</Block>
+<Block genus-name="number" id="132">
+<Label>1000</Label>
+<Location>
+<X>311</X>
+<Y>275</Y>
+</Location>
+<Plug>
+<BlockConnector con-block-id="131" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
+</Plug>
+</Block>
+<Block genus-name="ECS_LED_off_1" id="130">
+<Location>
+<X>101</X>
+<Y>202</Y>
+</Location>
+<BeforeBlockId>128</BeforeBlockId>
+<AfterBlockId>131</AfterBlockId>
+</Block>
+<Block genus-name="delay" id="128">
+<Location>
+<X>101</X>
+<Y>172</Y>
+</Location>
+<BeforeBlockId>127</BeforeBlockId>
+<AfterBlockId>130</AfterBlockId>
+<Sockets num-sockets="1">
+<BlockConnector con-block-id="129" connector-kind="socket" connector-type="number" init-type="number" label="milliseconds" position-type="single"/>
+</Sockets>
+</Block>
+<Block genus-name="number" id="129">
+<Label>1000</Label>
+<Location>
+<X>311</X>
+<Y>175</Y>
+</Location>
+<Plug>
+<BlockConnector con-block-id="128" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
+</Plug>
+</Block>
+<Block genus-name="ECS_LED_on_1" id="127">
+<Location>
+<X>101</X>
+<Y>102</Y>
+</Location>
+<BeforeBlockId>102</BeforeBlockId>
+<AfterBlockId>128</AfterBlockId>
+</Block>
+<Block genus-name="loop" id="102">
+<Location>
+<X>28</X>
+<Y>94</Y>
+</Location>
+<Sockets num-sockets="1">
+<BlockConnector con-block-id="127" connector-kind="socket" connector-type="cmd" init-type="cmd" label="do" position-type="single"/>
+</Sockets>
+</Block>
+</PageBlocks>
+</Page>
+</Pages>
+</cb:CODEBLOCKS>

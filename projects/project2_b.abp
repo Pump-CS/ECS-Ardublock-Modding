@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<cb:CODEBLOCKS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://education.mit.edu/openblocks/ns http://education.mit.edu/openblocks/codeblocks.xsd" xmlns:cb="http://education.mit.edu/openblocks/ns">
+<Pages collapsible-pages="yes" drawer-with-page="yes">
+<Page page-color="160 160 160" page-drawer="Main" page-infullview="yes" page-name="Main" page-width="1366">
+<PageBlocks>
+<Block genus-name="delay" id="203">
+<Location>
+<X>134</X>
+<Y>188</Y>
+</Location>
+<BeforeBlockId>199</BeforeBlockId>
+<Sockets num-sockets="1">
+<BlockConnector con-block-id="204" connector-kind="socket" connector-type="number" init-type="number" label="milliseconds" position-type="single"/>
+</Sockets>
+</Block>
+<Block genus-name="number" id="204">
+<Label>1000</Label>
+<Location>
+<X>344</X>
+<Y>191</Y>
+</Location>
+<Plug>
+<BlockConnector con-block-id="203" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
+</Plug>
+</Block>
+<Block genus-name="variable_number" id="202">
+<Label>distance</Label>
+<Location>
+<X>400</X>
+<Y>137</Y>
+</Location>
+<Plug>
+<BlockConnector con-block-id="199" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
+</Plug>
+</Block>
+<Block genus-name="play_frequency_time_block" id="199">
+<Location>
+<X>134</X>
+<Y>134</Y>
+</Location>
+<BeforeBlockId>195</BeforeBlockId>
+<AfterBlockId>203</AfterBlockId>
+<Sockets num-sockets="2">
+<BlockConnector con-block-id="202" connector-kind="socket" connector-type="number" init-type="number" label="frequency" position-type="single"/>
+<BlockConnector con-block-id="201" connector-kind="socket" connector-type="number" init-type="number" label="milliseconds" position-type="single"/>
+</Sockets>
+</Block>
+<Block genus-name="number" id="201">
+<Label>1000</Label>
+<Location>
+<X>400</X>
+<Y>161</Y>
+</Location>
+<Plug>
+<BlockConnector con-block-id="199" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
+</Plug>
+</Block>
+<Block genus-name="read_distance_block" id="198">
+<Location>
+<X>380</X>
+<Y>107</Y>
+</Location>
+<Plug>
+<BlockConnector con-block-id="195" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
+</Plug>
+</Block>
+<Block genus-name="variable_number" id="196">
+<Label>distance</Label>
+<Location>
+<X>380</X>
+<Y>83</Y>
+</Location>
+<Plug>
+<BlockConnector con-block-id="195" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
+</Plug>
+</Block>
+<Block genus-name="setter_variable_number" id="195">
+<Location>
+<X>134</X>
+<Y>80</Y>
+</Location>
+<BeforeBlockId>139</BeforeBlockId>
+<AfterBlockId>199</AfterBlockId>
+<Sockets num-sockets="2">
+<BlockConnector con-block-id="196" connector-kind="socket" connector-type="number" init-type="number" label="variable" position-type="single"/>
+<BlockConnector con-block-id="198" connector-kind="socket" connector-type="number" init-type="number" label="value" position-type="single"/>
+</Sockets>
+</Block>
+<Block genus-name="program" id="139">
+<Location>
+<X>16</X>
+<Y>37</Y>
+</Location>
+<Sockets num-sockets="2">
+<BlockConnector connector-kind="socket" connector-type="cmd" init-type="cmd" label="setup" position-type="single"/>
+<BlockConnector con-block-id="195" connector-kind="socket" connector-type="cmd" init-type="cmd" label="loop" position-type="single"/>
+</Sockets>
+</Block>
+</PageBlocks>
+</Page>
+</Pages>
+</cb:CODEBLOCKS>
