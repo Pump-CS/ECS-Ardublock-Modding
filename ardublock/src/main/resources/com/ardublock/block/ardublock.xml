@@ -1650,7 +1650,7 @@
 			</description>
 			<Images>
 				<Image>
-					<FileLocation>com/ardublock/block/ecs_img/led_yellow.png</FileLocation>
+					<FileLocation>com/ardublock/block/ecs_img/led_orange.png</FileLocation>
 				</Image>
 			</Images>
 			<BlockConnectors>
@@ -1662,7 +1662,7 @@
 			</description>
 			<Images>
 				<Image>
-					<FileLocation>com/ardublock/block/ecs_img/led_yellow.png</FileLocation>
+					<FileLocation>com/ardublock/block/ecs_img/led_orange.png</FileLocation>
 				</Image>
 			</Images>
 			<BlockConnectors>
@@ -1674,7 +1674,7 @@
 			</description>
 			<Images>
 				<Image>
-					<FileLocation>com/ardublock/block/ecs_img/led_white.png</FileLocation>
+					<FileLocation>com/ardublock/block/ecs_img/led_yellow.png</FileLocation>
 				</Image>
 			</Images>
 			<BlockConnectors>
@@ -1686,7 +1686,7 @@
 			</description>
 			<Images>
 				<Image>
-					<FileLocation>com/ardublock/block/ecs_img/led_white.png</FileLocation>
+					<FileLocation>com/ardublock/block/ecs_img/led_yellow.png</FileLocation>
 				</Image>
 			</Images>
 			<BlockConnectors>
