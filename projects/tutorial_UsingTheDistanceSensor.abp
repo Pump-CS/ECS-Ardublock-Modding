@@ -1,84 +1,64 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <cb:CODEBLOCKS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://education.mit.edu/openblocks/ns http://education.mit.edu/openblocks/codeblocks.xsd" xmlns:cb="http://education.mit.edu/openblocks/ns">
 <Pages collapsible-pages="yes" drawer-with-page="yes">
-<Page page-color="160 160 160" page-drawer="Main" page-infullview="yes" page-name="Main" page-width="1366">
+<Page page-color="160 160 160" page-drawer="Main" page-infullview="yes" page-name="Main" page-width="1920">
 <PageBlocks>
-<Block genus-name="number" id="410">
-<Label>1000</Label>
-<Location>
-<X>569</X>
-<Y>109</Y>
-</Location>
-<Plug>
-<BlockConnector con-block-id="409" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
-</Plug>
-</Block>
-<Block genus-name="read_distance_block" id="300">
-<Location>
-<X>401</X>
-<Y>109</Y>
-</Location>
-<Plug>
-<BlockConnector con-block-id="409" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
-</Plug>
-</Block>
-<Block genus-name="less" id="409">
-<Location>
-<X>391</X>
-<Y>106</Y>
-</Location>
-<Plug>
-<BlockConnector con-block-id="307" connector-kind="plug" connector-type="boolean" init-type="boolean" label="" position-type="mirror"/>
-</Plug>
-<Sockets num-sockets="2">
-<BlockConnector con-block-id="300" connector-kind="socket" connector-type="number" init-type="number" label="" position-type="bottom"/>
-<BlockConnector con-block-id="410" connector-kind="socket" connector-type="number" init-type="number" label="" position-type="bottom"/>
-</Sockets>
-</Block>
 <Block genus-name="ECS_LED_off_1" id="308">
 <Location>
-<X>387</X>
-<Y>221</Y>
+<X>264</X>
+<Y>189</Y>
 </Location>
-<BeforeBlockId>307</BeforeBlockId>
+<BeforeBlockId>517</BeforeBlockId>
 </Block>
-<Block genus-name="ECS_LED_on_1" id="304">
+<Block genus-name="less" id="513">
 <Location>
-<X>388</X>
-<Y>139</Y>
-</Location>
-<BeforeBlockId>307</BeforeBlockId>
-</Block>
-<Block genus-name="ifelse" id="307">
-<Location>
-<X>277</X>
-<Y>103</Y>
-</Location>
-<BeforeBlockId>305</BeforeBlockId>
-<Sockets num-sockets="3">
-<BlockConnector con-block-id="409" connector-kind="socket" connector-type="boolean" init-type="boolean" label="test" position-type="single"/>
-<BlockConnector con-block-id="304" connector-kind="socket" connector-type="cmd" init-type="cmd" label="then" position-type="single"/>
-<BlockConnector con-block-id="308" connector-kind="socket" connector-type="cmd" init-type="cmd" label="else" position-type="single"/>
-</Sockets>
-</Block>
-<Block genus-name="true" id="306">
-<Location>
-<X>280</X>
+<X>268</X>
 <Y>74</Y>
 </Location>
 <Plug>
-<BlockConnector con-block-id="305" connector-kind="plug" connector-type="boolean" init-type="boolean" label="" position-type="mirror"/>
+<BlockConnector con-block-id="517" connector-kind="plug" connector-type="boolean" init-type="boolean" label="" position-type="mirror"/>
+</Plug>
+<Sockets num-sockets="2">
+<BlockConnector con-block-id="514" connector-kind="socket" connector-type="number" init-type="number" label="" position-type="bottom"/>
+<BlockConnector con-block-id="515" connector-kind="socket" connector-type="number" init-type="number" label="" position-type="bottom"/>
+</Sockets>
+</Block>
+<Block genus-name="number" id="515">
+<Label>1000</Label>
+<Location>
+<X>446</X>
+<Y>77</Y>
+</Location>
+<Plug>
+<BlockConnector con-block-id="513" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
 </Plug>
 </Block>
-<Block genus-name="while" id="305">
+<Block genus-name="read_distance_block" id="514">
+<Location>
+<X>278</X>
+<Y>77</Y>
+</Location>
+<Plug>
+<BlockConnector con-block-id="513" connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror"/>
+</Plug>
+</Block>
+<Block genus-name="ECS_LED_on_1" id="516">
+<Location>
+<X>265</X>
+<Y>107</Y>
+</Location>
+<BeforeBlockId>517</BeforeBlockId>
+</Block>
+<Block genus-name="ifelse" id="517">
 <Location>
 <X>154</X>
 <Y>71</Y>
 </Location>
 <BeforeBlockId>139</BeforeBlockId>
-<Sockets num-sockets="2">
-<BlockConnector con-block-id="306" connector-kind="socket" connector-type="boolean" init-type="boolean" label="test" position-type="single"/>
-<BlockConnector con-block-id="307" connector-kind="socket" connector-type="cmd" init-type="cmd" label="commands" position-type="single"/>
+<Sockets num-sockets="3">
+<BlockConnector con-block-id="513" connector-kind="socket" connector-type="boolean" init-type="boolean" label="test" position-type="single"/>
+<BlockConnector con-block-id="516" connector-kind="socket" connector-type="cmd" init-type="cmd" label="then" position-type="single"/>
+<BlockConnector con-block-id="308" connector-kind="socket" connector-type="cmd" init-type="cmd" label="else" position-type="single"/>
 </Sockets>
 </Block>
 <Block genus-name="program" id="139">
@@ -88,7 +68,7 @@
 </Location>
 <Sockets num-sockets="2">
 <BlockConnector connector-kind="socket" connector-type="cmd" init-type="cmd" label="setup" position-type="single"/>
-<BlockConnector con-block-id="305" connector-kind="socket" connector-type="cmd" init-type="cmd" label="loop" position-type="single"/>
+<BlockConnector con-block-id="517" connector-kind="socket" connector-type="cmd" init-type="cmd" label="loop" position-type="single"/>
 </Sockets>
 </Block>
 </PageBlocks>
