@@ -20,7 +20,6 @@ public class ECSButtonPressedPinBlock extends TranslatorBlock
 	
 		String number;
 		number = translatorBlock.toCode();
-		translator.addInputPin(number.trim());
 
 		if (!(number.trim().equals(BUTTON_PIN_1)) && !(number.trim().equals(BUTTON_PIN_2))
 			&& !(number.trim().equals(BUTTON_PIN_3)) && !(number.trim().equals(BUTTON_PIN_4))
@@ -29,6 +28,8 @@ public class ECSButtonPressedPinBlock extends TranslatorBlock
 			&& !(number.trim().equals(FREE_PIN_5)) && !(number.trim().equals(FREE_PIN_6))) {
 			throw new InvalidPinException(blockId);
 		}
+
+		translator.addInputPin(number.trim());
 
 		String ret = "digitalRead(";
 		ret = ret + number;
