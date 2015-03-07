@@ -18,8 +18,8 @@ public class ECSLedOff1 extends TranslatorBlock
 	public String toCode() throws SocketNullException , SubroutineNotDeclaredException
 	{
 		// Add a line to the setup section that sets this pin as output
-		translator.addSetupCommand("pinMode( " + LED_PIN_1 + " , OUTPUT);");
-		
+		translator.addOutputPin(LED_PIN_1);		
+
 		return "digitalWrite( " + LED_PIN_1 + " , LOW);\n";
 	}
 }

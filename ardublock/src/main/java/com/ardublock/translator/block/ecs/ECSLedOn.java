@@ -29,8 +29,8 @@ public class ECSLedOn extends TranslatorBlock
 		}	
 
 		// Add a line to the setup section that sets this pin as output
-		translator.addSetupCommand("pinMode( " + pinBlock.toCode() + " , OUTPUT);");
-		
+		translator.addOutputPin(pinBlock.toCode());
+
 		return "digitalWrite( " + pinBlock.toCode() + " , HIGH);\n";
 	}
 }
