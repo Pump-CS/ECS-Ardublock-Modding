@@ -15,7 +15,7 @@ public class ECSNoToneBlock extends TranslatorBlock
 	@Override
 	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
 	{
-		String ret = "\tnoTone(" + SPEAKER_PIN + ");\n";
+		String ret = "noTone(" + SPEAKER_PIN + ");\n";
 		return ret;
 	}
 }
