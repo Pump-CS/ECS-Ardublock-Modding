@@ -12,21 +12,39 @@ public class ECSReadDistanceBlock extends TranslatorBlock
 		super(blockId, translator, codePrefix, codeSuffix, label);
 	}
 
+	private final static String smoothedUltraSonicFunction = "int smoothDistance()" +
+							 "\n{" +
+							 "\n int count = 0;" +
+							 "\n long avg = 0;" +
+							 "\n int dist = 0;" +
+							 "\n  while (count < 4) {" +
+							 "\n    dist = getDistance();" +
+							 "\n    avg = (avg + dist)/2;" +
+							 "\n    count = count + 1;" +
+							 "\n  }" +
+							 "\n  if (count = 4){" +
+							 "\n    count = 0;" +
+							 "\n  }" +
+							 "\n  Serial.println(avg, DEC);" +
+							 "\n  return (int)avg;" +
+							 "\n}\n";
+							
+
 	private final static String ultraSonicFunction = "int getDistance()" +
 							 "\n{" +
 							 "\n  unsigned long start = micros();" +
-							 "\n  int cycles = 4;" +
-							 "\n  int delay = 20;" +
-							 "\n  int timeout = 8000;" +
+							 "\n  int CYCLES = 4;" +
+							 "\n  int DELAY_PING = 25;" +
+							 "\n  int timeout = 16000;" +
 							 "\n  int T1OUT = 0x10;" +
 							 "\n" +
-							 "\n  for (int ii = 0; ii < 4; ii++) {" +
+							 "\n  for (int ii = 0; ii < CYCLES; ii++) {" +
 							 "\n    digitalWrite(" + TRANSMIT_PIN_1 + ", HIGH);" +
 							 "\n    digitalWrite(" + TRANSMIT_PIN_2 + ", LOW);" +
-							 "\n    delayMicroseconds(delay);" +
+							 "\n    delayMicroseconds(DELAY_PING);" +
 							 "\n    digitalWrite(" + TRANSMIT_PIN_1 + ", LOW);" +
 							 "\n    digitalWrite(" + TRANSMIT_PIN_2 + ", HIGH);" +
-							 "\n    delayMicroseconds(delay);" +
+							 "\n    delayMicroseconds(DELAY_PING);" +
 							 "\n  }" +
 							 "\n" +
 							 "\n  delayMicroseconds(200);" +
@@ -41,9 +59,9 @@ public class ECSReadDistanceBlock extends TranslatorBlock
 							 "\n  } else {" +
 							 "\n    time = (end + ~start) - (start + ~start);" +
 							 "\n  }" +
-							 "\n  Serial.println(time, DEC);" +
+							 "\n  //Serial.println(time, DEC);" +
 							 "\n" +
-							 "\n  delayMicroseconds(200000);" +
+							 "\n  delayMicroseconds(400000);" +
 							 "\n  return ((int) time);" +
 							 "\n}\n";
 	
@@ -53,8 +71,9 @@ public class ECSReadDistanceBlock extends TranslatorBlock
 		translator.addSetupCommand("Serial.begin(9600);" +
 					   "\npinMode(" + TRANSMIT_PIN_2 + ", OUTPUT);" +
 					   "\npinMode(" + TRANSMIT_PIN_1 + ", OUTPUT);\n");
+		translator.addDefinitionCommand(smoothedUltraSonicFunction);
 		translator.addDefinitionCommand(ultraSonicFunction);
-		String ret = " getDistance()";
+		String ret = " smoothDistance()";
 
 		return codePrefix + ret + codeSuffix;
 	}
