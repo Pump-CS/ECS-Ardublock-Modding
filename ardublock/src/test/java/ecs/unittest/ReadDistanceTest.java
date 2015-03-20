@@ -17,25 +17,25 @@ public class ReadDistanceTest {
 
 	private static final String TRANSMIT_PIN_1 = TranslatorBlock.TRANSMIT_PIN_1;
 	private static final String TRANSMIT_PIN_2 = TranslatorBlock.TRANSMIT_PIN_2;
-	private static final String READDIST_TOCODE = "getDistance()";
+	private static final String READDIST_TOCODE = "smoothDistance()";
 	private static final String[] READDIST_SETUPCOMMANDS = {"Serial.begin(9600);", 
-															"pinMode(" + TRANSMIT_PIN_1 + ", OUTPUT);",
-															"pinMode(" + TRANSMIT_PIN_2 + ", OUTPUT);"};
-	private static final String[] READDIST_DEFINITIONS = 	{"int getDistance()",
+															"pinMode(" + TRANSMIT_PIN_2 + ", OUTPUT);",
+															"pinMode(" + TRANSMIT_PIN_1 + ", OUTPUT);"};
+	private static final String[] READDIST_DEFINITION_GETDISTANCE = {"int getDistance()",
 															"{",
 															"unsigned long start = micros();",
-															"int cycles = 4;",
-															"int delay = 20;",
-															"int timeout = 8000;",
+															"int CYCLES = 4;",
+															"int DELAY_PING = 25;",
+															"int timeout = 16000;",
 															"int T1OUT = 0x10;",
 															"",
-															"for (int ii = 0; ii < 4; ii++) {",
+															"for (int ii = 0; ii < CYCLES; ii++) {",
 															"digitalWrite(" + TRANSMIT_PIN_1 + ", HIGH);",
 															"digitalWrite(" + TRANSMIT_PIN_2 + ", LOW);",
-															"delayMicroseconds(delay);",
+															"delayMicroseconds(DELAY_PING);",
 															"digitalWrite(" + TRANSMIT_PIN_1 + ", LOW);",
 															"digitalWrite(" + TRANSMIT_PIN_2 + ", HIGH);",
-															"delayMicroseconds(delay);",
+															"delayMicroseconds(DELAY_PING);",
 															"}",
 															"",
 															"delayMicroseconds(200);",
@@ -52,10 +52,27 @@ public class ReadDistanceTest {
 															"}",
 															"Serial.println(time, DEC);",
 															"",
-															"delayMicroseconds(200000);",
+															"delayMicroseconds(4000000);",
 															"return ((int) time);",
 															"}",
 															};
+
+	private static final String[] READDIST_DEFINITION_SMOOTHDISTANCE = {"int smoothDistance()",
+																		"{",
+																		"int count = 0;",
+																		"long avg = 0;",
+																		"int dist = 0;",
+																		"while (count < 4) {",
+																		"dist = getDistance();",
+																		"avg = (avg + dist)/2;",
+																		"count = count + 1",
+																		"}",
+																		"if (count == 4) {",
+																		"count = 0;",
+																		"}",
+																		"Serial.println(avg, DEC);",
+																		"return (int)avg;",
+																		"}"};
 	
 	private ECSReadDistanceBlock blockToTest;
 	private Translator translator;

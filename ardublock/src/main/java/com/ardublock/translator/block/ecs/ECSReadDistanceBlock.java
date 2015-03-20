@@ -22,7 +22,7 @@ public class ECSReadDistanceBlock extends TranslatorBlock
 							 "\n    avg = (avg + dist)/2;" +
 							 "\n    count = count + 1;" +
 							 "\n  }" +
-							 "\n  if (count = 4){" +
+							 "\n  if (count == 4){" +
 							 "\n    count = 0;" +
 							 "\n  }" +
 							 "\n  Serial.println(avg, DEC);" +
@@ -59,7 +59,6 @@ public class ECSReadDistanceBlock extends TranslatorBlock
 							 "\n  } else {" +
 							 "\n    time = (end + ~start) - (start + ~start);" +
 							 "\n  }" +
-							 "\n  //Serial.println(time, DEC);" +
 							 "\n" +
 							 "\n  delayMicroseconds(400000);" +
 							 "\n  return ((int) time);" +
@@ -68,9 +67,9 @@ public class ECSReadDistanceBlock extends TranslatorBlock
 	@Override
 	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
 	{	
-		translator.addSetupCommand("Serial.begin(9600);" +
-					   "\npinMode(" + TRANSMIT_PIN_2 + ", OUTPUT);" +
-					   "\npinMode(" + TRANSMIT_PIN_1 + ", OUTPUT);\n");
+		translator.addSetupCommand("Serial.begin(9600);");
+		translator.addSetupCommand("pinMode(" + TRANSMIT_PIN_2 + ", OUTPUT);");
+		translator.addSetupCommand("pinMode(" + TRANSMIT_PIN_1 + ", OUTPUT);");
 		translator.addDefinitionCommand(smoothedUltraSonicFunction);
 		translator.addDefinitionCommand(ultraSonicFunction);
 		String ret = " smoothDistance()";
