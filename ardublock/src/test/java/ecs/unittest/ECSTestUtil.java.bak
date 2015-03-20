@@ -1,0 +1,131 @@
+package ecs.unittest;
+
+import com.ardublock.translator.Translator;
+import edu.mit.blocks.controller.WorkspaceController;
+import edu.mit.blocks.workspace.Workspace;
+
+public class ECSTestUtil {
+
+	public static final Long TEST_ID = new Long(101);
+	
+	private static final String SETUP_METHOD_HEADER = "void setup()\n{\n";
+	private static final String NEWLINE_REGEX = "\n";
+
+	// TODO: make private and update tests to accomodate
+	public static String stripSetupCode(String in) {
+		String ret = parseSetup(in);
+		ret = ret.substring(SETUP_METHOD_HEADER.length());
+		ret = ret.substring(0, ret.length() - 3);
+		return ret;
+	}
+
+	public static Translator getNewTranslator() {
+		return new Translator((new WorkspaceController()).getWorkspace());
+	}
+
+
+	/**
+ 	*	We want to compare unordered lists of statements rather than exact strings of statements
+ 	*	since the order does not matter.
+ 	*/ 
+	public static boolean codeMatchesUnordered(String[] expected, String header) {
+		String strippedSetupCode = stripSetupCode(header);
+		String[] setupCommands = splitStatements(strippedSetupCode);	
+
+		if (expected.length != setupCommands.length) {
+			return false;
+		}
+
+		for (int i = 0; i < expected.length; i++) {
+			boolean found = false;
+			for (int j = 0; j < expected.length; j++) {
+				if (expected[i].equals(setupCommands[j])) {
+					found = true;
+					setupCommands[j] = null; // set to null so we don't match this one again
+					break;
+				}
+			}
+			if (!found) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	public static String setupCommandErrorMessage(String actual, String[] expected) {
+		String[] actualCommands = splitStatements(stripSetupCode(actual));
+        String ret = "Expected and actual set up commands do not match:\n";
+        ret += "\tExpected:\n";
+        for (int i = 0; i < expected.length; i++) {
+            ret += "\t\t" + expected[i];
+            ret += "\n";   
+        }                  
+        ret += "\tActual:\n";
+        for (int i = 0; i < actualCommands.length; i++) {
+            ret += "\t\t" + actualCommands[i];
+            ret += "\n";
+        }
+        return ret;
+    }
+
+	public static String codeMatchesErrorMessage(String actual, String[] expected) {
+		String[] codeStatements = splitStatements(removeSetupCode(actual));
+		String ret = "Expected and actual code does not match:\n";
+		ret += "\tExpected:\n";
+		for (int i = 0; i < expected.length; i++) {
+			ret += "\t\t" + expected[i];
+			ret += "\n";
+		}
+		ret += "\tActual:\n";
+		for (int i = 0; i < codeStatements.length; i++) {
+			ret += "\t\t" + codeStatements[i];
+			ret += "\n";
+		}
+
+		return ret;
+	}
+
+
+	/**
+ 	*		Order matters here.
+ 	*/
+	public static boolean codeMatchesOrdered(String[] expected, String header) {
+		String[] statements = splitStatements(removeSetupCode(header));
+
+		if (statements.length != expected.length) {
+			return false;
+		}
+
+		for (int i = 0; i < expected.length; i++) {
+			if (!expected[i].trim().equals(statements[i].trim())) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+ 	*	Get all text before SETUP_METHOD_HEADER in the input string
+ 	*/ 
+	private static String removeSetupCode(String header) {
+		int index = header.indexOf(SETUP_METHOD_HEADER);
+		return header.substring(0, index);
+	}
+
+	/**
+ 	* 	Truncate anything before SETUP_METHOD_HEADER in the input string.
+ 	*/
+	private static String parseSetup(String header) {
+        int index = header.indexOf(SETUP_METHOD_HEADER);
+        return header.substring(index);
+    }
+
+	/**
+ 	*	Split the given string at each new line.
+ 	*/ 
+    private static String[] splitStatements(String code) {
+        return code.split(NEWLINE_REGEX);
+    }
+}

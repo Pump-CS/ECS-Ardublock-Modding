@@ -97,8 +97,9 @@ abstract public class TranslatorBlock
 	{
 		return blockAdaptor.nextTranslatorBlock(this.translator, blockId, codePrefix, codeSuffix);
 	}
-	
-	protected TranslatorBlock getTranslatorBlockAtSocket(int i)
+
+	/** Visible for testing. **/	
+	public TranslatorBlock getTranslatorBlockAtSocket(int i)
 	{
 		return this.getTranslatorBlockAtSocket(i, "", "");
 	}
