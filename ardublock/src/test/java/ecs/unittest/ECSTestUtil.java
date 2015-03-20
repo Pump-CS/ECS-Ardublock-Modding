@@ -10,6 +10,8 @@ public class ECSTestUtil {
 	
 	private static final String SETUP_METHOD_HEADER = "void setup()\n{\n";
 	private static final String NEWLINE_REGEX = "\n";
+	private static final String SETUP_SECTION = "Setup";
+	private static final String DEFINITIONS_SECTION = "Definitions";
 
 	public static Translator getNewTranslator() {
 		return new Translator((new WorkspaceController()).getWorkspace());
@@ -23,22 +25,23 @@ public class ECSTestUtil {
 		expectedSetup = removeEmptyLines(expectedSetup);
 		expectedDefs = removeEmptyLines(expectedDefs);
 
-		//System.out.println(actualSetup.length + ", " + expectedSetup.length);
-		//System.out.println(actualDefs.length + ", " + expectedDefs.length);
-
-		if (actualSetup.length != expectedSetup.length) return false;
-		if (actualDefs.length != expectedDefs.length) return false;
+		if (actualSetup.length != expectedSetup.length) {
+			return false;
+		}
+		if (actualDefs.length != expectedDefs.length) {
+			return false;
+		}
 
 		for (int i = 0; i < expectedSetup.length; i++) {
 			if (!actualSetup[i].trim().equals(expectedSetup[i].trim())) {
-				//System.out.println(actualSetup[i] + " === " + expectedSetup[i]);
+				System.out.println(errorMessage(actualSetup[i].trim(), expectedSetup[i].trim(), SETUP_SECTION));
 				return false;
 			}
 		}	
 
 		for (int i = 0; i < expectedDefs.length; i++) {
 			if (!actualDefs[i].trim().equals(expectedDefs[i].trim())) {
-				//System.out.println(actualDefs[i] + " === " + expectedDefs[i]);
+				System.out.println(errorMessage(actualDefs[i].trim(), expectedDefs[i].trim(), DEFINITIONS_SECTION));
 				return false;
 			}
 		}
@@ -46,22 +49,22 @@ public class ECSTestUtil {
 		return true;
 	}
 
-	public static String setupCommandErrorMessage(String actual, String[] expected) {
-		//String[] actualCommands = splitStatements(stripSetupCode(actual));
+	public static String errorMessage(String actual, String expected, String section) {
 		String[] actualCommands = splitStatements(actual);
-        String ret = "Expected and actual set up commands do not match:\n";
-        ret += "\tExpected:\n";
-        for (int i = 0; i < expected.length; i++) {
-            ret += "\t\t" + expected[i];
-            ret += "\n";   
-        }                  
-        ret += "\tActual:\n";
-        for (int i = 0; i < actualCommands.length; i++) {
-            ret += "\t\t" + actualCommands[i];
-            ret += "\n";
-        }
+        String ret = "Expected and actual lines in " + section + " section do not match:\n";
+        ret += "\tExpected: " + expected  + "\n";
+        ret += "\tActual: " + actual + "\n";
         return ret;
     }
+
+	public static String[] concatArrays(String[] a, String[] b) {
+		int aLength = a.length;
+		int bLength = b.length;
+		String[] ret = new String[aLength + bLength];
+		System.arraycopy(a, 0, ret, 0, aLength);
+		System.arraycopy(b, 0, ret, aLength, bLength);
+		return ret;
+	}
 
 	/**
  	*	Split the given string at each new line.
@@ -100,9 +103,5 @@ public class ECSTestUtil {
 	
 	private static String[] getDefinitions(String header) {
 		return splitStatements(header.substring(0, header.indexOf(SETUP_METHOD_HEADER)));
-	}
-
-	private static String createHeader(String[] defs, String[] setup) {
-		return null;
 	}
 }

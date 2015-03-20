@@ -28,7 +28,6 @@ public class ReadDistanceTest {
 															"int DELAY_PING = 25;",
 															"int timeout = 16000;",
 															"int T1OUT = 0x10;",
-															"",
 															"for (int ii = 0; ii < CYCLES; ii++) {",
 															"digitalWrite(" + TRANSMIT_PIN_1 + ", HIGH);",
 															"digitalWrite(" + TRANSMIT_PIN_2 + ", LOW);",
@@ -37,7 +36,6 @@ public class ReadDistanceTest {
 															"digitalWrite(" + TRANSMIT_PIN_2 + ", HIGH);",
 															"delayMicroseconds(DELAY_PING);",
 															"}",
-															"",
 															"delayMicroseconds(200);",
 															"while((PIND & T1OUT) != 0 && timeout > 0) {",
 															"timeout--;",
@@ -50,9 +48,7 @@ public class ReadDistanceTest {
 															"} else {",
 															"time = (end + ~start) - (start + ~start);",
 															"}",
-															"Serial.println(time, DEC);",
-															"",
-															"delayMicroseconds(4000000);",
+															"delayMicroseconds(400000);",
 															"return ((int) time);",
 															"}",
 															};
@@ -65,9 +61,9 @@ public class ReadDistanceTest {
 																		"while (count < 4) {",
 																		"dist = getDistance();",
 																		"avg = (avg + dist)/2;",
-																		"count = count + 1",
+																		"count = count + 1;",
 																		"}",
-																		"if (count == 4) {",
+																		"if (count == 4){",
 																		"count = 0;",
 																		"}",
 																		"Serial.println(avg, DEC);",
@@ -85,18 +81,13 @@ public class ReadDistanceTest {
 	@Test
 	public void readDistanceTest_noInput_Success() {
 		String headerCommands;
+		String[] READDIST_DEFINITIONS = ECSTestUtil.concatArrays(READDIST_DEFINITION_SMOOTHDISTANCE, READDIST_DEFINITION_GETDISTANCE);		
 		blockToTest = new ECSReadDistanceBlock(ECSTestUtil.TEST_ID, translator, "", "", "");
 		
 		try {
 			assertEquals(blockToTest.toCode().trim(), READDIST_TOCODE);
 
 			headerCommands = translator.genreateHeaderCommand();
-			//assertTrue(ECSTestUtil.codeMatchesUnordered(READDIST_SETUPCOMMANDS, headerCommands),
-			//			ECSTestUtil.setupCommandErrorMessage(headerCommands, READDIST_SETUPCOMMANDS));
-
-			//assertTrue(ECSTestUtil.codeMatchesOrdered(READDIST_DEFINITIONS, headerCommands),
-			//			ECSTestUtil.codeMatchesErrorMessage(headerCommands, READDIST_DEFINITIONS));
-			
 			assertTrue(ECSTestUtil.headersMatch(headerCommands, READDIST_DEFINITIONS, READDIST_SETUPCOMMANDS));
 		} catch (Exception e) {
 			e.printStackTrace();
