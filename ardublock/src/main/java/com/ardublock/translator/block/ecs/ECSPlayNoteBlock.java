@@ -176,7 +176,6 @@ public class ECSPlayNoteBlock extends TranslatorBlock
 		TranslatorBlock freqBlock = this.getRequiredTranslatorBlockAtSocket(0);
 
 		String note = freqBlock.toCode();
-		System.out.println("." + note + ".");
 		note = note.substring(1, note.length() - 1);
 		Integer freq = notemap.get(note);
 

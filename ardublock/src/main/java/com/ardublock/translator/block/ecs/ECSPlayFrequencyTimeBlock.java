@@ -19,8 +19,8 @@ public class ECSPlayFrequencyTimeBlock extends TranslatorBlock
 		TranslatorBlock timeBlock = this.getRequiredTranslatorBlockAtSocket(1);
 
 		String ret = "tone(" + SPEAKER_PIN + ", " + freqBlock.toCode() + ", " + timeBlock.toCode() + ");\n";
-		ret += "\tdelay(" + timeBlock.toCode() + ");\n";
-		ret += "\tnoTone(" + SPEAKER_PIN + ");\n";
+		ret += "delay(" + timeBlock.toCode() + ");\n";
+		ret += "noTone(" + SPEAKER_PIN + ");\n";
 		return ret;
 	}
 }
