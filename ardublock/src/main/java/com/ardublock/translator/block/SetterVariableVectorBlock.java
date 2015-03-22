@@ -6,6 +6,7 @@ import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.exception.BlockException;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+import com.ardublock.translator.block.exception.InvalidArrayVariableNameAccessException;
 
 public class SetterVariableVectorBlock extends TranslatorBlock
 {
@@ -19,14 +20,27 @@ public class SetterVariableVectorBlock extends TranslatorBlock
 	@Override
 	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
 	{
+		String varName;
+		String internalVarName;
+		String ret;
 		TranslatorBlock name = this.getRequiredTranslatorBlockAtSocket(0);
 		if (!(name instanceof VariableFakeBlock)) {
 		      throw new BlockException(blockId, uiMessageBundle.getString("ardublock.error_msg.array_var_slot"));
-		    }
+		}
+
+		varName = name.toCode();
+		internalVarName = translator.getArrayVariable(varName);
+
+		if (internalVarName == null) {
+			throw new InvalidArrayVariableNameAccessException(blockId, varName);
+		}
+
 		TranslatorBlock position = this.getRequiredTranslatorBlockAtSocket(1);
 		TranslatorBlock value = this.getRequiredTranslatorBlockAtSocket(2);
-		String ret = name.toCode()+"["+position.toCode()+" - 1]";
-		ret = ret + " = " + value.toCode() + " ;\n";
+
+
+		ret = internalVarName + "[" + position.toCode() + " - 1]";
+		ret = ret + " = " + value.toCode() + ";\n";
 		return ret;
 	}
 

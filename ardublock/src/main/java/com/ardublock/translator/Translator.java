@@ -38,6 +38,7 @@ public class Translator
 	
 	private Map<String, String> numberVariableSet;
 	private Map<String, String> booleanVariableSet;
+	private Map<String, String> arrayVariableSet;
 	
 	private Workspace workspace;
 	
@@ -134,6 +135,7 @@ public class Translator
 		
 		numberVariableSet = new HashMap<String, String>();
 		booleanVariableSet = new HashMap<String, String>();
+		arrayVariableSet = new HashMap<String, String>();
 		
 		blockAdaptor = buildOpenBlocksAdaptor();
 		
@@ -190,6 +192,11 @@ public class Translator
 	{
 		return booleanVariableSet.get(userVarName);
 	}
+
+	public String getArrayVariable(String userVarName)
+	{
+		return arrayVariableSet.get(userVarName);
+	}
 	
 	public void addNumberVariable(String userVarName, String internalName)
 	{
@@ -199,6 +206,11 @@ public class Translator
 	public void addBooleanVariable(String userVarName, String internalName)
 	{
 		booleanVariableSet.put(userVarName, internalName);
+	}
+	
+	public void addArrayVariable(String userVarName, String internalName)
+	{
+		arrayVariableSet.put(userVarName, internalName);
 	}
 	
 	public void addFunctionName(Long blockId, String functionName) throws SubroutineNameDuplicatedException

@@ -21,6 +21,8 @@ import com.ardublock.translator.block.exception.InvalidButtonException;
 import com.ardublock.translator.block.exception.InvalidNumberVariableNameException;
 import com.ardublock.translator.block.exception.InvalidBooleanVariableNameException;
 import com.ardublock.translator.block.exception.InvalidNumberDoubleVariableNameException;
+import com.ardublock.translator.block.exception.InvalidArrayVariableNameAccessException;
+import com.ardublock.translator.block.exception.InvalidArrayVariableNameCreateException;
 import com.ardublock.translator.block.exception.SubroutineNameDuplicatedException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
 
@@ -140,6 +142,12 @@ public class GenerateCodeButtonListener implements ActionListener
 			} else if (e1 instanceof InvalidNumberDoubleVariableNameException) {
 				InvalidNumberDoubleVariableNameException nameEx = (InvalidNumberDoubleVariableNameException)e1;
 				JOptionPane.showMessageDialog(parentFrame, uiMessageBundle.getString("ardublock.translator.exception.invalidNumberDoubleVariableName") + "\n(Tried to use: \"" + nameEx.getMessage() + "\")", "Error", JOptionPane.ERROR_MESSAGE);
+			} else if (e1 instanceof InvalidArrayVariableNameAccessException) {
+				InvalidArrayVariableNameAccessException nameEx = (InvalidArrayVariableNameAccessException)e1;
+				JOptionPane.showMessageDialog(parentFrame, uiMessageBundle.getString("ardublock.translator.exception.invalidArrayVariableNameAccess") + "\n(Tried to use: \"" + nameEx.getMessage() + "\")", "Error", JOptionPane.ERROR_MESSAGE);
+			} else if (e1 instanceof InvalidArrayVariableNameCreateException) {
+				InvalidArrayVariableNameCreateException nameEx = (InvalidArrayVariableNameCreateException)e1;
+				JOptionPane.showMessageDialog(parentFrame, uiMessageBundle.getString("ardublock.translator.exception.invalidArrayVariableNameCreate") + "\n(Tried to use: \"" + nameEx.getMessage() + "\")", "Error", JOptionPane.ERROR_MESSAGE);
 			} else {
 				JOptionPane.showMessageDialog(parentFrame, uiMessageBundle.getString("ardublock.translator.exception.socketNull"), "Error", JOptionPane.ERROR_MESSAGE);
 			}
