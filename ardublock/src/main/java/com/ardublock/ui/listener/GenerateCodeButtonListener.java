@@ -18,6 +18,7 @@ import com.ardublock.translator.block.exception.InvalidNoteException;
 import com.ardublock.translator.block.exception.InvalidPinException;
 import com.ardublock.translator.block.exception.InvalidKeyException;
 import com.ardublock.translator.block.exception.InvalidButtonException;
+import com.ardublock.translator.block.exception.InvalidNumberVariableNameException;
 import com.ardublock.translator.block.exception.SubroutineNameDuplicatedException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
 
@@ -128,6 +129,9 @@ public class GenerateCodeButtonListener implements ActionListener
 				JOptionPane.showMessageDialog(parentFrame, uiMessageBundle.getString("ardublock.translator.exception.invalidKey"), "Error", JOptionPane.ERROR_MESSAGE);
 			} else if (e1 instanceof InvalidButtonException) {
 				JOptionPane.showMessageDialog(parentFrame, uiMessageBundle.getString("ardublock.translator.exception.invalidButton"), "Error", JOptionPane.ERROR_MESSAGE);
+			} else if (e1 instanceof InvalidNumberVariableNameException) {
+				InvalidNumberVariableNameException nameEx = (InvalidNumberVariableNameException)e1;
+				JOptionPane.showMessageDialog(parentFrame, uiMessageBundle.getString("ardublock.translator.exception.invalidNumberVariableName") + "\n(Tried to use: " + nameEx.getMessage() + ")", "Error", JOptionPane.ERROR_MESSAGE);
 			} else {
 				JOptionPane.showMessageDialog(parentFrame, uiMessageBundle.getString("ardublock.translator.exception.socketNull"), "Error", JOptionPane.ERROR_MESSAGE);
 			}

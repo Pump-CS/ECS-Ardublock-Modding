@@ -7,6 +7,8 @@ import com.ardublock.translator.block.exception.BlockException;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
 
+import java.util.ArrayList;
+
 public class SetterVariableNumberBlock extends TranslatorBlock
 {
 	private static ResourceBundle uiMessageBundle = ResourceBundle.getBundle("com/ardublock/block/ardublock");
@@ -23,10 +25,24 @@ public class SetterVariableNumberBlock extends TranslatorBlock
 		if (!(tb instanceof VariableNumberBlock)) {
 			throw new BlockException(blockId, uiMessageBundle.getString("ardublock.error_msg.number_var_slot"));
 		}
+
+		VariableNumberBlock nb = (VariableNumberBlock)tb;
+		nb.setIsInSetter(true);
 		
-		String ret = tb.toCode();
+		String varName = nb.toCode();
+		System.out.println("in setter, varName: " + varName);
+		String internalVarName = translator.buildVariableName(varName);
+		// If we haven't seen this variable yet, add it to the list of valid variable names
+		if (translator.getNumberVariable(varName) == null) {
+			translator.addNumberVariable(varName, internalVarName);
+			translator.addDefinitionCommand("int " + internalVarName + " = 0;");
+			System.out.println("Added (" + varName + ":" + internalVarName + ") to list of valid vars.");
+		}
+
+		String ret = internalVarName;
 		tb = this.getRequiredTranslatorBlockAtSocket(1);
 		ret = ret + " = " + tb.toCode() + " ;\n";
+
 		return ret;
 	}
 
