@@ -21,25 +21,31 @@ public class SetterVariableNumberBlock extends TranslatorBlock
 	@Override
 	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
 	{
+		VariableNumberBlock nb;
+		String varName;
+		String internalVarName;
+		String ret;
+
 		TranslatorBlock tb = this.getRequiredTranslatorBlockAtSocket(0);
 		if (!(tb instanceof VariableNumberBlock)) {
 			throw new BlockException(blockId, uiMessageBundle.getString("ardublock.error_msg.number_var_slot"));
 		}
 
-		VariableNumberBlock nb = (VariableNumberBlock)tb;
+		// Mark this variable number block as being inside of a setter so that it doesn't complain
+		// about not existing yet.
+		nb = (VariableNumberBlock)tb;
 		nb.setIsInSetter(true);
 		
-		String varName = nb.toCode();
-		System.out.println("in setter, varName: " + varName);
-		String internalVarName = translator.buildVariableName(varName);
+		varName = nb.toCode();
+		internalVarName = translator.buildVariableName(varName);
+		
 		// If we haven't seen this variable yet, add it to the list of valid variable names
 		if (translator.getNumberVariable(varName) == null) {
 			translator.addNumberVariable(varName, internalVarName);
 			translator.addDefinitionCommand("int " + internalVarName + " = 0;");
-			System.out.println("Added (" + varName + ":" + internalVarName + ") to list of valid vars.");
 		}
 
-		String ret = internalVarName;
+		ret = internalVarName;
 		tb = this.getRequiredTranslatorBlockAtSocket(1);
 		ret = ret + " = " + tb.toCode() + " ;\n";
 

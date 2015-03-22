@@ -5,7 +5,6 @@ import com.ardublock.translator.block.exception.InvalidNumberVariableNameExcepti
 
 public class VariableNumberBlock extends TranslatorBlock
 {
-
 	private boolean isInSetter;
 
 	public VariableNumberBlock(Long blockId, Translator translator, String codePrefix, String codeSuffix, String label)
@@ -17,22 +16,20 @@ public class VariableNumberBlock extends TranslatorBlock
 	@Override
 	public String toCode() throws InvalidNumberVariableNameException
 	{
+		String internalVariableName;
+	
 		// If this block has been marked as being in a variable setter, then we 
 		// don't need to check that the variable is valid since we are creating it here
 		if (this.isInSetter) {
 			return codePrefix + label + codeSuffix;
 		}
 
-		String internalVariableName = translator.getNumberVariable(label);
+		internalVariableName = translator.getNumberVariable(label);
 		if (internalVariableName == null)
 		{
-			System.out.println("invalid var name");
 			throw new InvalidNumberVariableNameException(blockId, label);
-			//internalVariableName = translator.buildVariableName(label);
-			//translator.addNumberVariable(label, internalVariableName);
-			//translator.addDefinitionCommand("int " + internalVariableName + " = 0 ;");
-//			translator.addSetupCommand(internalVariableName + " = 0;");
 		}
+
 		return codePrefix + internalVariableName + codeSuffix;
 	}
 
