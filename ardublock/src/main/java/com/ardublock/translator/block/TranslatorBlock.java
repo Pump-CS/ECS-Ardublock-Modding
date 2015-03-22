@@ -45,25 +45,6 @@ abstract public class TranslatorBlock
 	public static final String FREE_PIN_5 =    "22";
 	public static final String FREE_PIN_6 =    "23";
 
-	private static ArrayList<String> validNumberVariables = null;
-
-	public static ArrayList<String> getValidNumberVariables() {
-		if (validNumberVariables == null) {
-			validNumberVariables = new ArrayList<String>();
-		}
-		return validNumberVariables;
-	}
-
-	public static void addNumberVariable(String varName) {
-		ArrayList<String> vars = getValidNumberVariables();
-		if (vars.contains(varName)) return;
-		vars.add(varName);
-	}
-
-	public static void removeNumberVariable(String varName) {
-		getValidNumberVariables().remove(varName);
-	}
-		
 	protected TranslatorBlock(Long blockId, Translator translator)
 	{
 		this.blockId = blockId;
