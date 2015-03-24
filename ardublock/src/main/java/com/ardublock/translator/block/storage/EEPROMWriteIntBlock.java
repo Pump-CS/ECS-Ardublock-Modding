@@ -9,6 +9,7 @@ import com.ardublock.translator.block.TranslatorBlock;
 //import com.ardublock.translator.block.exception.BlockException;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+import com.ardublock.core.exception.ArdublockException;
 
 
 public class EEPROMWriteIntBlock extends TranslatorBlock
@@ -21,7 +22,7 @@ public class EEPROMWriteIntBlock extends TranslatorBlock
 	}
 
 	@Override
-	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
+	public String toCode() throws ArdublockException
 	{
 		setupEEPROMEnvironment(translator);
 

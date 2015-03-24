@@ -17,6 +17,7 @@ import com.ardublock.translator.block.TranslatorBlockFactory;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNameDuplicatedException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+import com.ardublock.core.exception.ArdublockException;
 
 import edu.mit.blocks.codeblocks.Block;
 import edu.mit.blocks.renderable.RenderableBlock;
@@ -113,7 +114,7 @@ public class Translator
 		return headerCommand.toString();
 	}
 	
-	public String translate(Long blockId) throws SocketNullException, SubroutineNotDeclaredException
+	public String translate(Long blockId) throws ArdublockException
 	{
 		TranslatorBlockFactory translatorBlockFactory = new TranslatorBlockFactory();
 		Block block = workspace.getEnv().getBlock(blockId);
@@ -359,7 +360,7 @@ public class Translator
 		return subroutineBlockSet;
 	}
 	
-	public String translate(Set<RenderableBlock> loopBlocks, Set<RenderableBlock> subroutineBlocks) throws SocketNullException, SubroutineNotDeclaredException
+	public String translate(Set<RenderableBlock> loopBlocks, Set<RenderableBlock> subroutineBlocks) throws ArdublockException
 	{
 		StringBuilder code = new StringBuilder();
 		for (RenderableBlock renderableBlock : loopBlocks)

@@ -6,6 +6,7 @@ import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.exception.BlockException;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+import com.ardublock.core.exception.ArdublockException;
 import com.ardublock.translator.block.exception.InvalidArrayVariableNameAccessException;
 
 public class SetterVariableVectorBlock extends TranslatorBlock
@@ -18,7 +19,7 @@ public class SetterVariableVectorBlock extends TranslatorBlock
 	}
 
 	@Override
-	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
+	public String toCode() throws ArdublockException
 	{
 		String varName;
 		String internalVarName;

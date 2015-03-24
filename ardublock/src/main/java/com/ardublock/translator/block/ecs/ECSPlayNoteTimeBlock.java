@@ -5,6 +5,7 @@ import com.ardublock.translator.block.TranslatorBlock;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.InvalidNoteException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+import com.ardublock.core.exception.ArdublockException;
 
 import java.util.Hashtable;
 
@@ -17,7 +18,7 @@ public class ECSPlayNoteTimeBlock extends TranslatorBlock
 	}
 
 	@Override
-	public String toCode() throws SocketNullException , SubroutineNotDeclaredException
+	public String toCode() throws ArdublockException
 	{
 		TranslatorBlock freqBlock = this.getRequiredTranslatorBlockAtSocket(0);
 		TranslatorBlock timeBlock = this.getRequiredTranslatorBlockAtSocket(1);

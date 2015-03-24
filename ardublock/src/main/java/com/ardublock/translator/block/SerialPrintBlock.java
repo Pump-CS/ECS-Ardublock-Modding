@@ -3,6 +3,7 @@ package com.ardublock.translator.block;
 import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+import com.ardublock.core.exception.ArdublockException;
 
 public class SerialPrintBlock extends TranslatorBlock
 {
@@ -12,7 +13,7 @@ public class SerialPrintBlock extends TranslatorBlock
 	}
 
 	@Override
-	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
+	public String toCode() throws ArdublockException
 	{
 		/**
 		 * DO NOT add tab in code any more, we'll use arduino to format code, or the code will duplicated. 

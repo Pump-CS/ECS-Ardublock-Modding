@@ -3,6 +3,7 @@ package com.ardublock.translator.block;
 import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+import com.ardublock.core.exception.ArdublockException;
 
 public class InversedDigitalInputBlock extends DigitalInputBlock
 {
@@ -11,7 +12,7 @@ public class InversedDigitalInputBlock extends DigitalInputBlock
 		super(blockId, translator, codePrefix, codeSuffix, label);
 	}
 	
-	protected String generateCodeUsingNumberBlock(TranslatorBlock translatorBlock) throws SocketNullException, SubroutineNotDeclaredException
+	protected String generateCodeUsingNumberBlock(TranslatorBlock translatorBlock) throws ArdublockException
 	{
 		String number;
 		number = translatorBlock.toCode();
@@ -23,7 +24,7 @@ public class InversedDigitalInputBlock extends DigitalInputBlock
 		return codePrefix + ret + codeSuffix;
 	}
 	
-	protected String generateCodeUsingNonNumberBlock(TranslatorBlock translatorBlock) throws SocketNullException, SubroutineNotDeclaredException
+	protected String generateCodeUsingNonNumberBlock(TranslatorBlock translatorBlock) throws ArdublockException
 	{
 		translator.addDefinitionCommand(ARDUBLOCK_DIGITAL_READ_DEFINE);
 		String ret = "!__ardublockDigitalRead(";

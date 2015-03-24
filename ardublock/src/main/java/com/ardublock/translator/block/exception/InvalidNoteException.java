@@ -1,24 +1,11 @@
 package com.ardublock.translator.block.exception;
 
-import com.ardublock.translator.block.exception.SocketNullException;
+import com.ardublock.translator.block.exception.ECSException;
 
-public class InvalidNoteException extends SocketNullException
+public class InvalidNoteException extends ECSException
 {
-
-	/**
-	 * 
-	 */
-	private Long blockId;
-	
-	
 	public InvalidNoteException(Long blockId)
 	{
 		super(blockId);
 	}
-	
-	public Long getBlockId()
-	{
-		return blockId;
-	}
-
 }

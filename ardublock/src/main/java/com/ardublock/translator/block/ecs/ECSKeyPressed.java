@@ -5,6 +5,7 @@ import com.ardublock.translator.block.TranslatorBlock;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.InvalidKeyException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+import com.ardublock.core.exception.ArdublockException;
 
 /* This block calculates the appropriate index into the global
 	boolean keysDown array and inserts code to access that element. 
@@ -19,7 +20,7 @@ public class ECSKeyPressed extends TranslatorBlock
 	}
 
 	@Override
-	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
+	public String toCode() throws ArdublockException
 	{
 		TranslatorBlock key = this.getRequiredTranslatorBlockAtSocket(0);
 

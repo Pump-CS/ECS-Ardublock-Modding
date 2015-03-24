@@ -4,6 +4,7 @@ import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.TranslatorBlock;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+import com.ardublock.core.exception.ArdublockException;
 
 /*
 	This block represents the Note/Key "datatype". It behaves just like a message block does
@@ -19,7 +20,7 @@ public class ECSNoteKeyBlock extends TranslatorBlock
 	}
 
 	@Override
-	public String toCode() throws SocketNullException , SubroutineNotDeclaredException
+	public String toCode() throws ArdublockException
 	{
 		// enclose label in quotes to match behavior of MessageBlock.
 		// ECSPlayNoteBlock and ECSPlayNotTimeBlock expect this behavior and 

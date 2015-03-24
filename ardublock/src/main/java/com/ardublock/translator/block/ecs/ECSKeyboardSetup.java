@@ -3,7 +3,7 @@ package com.ardublock.translator.block.ecs;
 import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.TranslatorBlock;
 import com.ardublock.translator.block.exception.*;
-
+import com.ardublock.core.exception.ArdublockException;
 import processing.app.Preferences;
 
 import java.awt.BorderLayout;
@@ -33,7 +33,7 @@ public class ECSKeyboardSetup extends TranslatorBlock
 	}
 
 	@Override
-	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
+	public String toCode() throws ArdublockException
 	{
 		// Start a thread that will wait until uploading to the Arduino is finished before opening the serial port
 		(new ECSSerialPoll()).start();

@@ -1,21 +1,15 @@
 package com.ardublock.translator.block.exception;
 
-import com.ardublock.translator.block.exception.SocketNullException;
+import com.ardublock.translator.block.exception.ECSException;
 
-public class InvalidBooleanVariableNameException extends SocketNullException
+public class InvalidBooleanVariableNameException extends ECSException
 {
-	private Long blockId;
 	private String varName;
 	
 	public InvalidBooleanVariableNameException(Long blockId, String varName)
 	{
 		super(blockId);
 		this.varName = varName;
-	}
-	
-	public Long getBlockId()
-	{
-		return blockId;
 	}
 
 	public String getMessage() {

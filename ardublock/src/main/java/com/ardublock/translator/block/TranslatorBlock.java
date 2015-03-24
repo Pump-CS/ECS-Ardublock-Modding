@@ -4,12 +4,13 @@ import com.ardublock.translator.Translator;
 import com.ardublock.translator.adaptor.BlockAdaptor;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+import com.ardublock.core.exception.ArdublockException;
 
 import java.util.ArrayList;
 
 abstract public class TranslatorBlock
 {
-	abstract public String toCode() throws SocketNullException, SubroutineNotDeclaredException;
+	abstract public String toCode() throws ArdublockException;
 	
 	protected Long blockId;
 	

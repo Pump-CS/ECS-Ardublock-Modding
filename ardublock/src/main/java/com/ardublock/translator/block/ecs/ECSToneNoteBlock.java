@@ -6,6 +6,7 @@ import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.InvalidNoteException;
 import com.ardublock.translator.block.exception.InvalidPinException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+import com.ardublock.core.exception.ArdublockException;
 
 import java.util.Hashtable;
 
@@ -18,7 +19,7 @@ public class ECSToneNoteBlock extends TranslatorBlock
 	}
 
 	@Override
-	public String toCode() throws SocketNullException , SubroutineNotDeclaredException
+	public String toCode() throws ArdublockException
 	{
 		TranslatorBlock pinBlock = this.getRequiredTranslatorBlockAtSocket(0);
 		TranslatorBlock freqBlock = this.getRequiredTranslatorBlockAtSocket(1);

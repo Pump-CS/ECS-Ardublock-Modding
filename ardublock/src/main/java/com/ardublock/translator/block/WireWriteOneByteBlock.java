@@ -4,6 +4,7 @@ import com.ardublock.core.Context;
 import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+import com.ardublock.core.exception.ArdublockException;
 
 public class WireWriteOneByteBlock extends TranslatorBlock
 {
@@ -13,7 +14,7 @@ public class WireWriteOneByteBlock extends TranslatorBlock
 	}
 
 	@Override
-	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
+	public String toCode() throws ArdublockException
 	{
 		WireReadBlock.setupWireEnvironment(translator);
 	

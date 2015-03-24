@@ -1,24 +1,13 @@
 package com.ardublock.translator.block.exception;
 
-import com.ardublock.translator.block.exception.SocketNullException;
+import com.ardublock.translator.block.exception.ECSException;
 
-public class InvalidButtonException extends SocketNullException
+public class InvalidButtonException extends ECSException
 {
 
-	/**
-	 * 
-	 */
-	private Long blockId;
-	
-	
 	public InvalidButtonException(Long blockId)
 	{
 		super(blockId);
-	}
-	
-	public Long getBlockId()
-	{
-		return blockId;
 	}
 
 }

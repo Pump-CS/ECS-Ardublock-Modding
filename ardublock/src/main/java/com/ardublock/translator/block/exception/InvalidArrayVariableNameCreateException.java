@@ -1,10 +1,9 @@
 package com.ardublock.translator.block.exception;
 
-import com.ardublock.translator.block.exception.SocketNullException;
+import com.ardublock.translator.block.exception.ECSException;
 
-public class InvalidArrayVariableNameCreateException extends SocketNullException
+public class InvalidArrayVariableNameCreateException extends ECSException
 {
-	private Long blockId;
 	private String varName;
 	
 	public InvalidArrayVariableNameCreateException(Long blockId, String varName)
@@ -13,11 +12,6 @@ public class InvalidArrayVariableNameCreateException extends SocketNullException
 		this.varName = varName;
 	}
 	
-	public Long getBlockId()
-	{
-		return blockId;
-	}
-
 	public String getMessage() {
 		return varName;
 	}
