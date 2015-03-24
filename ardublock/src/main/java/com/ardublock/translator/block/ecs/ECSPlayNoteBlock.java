@@ -145,25 +145,6 @@ public class ECSPlayNoteBlock extends TranslatorBlock
 		put("D7",  2349);
 		put("D7#", 2489);
 		put("E7b", 2489);
-		put("E7",  2637);
-		put("F7",  2794);
-		put("F7#", 2960);
-		put("G7b", 2960);
-		put("G7",  3136);
-		put("G7#", 3322);
-		put("A7b", 3322);
-		put("A7",  3520);
-		put("A7#", 3729);
-		put("B7b", 3729);
-		put("B7",  3951);
-
-		put("C8",  4186);
-		put("C8#", 4435);
-		put("D8b", 4435);
-		put("D8",  4699);
-		put("D8#", 4978);
-		put("E8b", 4978);
-
 	}};
 
 	public ECSPlayNoteBlock(Long blockId, Translator translator, String codePrefix,	String codeSuffix, String label)
