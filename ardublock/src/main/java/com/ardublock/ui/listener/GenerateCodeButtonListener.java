@@ -184,7 +184,7 @@ public class GenerateCodeButtonListener implements ActionListener
 					break;
 				}
 			}
-			JOptionPane.showMessageDialog(parentFrame, uiMessageBundle.getString("ardublock.translator.exception.subroutineNotDeclared"), "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(parentFrame, uiMessageBundle.getString("ardublock.translator.exception.subroutineNotDeclared") + "(Tried: " + e3.getMessage() + ")", "Error", JOptionPane.ERROR_MESSAGE);
 			
 		}
 		

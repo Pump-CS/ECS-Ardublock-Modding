@@ -16,11 +16,13 @@ public class SubroutineRefBlock extends TranslatorBlock
 	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
 	{
 		String subroutineName = label.trim();
+		String subroutineInternalName;
 		if (!translator.containFunctionName(subroutineName))
 		{
-			throw new SubroutineNotDeclaredException(blockId);
+			throw new SubroutineNotDeclaredException(blockId, subroutineName);
 		}
-		return "\t"+subroutineName + "();\n";
+		subroutineInternalName = translator.getInternalFunctionName(subroutineName);
+		return "\t"+ subroutineInternalName + "();\n";
 	}
 
 }

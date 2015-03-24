@@ -25,11 +25,12 @@ import edu.mit.blocks.workspace.Workspace;
 public class Translator
 {
 	private static final String variablePrefix = "_ABVAR_";
+	private static final String funcPrefix = "_ABFUNC_";
 
 	private Set<String> headerFileSet;
 	private Set<String> definitionSet;
 	private List<String> setupCommand;
-	private Set<String> functionNameSet;
+	//private Set<String> functionNameSet;
 	private Set<TranslatorBlock> bodyTranslatreFinishCallbackSet;
 	private BlockAdaptor blockAdaptor;
 	
@@ -39,10 +40,12 @@ public class Translator
 	private Map<String, String> numberVariableSet;
 	private Map<String, String> booleanVariableSet;
 	private Map<String, String> arrayVariableSet;
+	private Map<String, String> functionNameSet;
 	
 	private Workspace workspace;
 	
 	private int variableCnt;
+	private int funcCount;
 	
 	public Translator(Workspace ws)
 	{
@@ -74,9 +77,9 @@ public class Translator
 		
 		if (!functionNameSet.isEmpty())
 		{
-			for (String functionName:functionNameSet)
+			for (String functionName:functionNameSet.keySet())
 			{
-				headerCommand.append("void " + functionName + "();\n");
+				headerCommand.append("void " + functionNameSet.get(functionName) + "();\n");
 			}
 			headerCommand.append("\n");
 		}
@@ -128,7 +131,7 @@ public class Translator
 		headerFileSet = new LinkedHashSet<String>();
 		definitionSet = new LinkedHashSet<String>();
 		setupCommand = new LinkedList<String>();
-		functionNameSet = new HashSet<String>();
+		//functionNameSet = new HashSet<String>();
 		inputPinSet = new HashSet<String>();
 		outputPinSet = new HashSet<String>();
 		bodyTranslatreFinishCallbackSet = new HashSet<TranslatorBlock>();
@@ -136,10 +139,13 @@ public class Translator
 		numberVariableSet = new HashMap<String, String>();
 		booleanVariableSet = new HashMap<String, String>();
 		arrayVariableSet = new HashMap<String, String>();
-		
+		functionNameSet = new HashMap<String, String>();		
+
+
 		blockAdaptor = buildOpenBlocksAdaptor();
 		
 		variableCnt = 0;
+		funcCount = 0;
 	}
 	
 	private BlockAdaptor buildOpenBlocksAdaptor()
@@ -215,17 +221,22 @@ public class Translator
 	
 	public void addFunctionName(Long blockId, String functionName) throws SubroutineNameDuplicatedException
 	{
-		if (functionName.equals("loop") ||functionName.equals("setup") || functionNameSet.contains(functionName))
+		if (functionName.equals("loop") ||functionName.equals("setup") || functionNameSet.containsKey(functionName))
 		{
 			throw new SubroutineNameDuplicatedException(blockId);
 		}
 		
-		functionNameSet.add(functionName);
+		functionNameSet.put(functionName, buildFunctionName(functionName));
 	}
 	
 	public boolean containFunctionName(String name)
 	{
-		return functionNameSet.contains(name.trim());
+		//return functionNameSet.contains(name.trim());
+		return functionNameSet.containsKey(name.trim());
+	}
+
+	public String getInternalFunctionName(String name) {
+		return functionNameSet.get(name);
 	}
 	
 	
@@ -248,6 +259,18 @@ public class Translator
 			}
 		}
 		return varName;
+	}
+
+	public String buildFunctionName(String name) {
+		funcCount++;
+		String funcName = funcPrefix + funcCount + "_";
+		for (int i = 0; i < name.length(); i++) {
+			char c = name.charAt(i);
+			if (Character.isLetter(c) || Character.isDigit(c) || (c == '_')) {
+				funcName = funcName + c;
+			}
+		}
+		return funcName;
 	}
 	
 	public Workspace getWorkspace() {
