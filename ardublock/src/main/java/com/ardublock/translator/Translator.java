@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -35,8 +36,8 @@ public class Translator
 	private Set<TranslatorBlock> bodyTranslatreFinishCallbackSet;
 	private BlockAdaptor blockAdaptor;
 	
-	private Set<String> inputPinSet;
-	private Set<String> outputPinSet;
+	private ArrayList<String> inputPinSet;
+	private ArrayList<String> outputPinSet;
 	
 	private Map<String, String> numberVariableSet;
 	private Map<String, String> booleanVariableSet;
@@ -133,8 +134,8 @@ public class Translator
 		definitionSet = new LinkedHashSet<String>();
 		setupCommand = new LinkedList<String>();
 		//functionNameSet = new HashSet<String>();
-		inputPinSet = new HashSet<String>();
-		outputPinSet = new HashSet<String>();
+		inputPinSet = new ArrayList<String>();
+		outputPinSet = new ArrayList<String>();
 		bodyTranslatreFinishCallbackSet = new HashSet<TranslatorBlock>();
 		
 		numberVariableSet = new HashMap<String, String>();
