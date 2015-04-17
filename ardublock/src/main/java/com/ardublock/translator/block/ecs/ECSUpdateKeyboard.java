@@ -37,6 +37,7 @@ public class ECSUpdateKeyboard extends TranslatorBlock
 		ret += "for (ECSiteration = 0; ECSiteration < ( ECSnumAvailable ); ++ECSiteration)\n";
 		ret += "{\n\t";
 		ret += 		"ECSindex = buffer[ECSiteration];";
+		ret +=      "digitalWrite( 5 , HIGH);";
 		ret += 		ECSKeyboardSetup.KEYS_ARRAY + "[ECSindex] = !" + ECSKeyboardSetup.KEYS_ARRAY + "[ECSindex];\n";
 		ret += "}\n";
 		return ret;

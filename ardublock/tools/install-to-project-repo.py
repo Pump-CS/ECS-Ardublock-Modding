@@ -17,7 +17,7 @@ import shutil
 
 
 def jars(dir):
-  return [dir + "/RXTXcomm.jar"]
+  return [dir + "/RXTXcomm.jar", dir + "/jssc-2.8.0.jar"]
 
 def parse_by_eclipse_standard(path):
   file = os.path.splitext(os.path.basename(path))[0]

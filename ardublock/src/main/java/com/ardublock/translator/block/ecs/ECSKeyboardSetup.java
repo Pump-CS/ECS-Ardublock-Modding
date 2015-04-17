@@ -12,7 +12,10 @@ import javax.swing.*;
 
 import java.io.*;
 import java.util.*;
-import gnu.io.*;
+//import gnu.io.*;
+
+
+import jssc.*;
 
 /* TODO
 	- Make this WAY more robust. The port should be closed in every conceivable case of the program being closed.
@@ -44,6 +47,17 @@ public class ECSKeyboardSetup extends TranslatorBlock
 		// We don't have any actual Arduino code to output for this block.
 		return "";
 	}
+
+	public static String getSerialPortName() {
+		String name = Preferences.get("serial.port");
+		SerialNativeInterface serialInterface = new SerialNativeInterface();
+
+		if (serialInterface.getOsType() == SerialNativeInterface.OS_MAC_OS_X) {
+			name = name.replace("cu.", "tty.");
+		}
+
+		return name;
+	}
 }
 
 
@@ -57,7 +71,7 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 	InputStream input;
   	OutputStream output;
 
-	protected final int BAUD_RATE = 9600;
+	protected final int BAUD_RATE = SerialPort.BAUDRATE_9600;
 	protected final int DATA_BITS = SerialPort.DATABITS_8;
 	protected final int STOP_BITS = SerialPort.STOPBITS_1;
 	protected final int PARITY    = SerialPort.PARITY_NONE;
@@ -76,6 +90,7 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 		});
 
 
+		try {Thread.sleep(1000);} catch (Exception e) {}
 		openSerialPort();
 
 
@@ -90,36 +105,41 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 	private void closeSerialPort() {
 		if (serial == null) return;
 
-		serial.close();
-		serial = null;
+		try {
+			serial.closePort();
+			serial = null;
+		}
+		catch (SerialPortException e) {
+			e.printStackTrace();
+		}
 	}
 
 
 	private void openSerialPort() {
 		if (serial != null) return;
 
+		System.out.println("Attempting to open serial port.");
+		//String portName = ECSKeyboardSetup.getSerialPortName();
+		String portName = Preferences.get("serial.port");
+
+		serial = new SerialPort(portName);
+
 		// Make sure the port exists and is no currently owned by another process
-		try 
-		{
-			Enumeration portList = CommPortIdentifier.getPortIdentifiers();
-			CommPortIdentifier portId = null;
+		if (serial.isOpened()) {
+			System.out.println("Serial port already opened. Unable to establish connection.");
+			return;
+		}
 
-			while (portList.hasMoreElements()) 
-			{
-				CommPortIdentifier tmp = (CommPortIdentifier)(portList.nextElement());
-				if (tmp.getName().equals(Preferences.get("serial.port"))) 
-				{
-					if (tmp.isCurrentlyOwned()) 
-					{
-						System.out.println("Port found but is currently owned by: " + tmp.getCurrentOwner());
-						break;
-					}
-					System.out.println("Port found");
-					portId = tmp;
-					break;
-				}
-			}
+		try {
+			serial.openPort();
+			serial.setParams(BAUD_RATE, DATA_BITS, STOP_BITS, PARITY);
+			serial.addEventListener(this);
+			System.out.println("port opened successfully");
+		} catch (SerialPortException e) {
+			e.printStackTrace();
+		}
 
+/*
 			if (portId == null) 
 			{
 				System.out.println("Serial port not found");
@@ -146,6 +166,7 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 		{
 			e.printStackTrace();
 		}
+		*/
 
 	}
 
@@ -155,8 +176,10 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 		if (serial == null) return;
 		try 
 		{
-			output.write(key);
-		} catch (Exception ex) 
+			System.out.println("sending update");
+			serial.writeByte((byte)0);
+			//output.write(key);
+		} catch (SerialPortException ex) 
 		{
 			ex.printStackTrace();
 		}
@@ -207,6 +230,15 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 	@Override
 	public void serialEvent(SerialPortEvent e) 
 	{
+		try {
+			if (e.isRXCHAR()) {
+				String in = serial.readString();
+				System.out.print(in);
+			}
+		} catch (SerialPortException ex) {
+			ex.printStackTrace();
+		}
+		/*
 		if (e.getEventType() == SerialPortEvent.DATA_AVAILABLE) 
 		{
 			try 
@@ -219,7 +251,7 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 			{
 				ex.printStackTrace();
 			}
-		}
+		}*/
 	}
 }
 
@@ -235,14 +267,51 @@ class ECSSerialPoll extends Thread
 	/* Wait for the upload port to disappear and then reappear. */
 	private void pollPort() 
 	{
+
+		SerialNativeInterface serialInterface = new SerialNativeInterface();
 		System.out.println("Polling port " + Preferences.get("serial.port"));
 		boolean available = true;
 		boolean triggered = false;
+		String selectedPort = ECSKeyboardSetup.getSerialPortName();
+
 		while (!(available && triggered)) 
 		{
 
 			boolean found = false;
 
+			//String[] names = SerialPortList.getPortNames("/dev/", java.util.regex.Pattern.compile("cu."));
+			String[] names = SerialPortList.getPortNames();
+			//String[] names = serialInterface.getSerialPortNames();
+
+			System.out.println("Ports found: " + names.length);
+
+			for (String name : names) {
+				if (name.equals(selectedPort)) {
+					System.out.println("Available and found");
+					available = true;
+					found = true;
+					break;
+				}
+			}
+
+			if (found) {
+				System.out.println("Found");
+			} else {
+				System.out.println("Not found");
+			}
+
+			if ((!found) && available) {
+				System.out.println("Not found and available.");
+				triggered = true;
+				available = false;
+			}
+
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				// ignore
+			}
+/*
 			Enumeration portList = CommPortIdentifier.getPortIdentifiers();
 			while (portList.hasMoreElements()) 
 			{
@@ -269,7 +338,8 @@ class ECSSerialPoll extends Thread
 			} catch (InterruptedException e) 
 			{
 				e.printStackTrace();
-			}
+			}*/
+		
 		}
 		System.out.println("Polling complete.");
 	}
