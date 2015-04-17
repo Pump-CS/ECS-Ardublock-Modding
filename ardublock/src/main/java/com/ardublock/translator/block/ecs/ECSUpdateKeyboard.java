@@ -1,9 +1,8 @@
 package com.ardublock.translator.block.ecs;
 
+import com.ardublock.core.exception.ArdublockException;
 import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.TranslatorBlock;
-import com.ardublock.translator.block.exception.*;
-import com.ardublock.core.exception.ArdublockException;
 
 public class ECSUpdateKeyboard extends TranslatorBlock
 {
@@ -37,7 +36,6 @@ public class ECSUpdateKeyboard extends TranslatorBlock
 		ret += "for (ECSiteration = 0; ECSiteration < ( ECSnumAvailable ); ++ECSiteration)\n";
 		ret += "{\n\t";
 		ret += 		"ECSindex = buffer[ECSiteration];";
-		ret +=      "digitalWrite( 5 , HIGH);";
 		ret += 		ECSKeyboardSetup.KEYS_ARRAY + "[ECSindex] = !" + ECSKeyboardSetup.KEYS_ARRAY + "[ECSindex];\n";
 		ret += "}\n";
 		return ret;

@@ -1,23 +1,20 @@
 package com.ardublock.ui.listener;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.HashSet;
-import java.util.ResourceBundle;
-import java.util.Set;
-
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
 import com.ardublock.core.Context;
+import com.ardublock.core.exception.ArdublockException;
 import com.ardublock.translator.AutoFormat;
 import com.ardublock.translator.Translator;
+import com.ardublock.translator.block.ecs.ECSKeyboardSetup;
 import com.ardublock.translator.block.exception.*;
-import com.ardublock.core.exception.ArdublockException;
-
 import edu.mit.blocks.codeblocks.Block;
 import edu.mit.blocks.renderable.RenderableBlock;
 import edu.mit.blocks.workspace.Workspace;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ResourceBundle;
+import java.util.Set;
 
 public class GenerateCodeButtonListener implements ActionListener
 {
@@ -36,6 +33,11 @@ public class GenerateCodeButtonListener implements ActionListener
 	
 	public void actionPerformed(ActionEvent e)
 	{
+		if (ECSKeyboardSetup.portOpen) {
+			JOptionPane.showMessageDialog(parentFrame, "Please close 'ECS Keyboard' window before re-uploading to Arduino.", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
 		boolean success;
 		success = true;
 		Translator translator = new Translator(workspace);
