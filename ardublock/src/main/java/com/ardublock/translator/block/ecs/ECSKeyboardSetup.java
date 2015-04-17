@@ -69,6 +69,8 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 	private final int STOP_BITS = SerialPort.STOPBITS_1;
 	private final int PARITY    = SerialPort.PARITY_NONE;
 
+	JLabel label;
+
 	ECSArdublockSerialGUI(String title) 
 	{
 		super(title);
@@ -89,8 +91,13 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(400, 300);
 		JTextArea text = new JTextArea("");
-		text.addKeyListener(this);
-		this.getContentPane().add(text, BorderLayout.CENTER);
+		label = new JLabel();
+		label.setFont(label.getFont().deriveFont(64.0f));
+
+		//text.addKeyListener(this);
+		this.addKeyListener(this);
+		//this.getContentPane().add(text, BorderLayout.CENTER);
+		this.getContentPane().add(label, BorderLayout.CENTER);
 		setVisible(true);
 	}
 
@@ -171,6 +178,7 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 		if (keyCode == -1) return;
 		sendUpdate(keyCode);
 		keysDown[keyCode] = false;
+		updateKeyLabel();
 	}
 
 	@Override
@@ -184,7 +192,25 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 		{
 			sendUpdate(keyCode);
 			keysDown[keyCode] = true;
+			updateKeyLabel();
 		}
+	}
+
+	private void updateKeyLabel() {
+		String title = "";
+		for (int i = 0; i < keysDown.length; i++) {
+			if (keysDown[i]) {
+				if (i < 10) {
+					title += ", " + (char)(i + '0');
+				} else {
+					title += ", " + (char)((i - 10) + 'a');
+				}
+			}
+		}
+		if (title.length() > 0) {
+			title = title.substring(1);
+		}
+		this.label.setText(title);
 	}
 
 	// Print output received from Arduino to stdout.
