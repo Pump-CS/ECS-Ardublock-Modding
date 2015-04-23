@@ -6,7 +6,7 @@ This project is based on [Ardublock](https://github.com/taweili/ardublock).
 *   [Adding Blocks Tutorial 2](http://blog.ardublock.com/2012/05/04/how-to-hack-ardublock/)
 
 ####Installation:
-1. Download version 3.2.1 of [Maven](http://apache.osuosl.org/maven/maven-3/3.2.1/binaries/apache-maven-3.2.1-bin.tar.gz)
+1. Download version 3.2.5 of [Maven](http://apache.claz.org/maven/maven-3/3.2.5/binaries/apache-maven-3.2.5-bin.tar.gz)
 2. Download [JavaJDK](http://www.oracle.com/technetwork/java/index.html)
 3. Follow the Maven [installation instructions](http://maven.apache.org/download.cgi)
 4. In the ardublock/tools directory, run `./setup.sh`.
