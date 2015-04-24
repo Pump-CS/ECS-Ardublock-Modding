@@ -26,8 +26,16 @@ public class SetterVariableNumberBlock extends TranslatorBlock
 		String varName;
 		String internalVarName;
 		String ret;
+		String val;
 
-		TranslatorBlock tb = this.getRequiredTranslatorBlockAtSocket(0);
+
+		// Protect against the case of setting a variable equal to itself without having created the variable to begin with.
+		// Essentially protect against: int x = x;
+		// This is done by calling toCode() on the value socket before adding the variable name to the list of valid variable names.
+		TranslatorBlock tb = this.getRequiredTranslatorBlockAtSocket(1);
+		val = tb.toCode();
+
+		tb = this.getRequiredTranslatorBlockAtSocket(0);
 		if (!(tb instanceof VariableNumberBlock)) {
 			throw new BlockException(blockId, uiMessageBundle.getString("ardublock.error_msg.number_var_slot"));
 		}
@@ -47,8 +55,7 @@ public class SetterVariableNumberBlock extends TranslatorBlock
 		}
 
 		ret = internalVarName;
-		tb = this.getRequiredTranslatorBlockAtSocket(1);
-		ret = ret + " = " + tb.toCode() + " ;\n";
+		ret = ret + " = " + val + " ;\n";
 
 		return ret;
 	}
