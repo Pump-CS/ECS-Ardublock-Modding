@@ -22,6 +22,7 @@ public class ECSKeyboardSetup extends TranslatorBlock
 {
 	/* Name of key-state array in Arduino code output */
 	public static final String KEYS_ARRAY = "keysDown";
+	public static final int KEYS_ARRAY_SIZE = 36; // 26 alpha, 10 digits
 	public static boolean portOpen = false;
 
 	public ECSKeyboardSetup(Long blockId, Translator translator, String codePrefix, String codeSuffix, String label)
@@ -36,21 +37,10 @@ public class ECSKeyboardSetup extends TranslatorBlock
 		(new ECSSerialPoll()).start();
 
 		// Create array of booleans for keys with room for 36 keys (10 for digits and 26 for lowercase alpha).
-		translator.addDefinitionCommand("boolean " + KEYS_ARRAY + "[36];");
+		translator.addDefinitionCommand(String.format("boolean %s[%d];", KEYS_ARRAY, KEYS_ARRAY_SIZE));
 
 		// We don't have any actual Arduino code to output for this block.
 		return "";
-	}
-
-	public static String getSerialPortName() {
-		String name = Preferences.get("serial.port");
-		SerialNativeInterface serialInterface = new SerialNativeInterface();
-
-		if (serialInterface.getOsType() == SerialNativeInterface.OS_MAC_OS_X) {
-			name = name.replace("cu.", "tty.");
-		}
-
-		return name;
 	}
 }
 
@@ -59,7 +49,7 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 {
 
 	// State table for the keys
-	private boolean[] keysDown = new boolean[36];
+	private boolean[] keysDown = new boolean[ECSKeyboardSetup.KEYS_ARRAY_SIZE];
 	private SerialPort serial;
 	private final int BAUD_RATE = SerialPort.BAUDRATE_9600;
 	private final int DATA_BITS = SerialPort.DATABITS_8;
@@ -115,7 +105,6 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 		if (serial != null) return;
 
 		System.out.println("Attempting to open serial port.");
-		//String portName = ECSKeyboardSetup.getSerialPortName();
 		String portName = Preferences.get("serial.port");
 
 		serial = new SerialPort(portName);
@@ -130,14 +119,14 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 			ECSKeyboardSetup.portOpen = serial.openPort();
 			serial.setParams(BAUD_RATE, DATA_BITS, STOP_BITS, PARITY);
 			serial.addEventListener(this);
-			System.out.println("port opened successfully");
+			System.out.println("Port opened successfully");
 		} catch (SerialPortException e) {
 			e.printStackTrace();
 		}
 
 	}
 
-
+	// Send 'key' down the serial port
 	private void sendUpdate(int key) 
 	{
 		if (serial == null) return;
@@ -150,6 +139,9 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 		}
 	}
 
+	// Get the index of the keysDown array that correspondes to the given character.
+	// 0-9 map to indices 0-9
+	// a-z map to indices 10-35
 	private int getIndex(char c) 
 	{
 		if (Character.isDigit(c))
@@ -168,6 +160,7 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 	@Override
 	public void keyTyped(KeyEvent e) {/* Not used */}
 
+	// Notify the Arduino that this key is no longer being held down
 	@Override
 	public void keyReleased(KeyEvent e) 
 	{
@@ -178,6 +171,8 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 		updateKeyLabel();
 	}
 
+	// Notify the Arduino that this key is being held down, but only once.
+	// Don't send repetitive information down the serial port each time the OS registers a key press
 	@Override
 	public void keyPressed(KeyEvent e) 
 	{
@@ -193,6 +188,7 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 		}
 	}
 
+	// Update the label in the ECSKeyboard GUI that shows which keys are being pressed
 	private void updateKeyLabel() {
 		String title = "";
 		for (int i = 0; i < keysDown.length; i++) {
@@ -228,65 +224,34 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 class ECSSerialPoll extends Thread 
 {
 
-	private static Field getField(Class clazz, String fieldName)
-        throws NoSuchFieldException {
-    	try {
-    	  return clazz.getDeclaredField(fieldName);
-    	} catch (NoSuchFieldException e) {
-   	   	Class superClass = clazz.getSuperclass();
-   	   		if (superClass == null) {
-     	  	 throw e;
-     	 	} else {
-     	  	 return getField(superClass, fieldName);
-     	 	}
-    	}
-  	}
-
+	// Wait for our code to finish being uploaded to the Arduino
+	// and then spawn the ECSArdublockSerialGUI window that will establish
+	// and manage serial communication with the Arduino
 	public void run() 
 	{
-		pollPort();
+		waitForUpload();
 		new ECSArdublockSerialGUI("ECS Keyboard");
 	}
 
-	/* Wait for the upload port to disappear and then reappear. */
-	private void pollPort() 
+	
+	private void waitForUpload() 
 	{
-/*
-		public static void main(String[] args) throws Exception{
-    Object myObj = new SomeDerivedClass(1234);
-    Class myClass = myObj.getClass();
-    Field myField = getField(myClass, "value");
-    myField.setAccessible(true); //required if field is not normally accessible
-    System.out.println("value: " + myField.get(myObj));
-  }
-
-  private static Field getField(Class clazz, String fieldName)
-        throws NoSuchFieldException {
-    try {
-      return clazz.getDeclaredField(fieldName);
-    } catch (NoSuchFieldException e) {
-      Class superClass = clazz.getSuperclass();
-      if (superClass == null) {
-        throw e;
-      } else {
-        return getField(superClass, fieldName);
-      }
-    }
-  }
-}
-*/
 
 		try {
+			// Gain access to ArduBlockTool.editor
 			ArduBlockTool _abt = new ArduBlockTool();
 			Class _abt_class = _abt.getClass();
 			Field _abt_field = getField(_abt_class, "editor");
 			_abt_field.setAccessible(true);
 
+			// Gain access to ArduBlockTool.editor.uploading
 			Editor _editor = (Editor)_abt_field.get(_abt);
 			Class _editor_class = _editor.getClass();
 			Field _editor_field = getField(_editor_class, "uploading");
 			_editor_field.setAccessible(true);
-			System.out.println("========== " + _editor_field.get(_editor) + " ==========");
+
+
+			// Wait for ArduBlockTool.editor.uploading to go from false, to true, and then back to false
 			boolean triggered = false;
 			Boolean uploading = (Boolean)(_editor_field.get(_editor));
 
@@ -296,55 +261,11 @@ class ECSSerialPoll extends Thread
 				}
 				uploading = (Boolean)_editor_field.get(_editor);
 			}
+
 			System.out.println("Polling complete.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		/*
-
-
-		SerialNativeInterface serialInterface = new SerialNativeInterface();
-		boolean available = true;
-		boolean triggered = false;
-		String selectedPort = ECSKeyboardSetup.getSerialPortName();
-		System.out.println("Polling port " + selectedPort);
-
-		while (!(available && triggered)) 
-		{
-
-			boolean found = false;
-
-			//String[] names = SerialPortList.getPortNames("/dev/", java.util.regex.Pattern.compile("cu."));
-			String[] names = SerialPortList.getPortNames();
-			//String[] names = serialInterface.getSerialPortNames();
-
-			System.out.println("Found:");
-			for (String name : names) {
-				System.out.println("\t" + name);
-				if (name.equals(selectedPort)) {
-					available = true;
-					found = true;
-					break;
-				}
-			}
-			System.out.println("---------\n");
-
-			if ((!found) && available) {
-				triggered = true;
-				available = false;
-			}
-
-			try {
-				Thread.sleep(200);
-			} catch (InterruptedException e) {
-				// ignore
-			}
-		
-		}
-		
-		System.out.println("Polling complete.");
-		*/
 	}
 
 }
