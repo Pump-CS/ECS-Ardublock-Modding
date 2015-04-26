@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -17,6 +18,7 @@ import com.ardublock.translator.block.TranslatorBlockFactory;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNameDuplicatedException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+import com.ardublock.core.exception.ArdublockException;
 
 import edu.mit.blocks.codeblocks.Block;
 import edu.mit.blocks.renderable.RenderableBlock;
@@ -25,23 +27,27 @@ import edu.mit.blocks.workspace.Workspace;
 public class Translator
 {
 	private static final String variablePrefix = "_ABVAR_";
+	private static final String funcPrefix = "_ABFUNC_";
 
 	private Set<String> headerFileSet;
 	private Set<String> definitionSet;
 	private List<String> setupCommand;
-	private Set<String> functionNameSet;
+	//private Set<String> functionNameSet;
 	private Set<TranslatorBlock> bodyTranslatreFinishCallbackSet;
 	private BlockAdaptor blockAdaptor;
 	
-	private Set<String> inputPinSet;
-	private Set<String> outputPinSet;
+	private ArrayList<String> inputPinSet;
+	private ArrayList<String> outputPinSet;
 	
 	private Map<String, String> numberVariableSet;
 	private Map<String, String> booleanVariableSet;
+	private Map<String, String> arrayVariableSet;
+	private Map<String, String> functionNameSet;
 	
 	private Workspace workspace;
 	
 	private int variableCnt;
+	private int funcCount;
 	
 	public Translator(Workspace ws)
 	{
@@ -73,9 +79,9 @@ public class Translator
 		
 		if (!functionNameSet.isEmpty())
 		{
-			for (String functionName:functionNameSet)
+			for (String functionName:functionNameSet.keySet())
 			{
-				headerCommand.append("void " + functionName + "();\n");
+				headerCommand.append("void " + functionNameSet.get(functionName) + "();\n");
 			}
 			headerCommand.append("\n");
 		}
@@ -109,7 +115,7 @@ public class Translator
 		return headerCommand.toString();
 	}
 	
-	public String translate(Long blockId) throws SocketNullException, SubroutineNotDeclaredException
+	public String translate(Long blockId) throws ArdublockException
 	{
 		TranslatorBlockFactory translatorBlockFactory = new TranslatorBlockFactory();
 		Block block = workspace.getEnv().getBlock(blockId);
@@ -127,17 +133,21 @@ public class Translator
 		headerFileSet = new LinkedHashSet<String>();
 		definitionSet = new LinkedHashSet<String>();
 		setupCommand = new LinkedList<String>();
-		functionNameSet = new HashSet<String>();
-		inputPinSet = new HashSet<String>();
-		outputPinSet = new HashSet<String>();
+		//functionNameSet = new HashSet<String>();
+		inputPinSet = new ArrayList<String>();
+		outputPinSet = new ArrayList<String>();
 		bodyTranslatreFinishCallbackSet = new HashSet<TranslatorBlock>();
 		
 		numberVariableSet = new HashMap<String, String>();
 		booleanVariableSet = new HashMap<String, String>();
-		
+		arrayVariableSet = new HashMap<String, String>();
+		functionNameSet = new HashMap<String, String>();		
+
+
 		blockAdaptor = buildOpenBlocksAdaptor();
 		
 		variableCnt = 0;
+		funcCount = 0;
 	}
 	
 	private BlockAdaptor buildOpenBlocksAdaptor()
@@ -190,6 +200,11 @@ public class Translator
 	{
 		return booleanVariableSet.get(userVarName);
 	}
+
+	public String getArrayVariable(String userVarName)
+	{
+		return arrayVariableSet.get(userVarName);
+	}
 	
 	public void addNumberVariable(String userVarName, String internalName)
 	{
@@ -201,19 +216,29 @@ public class Translator
 		booleanVariableSet.put(userVarName, internalName);
 	}
 	
+	public void addArrayVariable(String userVarName, String internalName)
+	{
+		arrayVariableSet.put(userVarName, internalName);
+	}
+	
 	public void addFunctionName(Long blockId, String functionName) throws SubroutineNameDuplicatedException
 	{
-		if (functionName.equals("loop") ||functionName.equals("setup") || functionNameSet.contains(functionName))
+		if (functionName.equals("loop") ||functionName.equals("setup") || functionNameSet.containsKey(functionName))
 		{
 			throw new SubroutineNameDuplicatedException(blockId);
 		}
 		
-		functionNameSet.add(functionName);
+		functionNameSet.put(functionName, buildFunctionName(functionName));
 	}
 	
 	public boolean containFunctionName(String name)
 	{
-		return functionNameSet.contains(name.trim());
+		//return functionNameSet.contains(name.trim());
+		return functionNameSet.containsKey(name.trim());
+	}
+
+	public String getInternalFunctionName(String name) {
+		return functionNameSet.get(name);
 	}
 	
 	
@@ -236,6 +261,18 @@ public class Translator
 			}
 		}
 		return varName;
+	}
+
+	public String buildFunctionName(String name) {
+		funcCount++;
+		String funcName = funcPrefix + funcCount + "_";
+		for (int i = 0; i < name.length(); i++) {
+			char c = name.charAt(i);
+			if (Character.isLetter(c) || Character.isDigit(c) || (c == '_')) {
+				funcName = funcName + c;
+			}
+		}
+		return funcName;
 	}
 	
 	public Workspace getWorkspace() {
@@ -324,7 +361,7 @@ public class Translator
 		return subroutineBlockSet;
 	}
 	
-	public String translate(Set<RenderableBlock> loopBlocks, Set<RenderableBlock> subroutineBlocks) throws SocketNullException, SubroutineNotDeclaredException
+	public String translate(Set<RenderableBlock> loopBlocks, Set<RenderableBlock> subroutineBlocks) throws ArdublockException
 	{
 		StringBuilder code = new StringBuilder();
 		for (RenderableBlock renderableBlock : loopBlocks)

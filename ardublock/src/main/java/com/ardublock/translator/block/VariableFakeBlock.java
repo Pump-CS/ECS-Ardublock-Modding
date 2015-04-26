@@ -12,9 +12,10 @@ public class VariableFakeBlock extends TranslatorBlock
 	@Override
 	public String toCode()
 	{
-		String internalVariableName = translator.getNumberVariable(label);
+		/*String internalVariableName = translator.getNumberVariable(label);
 		internalVariableName = "vec_"+label.replace(" ","");
-		return codePrefix+internalVariableName+codeSuffix;
+		return codePrefix+internalVariableName+codeSuffix;*/
+		return codePrefix + label + codeSuffix;
 	}
 
 }

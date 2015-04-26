@@ -3,6 +3,8 @@ package com.ardublock.translator.block;
 import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+import com.ardublock.core.exception.ArdublockException;
+import com.ardublock.translator.block.exception.InvalidArrayVariableNameAccessException;
 
 public class VariableVectorBlock extends TranslatorBlock
 {
@@ -12,11 +14,21 @@ public class VariableVectorBlock extends TranslatorBlock
 	}
 
 	@Override
-	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
+	public String toCode() throws ArdublockException
 	{
+		String internalVarName;
+		String ret;
         TranslatorBlock position = this.getRequiredTranslatorBlockAtSocket(0);
-		String ret = "vec_"+label.replace(" ","")+"["+position.toCode()+" - 1]";
+
+		internalVarName = translator.getArrayVariable(label);
+
+		if (internalVarName == null) {
+			throw new InvalidArrayVariableNameAccessException(blockId, label);
+		}
+
+		ret = internalVarName + "[" + position.toCode() + " - 1]";
 		return codePrefix + ret + codeSuffix;
+		
 	}
 
 }

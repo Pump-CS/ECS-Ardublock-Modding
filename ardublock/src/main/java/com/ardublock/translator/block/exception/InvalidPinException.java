@@ -1,26 +1,13 @@
 package com.ardublock.translator.block.exception;
 
-//import com.ardublock.core.exception.ArdublockException;
-import com.ardublock.translator.block.exception.SocketNullException;
+//import com.ardublock.translator.block.exception.ECSException;
+import com.ardublock.translator.block.exception.ECSException;
 
-public class InvalidPinException extends SocketNullException//ArdublockException
+public class InvalidPinException extends ECSException//ArdublockException
 {
 
-	/**
-	 * 
-	 */
-	private Long blockId;
-	
-	
 	public InvalidPinException(Long blockId)
 	{
 		super(blockId);
-//		this.blockId = blockId;
 	}
-	
-	public Long getBlockId()
-	{
-		return blockId;
-	}
-
 }

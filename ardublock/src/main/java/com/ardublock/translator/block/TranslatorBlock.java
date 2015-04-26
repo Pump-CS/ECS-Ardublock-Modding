@@ -4,10 +4,13 @@ import com.ardublock.translator.Translator;
 import com.ardublock.translator.adaptor.BlockAdaptor;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+import com.ardublock.core.exception.ArdublockException;
+
+import java.util.ArrayList;
 
 abstract public class TranslatorBlock
 {
-	abstract public String toCode() throws SocketNullException, SubroutineNotDeclaredException;
+	abstract public String toCode() throws ArdublockException;
 	
 	protected Long blockId;
 	
@@ -42,7 +45,7 @@ abstract public class TranslatorBlock
 	public static final String FREE_PIN_4 =    "21";
 	public static final String FREE_PIN_5 =    "22";
 	public static final String FREE_PIN_6 =    "23";
-	
+
 	protected TranslatorBlock(Long blockId, Translator translator)
 	{
 		this.blockId = blockId;

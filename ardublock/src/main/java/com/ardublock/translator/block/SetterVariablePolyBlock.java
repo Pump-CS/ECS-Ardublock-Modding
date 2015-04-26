@@ -6,6 +6,7 @@ import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.exception.BlockException;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+import com.ardublock.core.exception.ArdublockException;
 
 public class SetterVariablePolyBlock extends TranslatorBlock
 {
@@ -17,7 +18,7 @@ public class SetterVariablePolyBlock extends TranslatorBlock
 	}
 
 	@Override
-	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
+	public String toCode() throws ArdublockException
 	{
 		TranslatorBlock tb = this.getRequiredTranslatorBlockAtSocket(0);
 		if (!(tb instanceof VariablePolyBlock))	{

@@ -1,24 +1,11 @@
 package com.ardublock.translator.block.exception;
 
-import com.ardublock.translator.block.exception.SocketNullException;
+import com.ardublock.translator.block.exception.ECSException;
 
-public class InvalidKeyException extends SocketNullException
+public class InvalidKeyException extends ECSException
 {
-
-	/**
-	 * 
-	 */
-	private Long blockId;
-	
-	
 	public InvalidKeyException(Long blockId)
 	{
 		super(blockId);
 	}
-	
-	public Long getBlockId()
-	{
-		return blockId;
-	}
-
 }

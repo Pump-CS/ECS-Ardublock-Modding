@@ -6,6 +6,8 @@ import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.exception.BlockException;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+import com.ardublock.core.exception.ArdublockException;
+import com.ardublock.translator.block.exception.InvalidArrayVariableNameCreateException;
 
 public class CreateVariableVectorBlock extends TranslatorBlock
 {
@@ -17,9 +19,12 @@ public class CreateVariableVectorBlock extends TranslatorBlock
 	}
 	
 	@Override
-	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
+	public String toCode() throws ArdublockException
 	{
-		String varName="";
+		String varName;
+		String internalVarName;
+		String ret;
+
 		TranslatorBlock name = this.getRequiredTranslatorBlockAtSocket(0);
 		TranslatorBlock size = this.getRequiredTranslatorBlockAtSocket(1);
 		if (!(name instanceof VariableFakeBlock)) {
@@ -28,12 +33,22 @@ public class CreateVariableVectorBlock extends TranslatorBlock
 		if (!(size instanceof NumberBlock)) {
 			throw new BlockException(blockId, uiMessageBundle.getString("ardublock.error_msg.array_size_slot"));
 		}
-		
-		varName+=name.toCode();
-		int foo = Integer.parseInt(size.toCode());
-		varName+="[";
-		translator.addDefinitionCommand("int " + varName +foo+"];\n");
-		translator.addSetupCommand("\tfor (int i=0;i<"+foo+";i++) "+ varName+"i]=0;\n"   );
+
+		varName = name.toCode();
+		internalVarName = translator.buildVariableName(varName);
+		internalVarName = "vec_" + internalVarName;
+
+		// If we have not seen this array variable name before, then we are free to create it.
+		// Otherwise throw an error for declaring two arrays with the same name.
+		if (translator.getArrayVariable(varName) == null) {
+			String s = size.toCode();
+			translator.addArrayVariable(varName, internalVarName);
+			translator.addDefinitionCommand("int " + internalVarName + "[" + s + "];");
+			translator.addSetupCommand("for (int i = 0; i < " + s + "; i++) {" + internalVarName + "[i] = 0;}");
+		} else {
+			throw new InvalidArrayVariableNameCreateException(blockId, varName);
+		}
+
 		return "";
 	}
 

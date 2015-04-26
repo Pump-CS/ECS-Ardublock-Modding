@@ -19,7 +19,11 @@ public class ButtonPressedTest
 	private static final String SUCCESS_ADJUSTED_PIN = TranslatorBlock.BUTTON_PIN_1;
 	private static final String FAIL_PIN = TranslatorBlock.SPEAKER_PIN;
 	private static final String BUTTONPRESSED_TOCODE = "digitalRead(" + SUCCESS_ADJUSTED_PIN + ")";
-	private static final String[] BUTTONPRESSED_SETUP_COMMANDS = {"pinMode( " + SUCCESS_ADJUSTED_PIN + ", INPUT);\n"};
+	private static final String[] BUTTONPRESSED_SETUP_COMMANDS = {
+									"pinMode( " + TranslatorBlock.BUTTON_PIN_1 + ", INPUT);\n",
+									"pinMode( " + TranslatorBlock.BUTTON_PIN_2 + ", INPUT);\n",
+									"pinMode( " + TranslatorBlock.BUTTON_PIN_3 + ", INPUT);\n",
+									"pinMode( " + TranslatorBlock.BUTTON_PIN_4 + ", INPUT);\n"};
 	private static final String[] BUTTONPRESSED_DEFINITIONS = {};
 
 	private ECSButtonPressedBlock blockToTest;

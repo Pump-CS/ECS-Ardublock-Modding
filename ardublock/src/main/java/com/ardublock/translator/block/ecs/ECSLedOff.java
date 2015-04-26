@@ -7,6 +7,7 @@ import com.ardublock.translator.block.TranslatorBlock;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.InvalidPinException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+import com.ardublock.core.exception.ArdublockException;
 
 public class ECSLedOff extends TranslatorBlock
 {
@@ -16,7 +17,7 @@ public class ECSLedOff extends TranslatorBlock
 	}
 
 	@Override
-	public String toCode() throws SocketNullException , SubroutineNotDeclaredException
+	public String toCode() throws ArdublockException
 	{
 		TranslatorBlock pinBlock = this.getRequiredTranslatorBlockAtSocket(0);
 
