@@ -232,7 +232,6 @@ class ECSSerialPoll extends Thread
 		waitForUpload();
 		new ECSArdublockSerialGUI("ECS Keyboard");
 	}
-
 	
 	private void waitForUpload() 
 	{
@@ -241,13 +240,13 @@ class ECSSerialPoll extends Thread
 			// Gain access to ArduBlockTool.editor
 			ArduBlockTool _abt = new ArduBlockTool();
 			Class _abt_class = _abt.getClass();
-			Field _abt_field = getField(_abt_class, "editor");
+			Field _abt_field = _abt_class.getDeclaredField("editor");
 			_abt_field.setAccessible(true);
 
 			// Gain access to ArduBlockTool.editor.uploading
 			Editor _editor = (Editor)_abt_field.get(_abt);
 			Class _editor_class = _editor.getClass();
-			Field _editor_field = getField(_editor_class, "uploading");
+			Field _editor_field = _abt_class.getDeclaredField("uploading");
 			_editor_field.setAccessible(true);
 
 
