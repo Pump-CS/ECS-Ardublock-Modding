@@ -13,13 +13,10 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-//import gnu.io.*;
-
-/* TODO
-	- Make this WAY more robust. The port should be closed in every conceivable case of the program being closed.
-	- digits 0-9 should map to indices 0-9 and a-z should map from indices 10-35.
-	- Make the window that pops up for them to type into much better looking and less janky.
-*/
+import java.lang.reflect.*;
+import com.ardublock.ui.*;
+import processing.app.*;
+import com.ardublock.*;
 
 public class ECSKeyboardSetup extends TranslatorBlock
 {
@@ -231,6 +228,20 @@ class ECSArdublockSerialGUI extends JFrame implements KeyListener, SerialPortEve
 class ECSSerialPoll extends Thread 
 {
 
+	private static Field getField(Class clazz, String fieldName)
+        throws NoSuchFieldException {
+    	try {
+    	  return clazz.getDeclaredField(fieldName);
+    	} catch (NoSuchFieldException e) {
+   	   	Class superClass = clazz.getSuperclass();
+   	   		if (superClass == null) {
+     	  	 throw e;
+     	 	} else {
+     	  	 return getField(superClass, fieldName);
+     	 	}
+    	}
+  	}
+
 	public void run() 
 	{
 		pollPort();
@@ -240,12 +251,64 @@ class ECSSerialPoll extends Thread
 	/* Wait for the upload port to disappear and then reappear. */
 	private void pollPort() 
 	{
+/*
+		public static void main(String[] args) throws Exception{
+    Object myObj = new SomeDerivedClass(1234);
+    Class myClass = myObj.getClass();
+    Field myField = getField(myClass, "value");
+    myField.setAccessible(true); //required if field is not normally accessible
+    System.out.println("value: " + myField.get(myObj));
+  }
+
+  private static Field getField(Class clazz, String fieldName)
+        throws NoSuchFieldException {
+    try {
+      return clazz.getDeclaredField(fieldName);
+    } catch (NoSuchFieldException e) {
+      Class superClass = clazz.getSuperclass();
+      if (superClass == null) {
+        throw e;
+      } else {
+        return getField(superClass, fieldName);
+      }
+    }
+  }
+}
+*/
+
+		try {
+			ArduBlockTool _abt = new ArduBlockTool();
+			Class _abt_class = _abt.getClass();
+			Field _abt_field = getField(_abt_class, "editor");
+			_abt_field.setAccessible(true);
+
+			Editor _editor = (Editor)_abt_field.get(_abt);
+			Class _editor_class = _editor.getClass();
+			Field _editor_field = getField(_editor_class, "uploading");
+			_editor_field.setAccessible(true);
+			System.out.println("========== " + _editor_field.get(_editor) + " ==========");
+			boolean triggered = false;
+			Boolean uploading = (Boolean)(_editor_field.get(_editor));
+
+			while (!(triggered && !uploading)) {
+				if (!triggered && uploading) {
+					triggered = true;
+				}
+				uploading = (Boolean)_editor_field.get(_editor);
+			}
+			System.out.println("Polling complete.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		/*
+
 
 		SerialNativeInterface serialInterface = new SerialNativeInterface();
-		System.out.println("Polling port " + Preferences.get("serial.port"));
 		boolean available = true;
 		boolean triggered = false;
 		String selectedPort = ECSKeyboardSetup.getSerialPortName();
+		System.out.println("Polling port " + selectedPort);
 
 		while (!(available && triggered)) 
 		{
@@ -256,13 +319,16 @@ class ECSSerialPoll extends Thread
 			String[] names = SerialPortList.getPortNames();
 			//String[] names = serialInterface.getSerialPortNames();
 
+			System.out.println("Found:");
 			for (String name : names) {
+				System.out.println("\t" + name);
 				if (name.equals(selectedPort)) {
 					available = true;
 					found = true;
 					break;
 				}
 			}
+			System.out.println("---------\n");
 
 			if ((!found) && available) {
 				triggered = true;
@@ -276,7 +342,9 @@ class ECSSerialPoll extends Thread
 			}
 		
 		}
+		
 		System.out.println("Polling complete.");
+		*/
 	}
 
 }
