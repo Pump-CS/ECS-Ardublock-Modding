@@ -1,0 +1,168 @@
+Note:  home directory is "/users/majors/acalfo"
+Loading menus from /usr/share/pcb/gpcb-menu.res
+Unable to load footprint CONN10
+Cannot change attribute of CONN3 - element not found
+Cannot change attribute of CONN3 - element not found
+Cannot change attribute of CONN3 - element not found
+Cannot change attribute of CONN3 - element not found
+Cannot change attribute of CONN3 - element not found
+Unable to load footprint CONN8
+Cannot change attribute of CONN4 - element not found
+Cannot change attribute of CONN4 - element not found
+Cannot change attribute of CONN4 - element not found
+Cannot change attribute of CONN4 - element not found
+Cannot change attribute of CONN4 - element not found
+Unable to load footprint CONN6
+Cannot change attribute of CONN2 - element not found
+Cannot change attribute of CONN2 - element not found
+Cannot change attribute of CONN2 - element not found
+Cannot change attribute of CONN2 - element not found
+Cannot change attribute of CONN2 - element not found
+Unable to load footprint CONN8
+Cannot change attribute of CONN1 - element not found
+Cannot change attribute of CONN1 - element not found
+Cannot change attribute of CONN1 - element not found
+Cannot change attribute of CONN1 - element not found
+Cannot change attribute of CONN1 - element not found
+Unable to load footprint T101
+Cannot change attribute of Y? - element not found
+Cannot change attribute of Y? - element not found
+Cannot change attribute of Y? - element not found
+Cannot change attribute of Y? - element not found
+Cannot change attribute of Y? - element not found
+Unable to load footprint T101
+Cannot change attribute of X? - element not found
+Cannot change attribute of X? - element not found
+Cannot change attribute of X? - element not found
+Cannot change attribute of X? - element not found
+Cannot change attribute of X? - element not found
+Unable to load footprint SPK101
+Cannot change attribute of SPK1 - element not found
+Cannot change attribute of SPK1 - element not found
+Cannot change attribute of SPK1 - element not found
+Cannot change attribute of SPK1 - element not found
+Cannot change attribute of SPK1 - element not found
+Unable to load footprint SWITCH101
+Cannot change attribute of S4 - element not found
+Cannot change attribute of S4 - element not found
+Cannot change attribute of S4 - element not found
+Cannot change attribute of S4 - element not found
+Cannot change attribute of S4 - element not found
+Unable to load footprint SWITCH101
+Cannot change attribute of S3 - element not found
+Cannot change attribute of S3 - element not found
+Cannot change attribute of S3 - element not found
+Cannot change attribute of S3 - element not found
+Cannot change attribute of S3 - element not found
+Unable to load footprint SWITCH101
+Cannot change attribute of S2 - element not found
+Cannot change attribute of S2 - element not found
+Cannot change attribute of S2 - element not found
+Cannot change attribute of S2 - element not found
+Cannot change attribute of S2 - element not found
+Unable to load footprint SWITCH101
+Cannot change attribute of S1 - element not found
+Cannot change attribute of S1 - element not found
+Cannot change attribute of S1 - element not found
+Cannot change attribute of S1 - element not found
+Cannot change attribute of S1 - element not found
+Can't find Y? pin 1 called for in netlist.
+Can't find CONN4 pin 5 called for in netlist.
+Can't find Y? pin 0 called for in netlist.
+Can't find CONN4 pin 3 called for in netlist.
+Can't find SPK1 pin 1 called for in netlist.
+Can't find CONN4 pin 6 called for in netlist.
+Can't find S4 pin 1 called for in netlist.
+Can't find CONN4 pin 2 called for in netlist.
+Can't find S3 pin 1 called for in netlist.
+Can't find CONN4 pin 1 called for in netlist.
+Can't find S2 pin 1 called for in netlist.
+Can't find CONN3 pin 10 called for in netlist.
+Can't find S1 pin 1 called for in netlist.
+Can't find CONN3 pin 9 called for in netlist.
+Can't find CONN4 pin 4 called for in netlist.
+Can't find X? pin 0 called for in netlist.
+Can't find CONN1 pin 6 called for in netlist.
+Can't find S4 pin 2 called for in netlist.
+Can't find S3 pin 2 called for in netlist.
+Can't find S2 pin 2 called for in netlist.
+Can't find S1 pin 2 called for in netlist.
+Can't find CONN1 pin 5 called for in netlist.
+Can't find X? pin 1 called for in netlist.
+Can't find S4 pin 3 called for in netlist.
+Can't find S3 pin 3 called for in netlist.
+Can't find SPK1 pin 2 called for in netlist.
+Can't find S2 pin 3 called for in netlist.
+Can't find S1 pin 3 called for in netlist.
+Can't find CONN3 pin 5 called for in netlist.
+Can't find CONN3 pin 8 called for in netlist.
+Can't find CONN3 pin 7 called for in netlist.
+Can't find CONN3 pin 6 called for in netlist.
+Can't find CONN3 pin 4 called for in netlist.
+Warning! Net "unnamed_net1" is shorted to net "unnamed_net8"
+Warning! Net "unnamed_net1" is shorted to net "unnamed_net2"
+Warning! Net "unnamed_net2" is shorted to net "unnamed_net8"
+Warning! Net "unnamed_net2" is shorted to net "unnamed_net1"
+Warning! Net "unnamed_net6" is shorted to net "unnamed_net8"
+Warning! Net "unnamed_net8" is shorted to net "unnamed_net6"
+Warning! Net "unnamed_net8" is shorted to net "unnamed_net18"
+Warning! Net "unnamed_net8" is shorted to net "unnamed_net19"
+Warning! Net "unnamed_net8" is shorted to net "unnamed_net11"
+Warning! Net "unnamed_net8" is shorted to net "unnamed_net1"
+Warning! Net "unnamed_net8" is shorted to net "unnamed_net2"
+Warning! Net "unnamed_net9" is shorted to net "unnamed_net17"
+Warning! Net "unnamed_net9" is shorted to net "unnamed_net13"
+Warning! Net "unnamed_net11" is shorted to net "unnamed_net18"
+Warning! Net "unnamed_net11" is shorted to net "unnamed_net19"
+Warning! Net "unnamed_net11" is shorted to net "unnamed_net8"
+Warning! Net "unnamed_net11" is shorted to net "unnamed_net1"
+Warning! Net "unnamed_net11" is shorted to net "unnamed_net6"
+Warning! Net "unnamed_net11" is shorted to net "unnamed_net2"
+Warning! Net "unnamed_net13" is shorted to net "unnamed_net17"
+Warning! Net "unnamed_net13" is shorted to net "unnamed_net9"
+Warning! Net "unnamed_net15" is shorted to net "unnamed_net17"
+Warning! Net "unnamed_net17" is shorted to net "unnamed_net13"
+Warning! Net "unnamed_net17" is shorted to net "unnamed_net9"
+Warning! Net "unnamed_net17" is shorted to net "unnamed_net15"
+Warning! Net "unnamed_net18" is shorted to net "unnamed_net11"
+Warning! Net "unnamed_net18" is shorted to net "unnamed_net19"
+Warning! Net "unnamed_net18" is shorted to net "unnamed_net8"
+Warning! Net "unnamed_net18" is shorted to net "unnamed_net1"
+Warning! Net "unnamed_net18" is shorted to net "unnamed_net6"
+Warning! Net "unnamed_net18" is shorted to net "unnamed_net2"
+Warning! Net "unnamed_net19" is shorted to net "unnamed_net20"
+Warning! Net "unnamed_net19" is shorted to net "unnamed_net11"
+Warning! Net "unnamed_net19" is shorted to net "unnamed_net18"
+Warning! Net "unnamed_net19" is shorted to net "unnamed_net8"
+Warning! Net "unnamed_net19" is shorted to net "unnamed_net1"
+Warning! Net "unnamed_net19" is shorted to net "unnamed_net6"
+Warning! Net "unnamed_net19" is shorted to net "unnamed_net2"
+Warning! Net "unnamed_net20" is shorted to net "unnamed_net22"
+Warning! Net "unnamed_net20" is shorted to net "unnamed_net21"
+Warning! Net "unnamed_net20" is shorted to net "unnamed_net19"
+Warning! Net "unnamed_net20" is shorted to net "unnamed_net11"
+Warning! Net "unnamed_net20" is shorted to net "unnamed_net18"
+Warning! Net "unnamed_net20" is shorted to net "unnamed_net8"
+Warning! Net "unnamed_net20" is shorted to net "unnamed_net1"
+Warning! Net "unnamed_net20" is shorted to net "unnamed_net6"
+Warning! Net "unnamed_net20" is shorted to net "unnamed_net2"
+Warning! Net "unnamed_net21" is shorted to net "unnamed_net19"
+Warning! Net "unnamed_net21" is shorted to net "unnamed_net11"
+Warning! Net "unnamed_net21" is shorted to net "unnamed_net18"
+Warning! Net "unnamed_net21" is shorted to net "unnamed_net20"
+Warning! Net "unnamed_net21" is shorted to net "unnamed_net8"
+Warning! Net "unnamed_net21" is shorted to net "unnamed_net1"
+Warning! Net "unnamed_net21" is shorted to net "unnamed_net6"
+Warning! Net "unnamed_net21" is shorted to net "unnamed_net2"
+Warning! Net "unnamed_net21" is shorted to net "unnamed_net22"
+Warning! Net "unnamed_net22" is shorted to net "unnamed_net19"
+Warning! Net "unnamed_net22" is shorted to net "unnamed_net11"
+Warning! Net "unnamed_net22" is shorted to net "unnamed_net18"
+Warning! Net "unnamed_net22" is shorted to net "unnamed_net20"
+Warning! Net "unnamed_net22" is shorted to net "unnamed_net8"
+Warning! Net "unnamed_net22" is shorted to net "unnamed_net1"
+Warning! Net "unnamed_net22" is shorted to net "unnamed_net6"
+Warning! Net "unnamed_net22" is shorted to net "unnamed_net2"
+Warning! Net "unnamed_net22" is shorted to net "unnamed_net21"
+31 rat lines remaining
+
