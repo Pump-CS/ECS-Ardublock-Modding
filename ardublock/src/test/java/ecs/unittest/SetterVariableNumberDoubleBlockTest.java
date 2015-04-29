@@ -134,7 +134,7 @@ class SetterVariableNumberDoubleBlockStub extends SetterVariableNumberDoubleBloc
 	}
 
 	public TranslatorBlock getRequiredTranslatorBlockAtSocket(int sock) throws SocketNullException {
-		if (sock > 2) {
+		if (sock > 1) {
 			throw new SocketNullException(blockId);
 		}
 		return sockets[sock];

@@ -18,7 +18,7 @@ public class VariableVectorBlock extends TranslatorBlock
 	{
 		String internalVarName;
 		String ret;
-        TranslatorBlock position = this.getRequiredTranslatorBlockAtSocket(0);
+        	TranslatorBlock position = this.getRequiredTranslatorBlockAtSocket(0);
 
 		internalVarName = translator.getArrayVariable(label);
 

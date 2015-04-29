@@ -37,8 +37,12 @@ public class SetterVariableVectorBlock extends TranslatorBlock
 		}
 
 		TranslatorBlock position = this.getRequiredTranslatorBlockAtSocket(1);
-		TranslatorBlock value = this.getRequiredTranslatorBlockAtSocket(2);
 
+		/*if (!((position instanceof NumberBlock) || (position instanceof VariableNumberBlock))) {
+			throw new BlockException(blockId, "message");
+		}*/
+
+		TranslatorBlock value = this.getRequiredTranslatorBlockAtSocket(2);
 
 		ret = internalVarName + "[" + position.toCode() + " - 1]";
 		ret = ret + " = " + value.toCode() + ";\n";
