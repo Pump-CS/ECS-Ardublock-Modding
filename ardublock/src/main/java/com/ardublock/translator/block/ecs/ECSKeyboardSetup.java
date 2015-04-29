@@ -25,16 +25,21 @@ public class ECSKeyboardSetup extends TranslatorBlock
 	public static final int KEYS_ARRAY_SIZE = 36; // 26 alpha, 10 digits
 	public static boolean portOpen = false;
 
+	public boolean isInTest;
+
 	public ECSKeyboardSetup(Long blockId, Translator translator, String codePrefix, String codeSuffix, String label)
 	{
 		super(blockId, translator, codePrefix, codeSuffix, label);
+		this.isInTest = false;
 	}
 
 	@Override
 	public String toCode() throws ArdublockException
 	{
 		// Start a thread that will wait until uploading to the Arduino is finished before opening the serial port
-		(new ECSSerialPoll()).start();
+		if (!isInTest) {
+			(new ECSSerialPoll()).start();
+		}
 
 		// Create array of booleans for keys with room for 36 keys (10 for digits and 26 for lowercase alpha).
 		translator.addDefinitionCommand(String.format("boolean %s[%d];", KEYS_ARRAY, KEYS_ARRAY_SIZE));
