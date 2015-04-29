@@ -251,7 +251,7 @@ class ECSSerialPoll extends Thread
 			// Gain access to ArduBlockTool.editor.uploading
 			Editor _editor = (Editor)_abt_field.get(_abt);
 			Class _editor_class = _editor.getClass();
-			Field _editor_field = _abt_class.getDeclaredField("uploading");
+			Field _editor_field = _editor_class.getDeclaredField("uploading");
 			_editor_field.setAccessible(true);
 
 
