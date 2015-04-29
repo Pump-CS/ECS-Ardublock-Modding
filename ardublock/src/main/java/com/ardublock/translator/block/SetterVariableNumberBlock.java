@@ -39,19 +39,18 @@ public class SetterVariableNumberBlock extends TranslatorBlock
 		
 		varName = nb.toCode();
 
-		System.out.println("built: " + internalVarName + " for: " + varName);
-		
 		// If we haven't seen this variable yet, add it to the list of valid variable names
 		internalVarName = translator.getNumberVariable(varName);
 		if (internalVarName == null) {
 			internalVarName = translator.buildVariableName(varName);
 			translator.addNumberVariable(varName, internalVarName);
-			System.out.printf("Add mapping: %s: %s\n", varName, internalVarName);
+			//System.out.printf("Add mapping: %s: %s\n", varName, internalVarName);
 			translator.addDefinitionCommand("int " + internalVarName + " = 0;");
 		}
 
 		ret = internalVarName;
 		tb = this.getRequiredTranslatorBlockAtSocket(1);
+
 		ret = ret + " = " + tb.toCode() + " ;\n";
 
 		return ret;

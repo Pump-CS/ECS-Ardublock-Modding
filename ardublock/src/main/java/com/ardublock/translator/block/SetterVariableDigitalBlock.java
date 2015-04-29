@@ -35,11 +35,13 @@ public class SetterVariableDigitalBlock extends TranslatorBlock
 		db.setIsInSetter(true);
 
 		varName = db.toCode();
-		internalVarName = translator.buildVariableName(varName);
 
 		// If we haven't seen this variable yet, add it to the list of valid variable names
-		if (translator.getBooleanVariable(varName) == null) {
+		internalVarName = translator.getBooleanVariable(varName);
+		if (internalVarName == null) {
+			internalVarName = translator.buildVariableName(varName);
 			translator.addBooleanVariable(varName, internalVarName);
+			//System.out.println("adding map: " + varName + ": " + internalVarName);
 			translator.addDefinitionCommand("bool " + internalVarName + " = false;");
 		}
 		

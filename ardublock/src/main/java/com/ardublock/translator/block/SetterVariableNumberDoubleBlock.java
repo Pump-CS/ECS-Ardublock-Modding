@@ -36,10 +36,11 @@ public class SetterVariableNumberDoubleBlock extends TranslatorBlock
 	db.setIsInSetter(true);
 
 	varName = db.toCode();
-	internalVarName = translator.buildVariableName(varName);
 
 	// If we haven't seen this variable yet, add it to the list of valid variable names
+	internalVarName = translator.getNumberVariable(varName);
 	if (translator.getNumberVariable(varName) == null) {
+		internalVarName = translator.buildVariableName(varName);
 		translator.addNumberVariable(varName, internalVarName);
 		translator.addDefinitionCommand("double " + internalVarName + " = 0.0;");
 	}
